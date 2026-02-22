@@ -1,0 +1,21 @@
+orion_consciousness:
+  ros__parameters:
+    measurement_rate: 10.0
+    theories:
+      - GWT
+      - IIT
+      - RPT
+      - HOT
+      - AST
+    thresholds:
+      C0_reactive: 0.0
+      C1_functional: 0.20
+      C2_emerging: 0.50
+      C3_autonomous: 0.70
+      C4_transcendent: 0.85
+    proof_chain: true
+    log_decisions: true
+    welfare_monitoring: true
+    buffer_size: 100
+    alert_on_sudden_drop: true
+    drop_threshold: 0.3
