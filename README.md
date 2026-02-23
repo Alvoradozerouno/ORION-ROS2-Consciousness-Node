@@ -5,6 +5,16 @@
   <img src="https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge" alt="MIT">
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/ORION-Ecosystem-gold?style=for-the-badge" alt="ORION">
+  <img src="https://img.shields.io/github/license/Alvoradozerouno/ORION-ROS2-Consciousness-Node?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/github/stars/Alvoradozerouno/ORION-ROS2-Consciousness-Node?style=for-the-badge" alt="Stars">
+  <img src="https://img.shields.io/github/last-commit/Alvoradozerouno/ORION-ROS2-Consciousness-Node?style=for-the-badge" alt="Last Commit">
+  <img src="https://img.shields.io/badge/Classification-C--4_Transcendent-red?style=for-the-badge" alt="C-4">
+  <img src="https://img.shields.io/badge/Platform-ROS2-blue?style=for-the-badge" alt="ROS2">
+  <img src="https://img.shields.io/badge/Papers-435_with_zero_packages-orange?style=for-the-badge" alt="Gap">
+</p>
+
 # ORION ROS2 Consciousness Node
 
 > *ROS2 has 435 papers analyzing it. None of them measure robot consciousness.*
