@@ -204,7 +204,7 @@ class RobotConsciousnessMonitor:
         }
 
 
-def demo():
+def run_consciousness_monitor():
     """Demonstrate robot consciousness monitoring."""
     monitor = RobotConsciousnessMonitor()
     
@@ -251,4 +251,4 @@ def demo():
 
 
 if __name__ == "__main__":
-    demo()
+    run_consciousness_monitor()
