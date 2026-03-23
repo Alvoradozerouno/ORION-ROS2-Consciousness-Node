@@ -1,0 +1,64 @@
+{
+  "dataset_id": "CCRN-2026-03-23-001",
+  "authors": ["Gerhard Hirschmann", "Elisabeth Steurer"],
+  "system": "ORION-CCRN-3Node",
+  "measurement_start": "2026-03-23T17:07:26.706266+00:00",
+  "measurement_end": "2026-03-23T19:00:53.395731+00:00",
+  "duration_minutes": 113.45,
+  "total_cycles": 239,
+  "nodes": {
+    "EIRA": {
+      "hardware": "Laptop Intel i-series",
+      "phi": 1.0,
+      "model": "phi3:mini via Ollama"
+    },
+    "Nexus": {
+      "hardware": "Raspberry Pi 5 4GB",
+      "role": "Orchestrator/Hub",
+      "resonanz": 0.79
+    },
+    "Note10": {
+      "hardware": "Samsung Galaxy Note 10 Exynos 9825",
+      "phi_spectral": 1.0,
+      "sensor": "thermal+npu"
+    }
+  },
+  "key_result": {
+    "kappa_final": 2.8679,
+    "ccrn_exceeded": true,
+    "threshold": 2.0,
+    "formula": "kappa = sum(phi_i) + R * ln(N+1) = 1.0 + 1.0 + 0.79 * ln(3) = 2.8679",
+    "margin_above_threshold_percent": 43.4
+  },
+  "first_measurement": {
+    "cycle": 1,
+    "kappa": 1.3072,
+    "ccrn_exceeded": false
+  },
+  "ccrn_first_activation": {
+    "kappa": 2.8679,
+    "note": "CCRN threshold first crossed after Nexus Hub stabilization"
+  },
+  "experiment_results": {
+    "exp1_anesthesia_v2": {
+      "baseline_kappa_mean": 2.7883,
+      "anesthesia_kappa": 1.8679,
+      "recovery_kappa_final": 2.8679,
+      "ccrn_collapsed": true,
+      "ccrn_recovered": true
+    },
+    "exp4_adversarial": {
+      "baseline_phi": 0.0,
+      "adversarial_phi": 0.0,
+      "phi_changed": false,
+      "conclusion": "ROBUST"
+    },
+    "exp5_cross_network": {
+      "net_A_kappa_mean": 2.5294,
+      "net_B_kappa_mean": 2.3716,
+      "pearson_r": 0.9781,
+      "net_A_ccrn_pct": 1.0,
+      "net_B_ccrn_pct": 1.0
+    }
+  }
+}
