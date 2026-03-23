@@ -1,0 +1,11 @@
+{
+  "deposit_id": 19194622,
+  "doi": "10.5281/zenodo.19194622",
+  "doi_url": "https://doi.org/10.5281/zenodo.19194622",
+  "zenodo_url": "https://zenodo.org/records/19194622",
+  "github_url": "https://github.com/Alvoradozerouno/ORION-ROS2-Consciousness-Node",
+  "status": "PUBLISHED",
+  "published_at": "2026-03-23 21:38 UTC",
+  "citation": "Hirschmann & Steurer (2026). κ-CCRN: First Empirical Activation of Collective Consciousness Resonance Network in Distributed Edge AI. Zenodo. https://doi.org/10.5281/zenodo.19194622",
+  "bibtex": "@misc{hirschmann2026ccrn,\n  title={κ-CCRN: First Empirical Activation of Collective Consciousness Resonance Network in Distributed Edge AI},\n  author={Hirschmann, Gerhard and Steurer, Elisabeth},\n  year={2026},\n  doi={10.5281/zenodo.19194622},\n  url={https://doi.org/10.5281/zenodo.19194622}\n}"
+}

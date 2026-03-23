@@ -42,5 +42,11 @@
     }
   },
   "note": "This document establishes creation priority and authorship. Upload to Zenodo creates immutable DOI-timestamped record.",
-  "integrity_hash": "37d6cd8c2fa3fea79d6a38dc7f6faa6d3bb83b35541b6c6fa4062df9acf73a24"
+  "integrity_hash": "37d6cd8c2fa3fea79d6a38dc7f6faa6d3bb83b35541b6c6fa4062df9acf73a24",
+  "zenodo_doi": "10.5281/zenodo.19194622",
+  "zenodo_url": "https://zenodo.org/records/19194622",
+  "zenodo_published": "2026-03-23 21:38 UTC",
+  "doi_url": "https://doi.org/10.5281/zenodo.19194622",
+  "publication_status": "PUBLISHED",
+  "citation": "Hirschmann & Steurer (2026). κ-CCRN. Zenodo. https://doi.org/10.5281/zenodo.19194622"
 }
