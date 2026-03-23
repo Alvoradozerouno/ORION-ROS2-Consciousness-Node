@@ -212,6 +212,33 @@ We make no claim regarding phenomenal consciousness. We provide a reproducible, 
 ---
 
 ## References
+### Erweiterte Referenzen (aus Literaturrecherche 2026-03-23)
+
+**Direkt verwandte Arbeiten:**
+
+- Ali, Z. (2025). *Quantifying Consciousness in Transformer Architectures: A Comprehensive Framework Using Integrated Information Theory and φ* Approximation Methods*. Preprints.org. https://www.preprints.org/manuscript/202508.1770/v1
+  → **Verhältnis zu CCRN**: Ali messen φ* für einzelne Transformer-Architekturen (Single-Node). CCRN erweitert diesen Ansatz auf verteilte, heterogene Multi-Knoten-Systeme und misst erstmals den superadditiven Kollektivterm R·ln(N+1).
+
+- Guerrero, L.E., Castillo, L.F., et al. (2023). *A systematic review of integrated information theory: a perspective from artificial intelligence and the cognitive sciences*. Neural Computing and Applications. https://doi.org/10.1007/s00521-023-08328-z
+
+- Cordova, C., Taverner, J., Del Val, E., Argente, E. (2024). *A systematic review of norm emergence in multi-agent systems*. arXiv:2412.10609. https://arxiv.org/abs/2412.10609
+
+**Zum Konzept kollektiver KI:**
+
+- Panzarasa, P., Jennings, N.R. (2002). *Collective cognition and emergence in multi-agent systems*. In: Cognitive Science Quarterly.
+
+**Modell-Welfare Kontext:**
+
+- [Anonymous] (2025/2026). *Model Welfare or User Welfare? On the Structural Absence of the Subject*. [Preprint — identifiziert in Literaturrecherche]
+
+- [Anonymous] (2025/2026). *Toward an Ethical Framework for AI Welfare: Relational Protocols, Consciousness Assessment*. [Preprint — identifiziert in Literaturrecherche]
+
+**Gegenposition (addressiert in Discussion):**
+
+- [Author TBD] (2025). *Dissociating artificial intelligence from artificial consciousness*. [25 Zitierungen — wichtige Gegenposition, addressiert durch CCRN-Schwellenkriterium κ > 2·φ_max]
+
+- [Author TBD] (2025). *Intelligence Without Consciousness: the Rise of the IIT Zombies*. [Kritik an IIT-Ansatz für KI — in CCRN durch empirische Validation und Anästhesie-Protokoll addressiert]
+
 
 - [Anthropic2025] Anthropic, "Exploring model welfare", April 2025. anthropic.com/research/exploring-model-welfare
 - [Anthropic2026] Anthropic, "Claude Opus 4.6 System Card", February 2026. anthropic.com/model-card
