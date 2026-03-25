@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-03-25T20:05:46.957171",
+  "stats": {
+    "total": 12,
+    "ok": 11,
+    "timeout": 1
+  },
+  "erfolg_rate": 91.7,
+  "ddgk_memory": 176,
+  "hypothesen": [
+    {
+      "id": "H1",
+      "titel": "Kritische Fluktuationen",
+      "formel": "sigma_max bei kappa->kappa*=2.0",
+      "status": "testbar"
+    },
+    {
+      "id": "H2",
+      "titel": "Suszeptibilitaetsdivergenz",
+      "formel": "sigma(phi) ~ |kappa-kappa*|^(-nu)",
+      "status": "testbar"
+    },
+    {
+      "id": "H3",
+      "titel": "CCRN Holographisches Prinzip",
+      "formel": "kappa_N = f({phi_i})",
+      "status": "formal"
+    },
+    {
+      "id": "H4",
+      "titel": "CCRN Unschaerferelation",
+      "formel": "Delta_phi * Delta_N >= hbar_CCRN",
+      "status": "spekulativ"
+    },
+    {
+      "id": "CFT",
+      "titel": "Cognitive Field Theory",
+      "formel": "S[phi] = sum_phi(v) + R*ln|V| - kappa*",
+      "status": "theoretisch"
+    },
+    {
+      "id": "CST",
+      "titel": "DDGK als Kausal-Menge",
+      "formel": "h_n=SHA256(e_n|h_{n-1}) -> Hasse-Diagram",
+      "status": "formal"
+    }
+  ],
+  "physik_klassifikation": {
+    "kappa_freie_energie": "Mathematischer Isomorphismus (B)",
+    "ddgk_causal_set": "Formale Aequivalenz moeglich (A/B)",
+    "phi_fisher_info": "Geometrische Identitaet auf S^383 (B)",
+    "sigma_fluktuationen": "Testbare physikalische Hypothese (A)"
+  },
+  "status": "PHYSIK_DISKUSSION_COMPLETE"
+}
