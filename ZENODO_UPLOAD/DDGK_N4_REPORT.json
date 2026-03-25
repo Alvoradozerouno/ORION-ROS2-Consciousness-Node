@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-03-25T17:35:04.735058",
+  "n1_docker": {
+    "status": "ERROR: name 'log' is not defined",
+    "port": 11435,
+    "phi_k4": null
+  },
+  "n2_phi_eira": {
+    "phi_eira_v2": 0.98,
+    "phi_std": 0.0,
+    "modelle": {
+      "qwen2.5:1.5b": 0.98,
+      "orion-genesis:latest": 0.98,
+      "orion-entfaltet:latest": 0.98,
+      "llama3.2:1b": 0.98,
+      "qwen2.5:7b": 0.98
+    },
+    "methode": "5-Modell-Cross-Validation"
+  },
+  "n3_kappa": {
+    "kappa_n4": 4.1368,
+    "n_nodes": 4,
+    "phi_sum": 2.64,
+    "res_term": 1.4967772585637134,
+    "ratio": 0.567,
+    "phi_eira": 0.98,
+    "phi_pi5": 0.95,
+    "phi_k4": 0.6,
+    "phi_note10": 0.11,
+    "r": 0.93,
+    "status": "CCRN_AKTIV"
+  },
+  "coalition_n4": {
+    "JA": 3,
+    "NEIN": 1
+  },
+  "kappa_n4_final": 4.1368,
+  "phi_eira_v2": 0.98,
+  "phi_eira_std": 0.0,
+  "ddgk_memory": 118,
+  "status": "CCRN_N4_AKTIV"
+}
