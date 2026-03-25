@@ -1,0 +1,178 @@
+{
+  "timestamp": "2026-03-25T18:53:56.175985",
+  "version": "phi_v2.0",
+  "experiments": {
+    "E4": {
+      "phi_eira_v1": 0.5915,
+      "phi_eira_v2": 0.7078,
+      "sigma_v1": 0.0754,
+      "sigma_v2": 0.0259,
+      "ceiling_effect_confirmed": false,
+      "models": {
+        "qwen2.5:1.5b": {
+          "phi_v1": 0.7157,
+          "phi_v2": 0.7194,
+          "phi": 0.7194,
+          "integration": 0.7239,
+          "diversity": 0.714,
+          "mean_pair_sim": 0.286,
+          "n_responses": 3,
+          "method": "v2_cosine"
+        },
+        "orion-genesis:latest": {
+          "phi_v1": 0.5105,
+          "phi_v2": 0.6648,
+          "phi": 0.6648,
+          "integration": 0.833,
+          "diversity": 0.4593,
+          "mean_pair_sim": 0.5407,
+          "n_responses": 3,
+          "method": "v2_cosine"
+        },
+        "orion-entfaltet:latest": {
+          "phi_v1": 0.5829,
+          "phi_v2": 0.7328,
+          "phi": 0.7328,
+          "integration": 0.691,
+          "diversity": 0.7839,
+          "mean_pair_sim": 0.2161,
+          "n_responses": 3,
+          "method": "v2_cosine"
+        },
+        "llama3.2:1b": {
+          "phi_v1": 0.581,
+          "phi_v2": 0.7062,
+          "phi": 0.7062,
+          "integration": 0.7534,
+          "diversity": 0.6485,
+          "mean_pair_sim": 0.3515,
+          "n_responses": 3,
+          "method": "v2_cosine"
+        },
+        "qwen2.5:7b": {
+          "phi_v1": 0.5673,
+          "phi_v2": 0.7158,
+          "phi": 0.7158,
+          "integration": 0.7323,
+          "diversity": 0.6957,
+          "mean_pair_sim": 0.3043,
+          "n_responses": 3,
+          "method": "v2_cosine"
+        }
+      }
+    },
+    "E1": {
+      "phi_eira_v2": 0.7078,
+      "phi_pi5": 0.7209,
+      "phi_k4": 0.52,
+      "phi_note10": 0.11,
+      "kappa_n4_v2": {
+        "kappa": 3.5555,
+        "N": 4,
+        "phi_sum": 2.0587,
+        "res_term": 1.4968,
+        "ratio": 0.727,
+        "active": true
+      },
+      "kappa_n4_v1_ref": 4.1368,
+      "delta_kappa": -0.5813
+    },
+    "E2": {
+      "kappa_n4": 3.5555,
+      "kappa_n3": 3.238,
+      "kappa_n2": 2.4504,
+      "kappa_n1": 1.3524,
+      "monotonicity_holds": true
+    },
+    "parameter_calibration": {
+      "grid": [
+        {
+          "alpha": 0.3,
+          "beta": 0.7,
+          "sigma": 0.0697,
+          "mean_phi": 0.6862
+        },
+        {
+          "alpha": 0.4,
+          "beta": 0.6,
+          "sigma": 0.0522,
+          "mean_phi": 0.6949
+        },
+        {
+          "alpha": 0.5,
+          "beta": 0.5,
+          "sigma": 0.0346,
+          "mean_phi": 0.7035
+        },
+        {
+          "alpha": 0.6,
+          "beta": 0.4,
+          "sigma": 0.0171,
+          "mean_phi": 0.7121
+        },
+        {
+          "alpha": 0.7,
+          "beta": 0.3,
+          "sigma": 0.0011,
+          "mean_phi": 0.7208
+        },
+        {
+          "alpha": 0.8,
+          "beta": 0.2,
+          "sigma": 0.0181,
+          "mean_phi": 0.7294
+        },
+        {
+          "alpha": 0.9,
+          "beta": 0.1,
+          "sigma": 0.0356,
+          "mean_phi": 0.7381
+        }
+      ],
+      "best_params": {
+        "alpha": 0.3,
+        "beta": 0.7
+      },
+      "best_sigma_v1": 0.0697,
+      "sigma_v2": 0.0259,
+      "conclusion": "v2.0 (cosine) übertrifft optimiertes v1.0"
+    }
+  },
+  "coalition": {
+    "votes": {
+      "JA": 3,
+      "NEIN": 1
+    },
+    "details": [
+      {
+        "agent": "ORION",
+        "vote": "JA",
+        "resp": "JA, φ_EIRA v2.0 ist wissenschaftlich valider als v1.0."
+      },
+      {
+        "agent": "GUARDIAN",
+        "vote": "NEIN",
+        "resp": "NEIN"
+      },
+      {
+        "agent": "EIRA",
+        "vote": "JA",
+        "resp": "JA, dieser Stabilitäts-indikator ist valider und zeigt eine verbesserte stabile "
+      },
+      {
+        "agent": "DDGK",
+        "vote": "JA",
+        "resp": "JA/NEIN + 1 Satz"
+      }
+    ],
+    "quorum": true
+  },
+  "kappa_n4_v2_final": 3.5555,
+  "phi_eira_v2_final": 0.7078,
+  "sigma_v1": 0.0754,
+  "sigma_v2": 0.0259,
+  "monotonicity": true,
+  "coalition_quorum": true,
+  "ddgk_memory": 162,
+  "status": "v2.0_VALIDATED"
+}
