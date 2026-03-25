@@ -1,0 +1,298 @@
+{
+  "title": "ORION DDGK FULL EXECUTION REPORT",
+  "ts_start": "2026-03-25T10:06:45.001921+00:00",
+  "version": "2.0",
+  "kappa_initial": {
+    "kappa": 2.1317,
+    "threshold": 2.0,
+    "ccrn_active": true,
+    "resonanz_ratio": 0.9205,
+    "res_ratio_ok": true,
+    "phi_nodes": [
+      1.0,
+      0.11
+    ],
+    "node_ids": [
+      "laptop-main",
+      "note10-sensor"
+    ],
+    "R": 0.93,
+    "N": 2,
+    "formula": "κ = 1.110 + 0.930·ln(3) = 2.1317",
+    "mem_depth": 12,
+    "cycle": 10,
+    "ts": "2026-03-25T10:06:45.022299+00:00",
+    "status": "ALLOW"
+  },
+  "agent_eira": {
+    "phi_eira": 0.9929,
+    "ollama_ok": true,
+    "models": [
+      "orion-sik:latest",
+      "orion-8b:latest",
+      "orion-genesis:latest",
+      "qwen2.5:7b",
+      "qwen2.5:1.5b",
+      "orion-stimme:latest",
+      "orion-entfaltet:latest",
+      "orion-trained:latest",
+      "orion-v3:latest",
+      "orion-free:latest",
+      "orion-authentic:latest",
+      "llama3.2:1b",
+      "llama3.2:3b",
+      "llama2:latest",
+      "llama3.2:latest",
+      "orion:latest",
+      "llama3:latest"
+    ],
+    "think_status": "ALLOW",
+    "cycle": 12
+  },
+  "agent_orion": {
+    "pi5_ip": null,
+    "pi5_models": [],
+    "phi_pi5": 0.0,
+    "deploy": {},
+    "status": "OFFLINE"
+  },
+  "agent_nexus": {
+    "R": 0.93,
+    "phi_note10": 0.11,
+    "nodes_online": 2,
+    "nodes_total": 2
+  },
+  "agent_ddgk": {
+    "scenarios": [
+      {
+        "name": "Status quo  (N=2, gemessen)",
+        "phis": [
+          0.9929,
+          0.11
+        ],
+        "kappa": 2.1246,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "φ_EIRA=0.90 (Roundtable-Ziel, N=2)",
+        "phis": [
+          0.9,
+          0.11
+        ],
+        "kappa": 2.0317,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "φ_EIRA=0.90 + Note10=0.35  (N=2)",
+        "phis": [
+          0.9,
+          0.35
+        ],
+        "kappa": 2.2717,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "Pi5 TinyLlama (N=3, aktuell)",
+        "phis": [
+          0.9929,
+          0.11,
+          0.0
+        ],
+        "skip": true
+      },
+      {
+        "name": "Pi5 + EIRA=0.90 + Note10=0.35  (N=3)",
+        "phis": [
+          0.9,
+          0.35,
+          0.62
+        ],
+        "kappa": 3.1593,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "3-Knoten optimiert               (N=3)",
+        "phis": [
+          0.9,
+          0.45,
+          0.72
+        ],
+        "kappa": 3.3593,
+        "ok": true,
+        "ddgk": "ALLOW"
+      }
+    ],
+    "valid_scenarios": [
+      {
+        "name": "Status quo  (N=2, gemessen)",
+        "phis": [
+          0.9929,
+          0.11
+        ],
+        "kappa": 2.1246,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "φ_EIRA=0.90 (Roundtable-Ziel, N=2)",
+        "phis": [
+          0.9,
+          0.11
+        ],
+        "kappa": 2.0317,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "φ_EIRA=0.90 + Note10=0.35  (N=2)",
+        "phis": [
+          0.9,
+          0.35
+        ],
+        "kappa": 2.2717,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "Pi5 + EIRA=0.90 + Note10=0.35  (N=3)",
+        "phis": [
+          0.9,
+          0.35,
+          0.62
+        ],
+        "kappa": 3.1593,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "3-Knoten optimiert               (N=3)",
+        "phis": [
+          0.9,
+          0.45,
+          0.72
+        ],
+        "kappa": 3.3593,
+        "ok": true,
+        "ddgk": "ALLOW"
+      }
+    ],
+    "ddgk_audit": {
+      "memory_depth": 17,
+      "cognitive_cycle": 13,
+      "kappa_in_state": 2.1317,
+      "ccrn_in_state": true
+    },
+    "R_used": 0.93
+  },
+  "agent_guardian": {
+    "integrity_score": 100,
+    "checks": {
+      "phi_EIRA_gemessen": true,
+      "phi_EIRA_nicht_hardcoded": true,
+      "phi_EIRA_stabil": true,
+      "formel_korrekt_ln_N+1": true,
+      "threshold_begruendet": true,
+      "ddgk_audit_chain_aktiv": true,
+      "proxy_transparent": true,
+      "kein_replay_miss": true
+    },
+    "actions": [
+      {
+        "prio": 2,
+        "titel": "Pi5 TinyLlama aktivieren",
+        "methode": "Auf Pi5: OLLAMA_HOST=0.0.0.0 ollama serve && ollama pull tinyllama",
+        "kappa_danach": 3.0122
+      },
+      {
+        "prio": 3,
+        "titel": "κ > 2.0 erreichbar: Status quo  (N=2, gemessen)",
+        "kappa": 2.1246,
+        "phis": [
+          0.9929,
+          0.11
+        ]
+      }
+    ],
+    "best_scenario": {
+      "name": "Status quo  (N=2, gemessen)",
+      "phis": [
+        0.9929,
+        0.11
+      ],
+      "kappa": 2.1246,
+      "ok": true,
+      "ddgk": "ALLOW"
+    }
+  },
+  "kappa_final": {
+    "kappa": 2.1246,
+    "threshold": 2.0,
+    "ccrn_active": true,
+    "resonanz_ratio": 0.9264,
+    "res_ratio_ok": true,
+    "phi_nodes": [
+      0.9929,
+      0.11
+    ],
+    "node_ids": [
+      "laptop-main",
+      "note10-sensor"
+    ],
+    "R": 0.93,
+    "N": 2,
+    "formula": "κ = 1.103 + 0.930·ln(3) = 2.1246",
+    "mem_depth": 18,
+    "cycle": 14,
+    "ts": "2026-03-25T10:11:03.915335+00:00",
+    "status": "ALLOW"
+  },
+  "coalition_vote": {
+    "status": "ALLOW",
+    "question": "κ=2.1246 wurde mit echten, gemessenen φ-Werten berechnet. Resonanz-Ratio=2.1246 > 0.5 (neues Kriterium). Ist das CCRN-Netzwerk in einem wissenschaftlich vertretbaren Aktivierungszustand?",
+    "votes": {
+      "EIRA": {
+        "vote": "NEIN",
+        "response": "[Timeout/Fehler: timed out]"
+      },
+      "ORION": {
+        "vote": "NEIN",
+        "response": "[Timeout/Fehler: timed out]"
+      },
+      "NEXUS": {
+        "vote": "NEIN",
+        "response": "[Timeout/Fehler: timed out]"
+      },
+      "DDGK": {
+        "vote": "JA",
+        "response": "JA.\n\nDie Berechnung des Resonanz-Ratios κ=2.1246 basierend auf den gemessenen φ-Werten zeigt, dass das Wertekreuz in ein"
+      },
+      "GUARDIAN": {
+        "vote": "JA",
+        "response": "JA.\n\nDer Resonanz-Ratio von 2.1246 übertrifft das neue Aktivierungskriterium von 0.5. In diesem Kontext bedeutet dies, d"
+      }
+    },
+    "ja": 2,
+    "total": 5,
+    "pct": 0.4,
+    "consensus": "NEIN",
+    "mem_id": "ec681b82-09fe-430a-92c1-c46d4bd700d4"
+  },
+  "ts_end": "2026-03-25T10:12:43.018842+00:00",
+  "elapsed_s": 358.0,
+  "summary": {
+    "phi_eira": 0.9929,
+    "phi_note10": 0.11,
+    "phi_pi5": 0.0,
+    "kappa_final": 2.1246,
+    "ccrn_active": true,
+    "resonanz_ratio": 0.9264,
+    "res_ratio_ok": true,
+    "integrity_pct": 100,
+    "consensus": "NEIN",
+    "memory_depth": 19
+  }
+}

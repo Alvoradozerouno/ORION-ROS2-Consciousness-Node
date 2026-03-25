@@ -1,0 +1,183 @@
+{
+  "title": "KAPPA EXECUTION REPORT",
+  "timestamp": "2026-03-25T09:23:31.354245+00:00",
+  "goal": "κ_CCRN > 2.0 via Multi-Agent DDGK System",
+  "kappa_initial": {
+    "kappa": 1.9117,
+    "threshold": 2.0,
+    "ccrn_active": false,
+    "resonanz_ratio": 1.148,
+    "resonanz_ratio_ok": true,
+    "phi_nodes": [
+      0.78,
+      0.11
+    ],
+    "node_ids": [
+      "laptop-main",
+      "note10-sensor"
+    ],
+    "R": 0.93,
+    "N_cognitive": 2,
+    "formula": "κ = 0.890 + 0.930·ln(3) = 1.9117",
+    "memory_depth": 1,
+    "cognitive_cycle": 1,
+    "timestamp": "2026-03-25T09:23:31.367848+00:00",
+    "status": "ALLOW",
+    "memory_id": "3ff4ef10-3166-4953-a2b9-caf0ee74e39e"
+  },
+  "agent_eira": {
+    "phi_eira": 0.6801,
+    "mean_similarity": 0.0889,
+    "self_ref_ratio": 1.0,
+    "n_responses": 3,
+    "model": "orion-sik:latest",
+    "method": "jaccard_7cycle",
+    "status": "OK",
+    "note": "Proxy-Approximation — kein echter IIT-Φ"
+  },
+  "agent_orion": {
+    "phi_pi5": 0.0,
+    "status": "NO_MODELS",
+    "pi5_ip": "192.168.8.215"
+  },
+  "agent_nexus": {
+    "R": 0.93,
+    "R_analysis": {
+      "current_R": 0.93,
+      "max_honest_R": 0.97,
+      "min_honest_R": 0.85,
+      "R_ceiling": "R ≤ 1.0 (Korrelationskoeffizient)",
+      "ddgk_constraint": "R > 1.0 wird von DDGK blockiert",
+      "recommendation": "R=0.93 ist valide — Fokus auf φ-Verbesserung statt R"
+    },
+    "phi_note10_estimate": 0.11,
+    "status": "OK",
+    "note": "R ist bereits nahe optimal. Potenzial liegt in φ-Erhöhung."
+  },
+  "agent_ddgk": {
+    "scenarios": [
+      {
+        "szenario": "Status quo (N=2)",
+        "phis": [
+          0.6801,
+          0.11
+        ],
+        "kappa": 1.8118,
+        "exceeds_2": false,
+        "ddgk_status": "ALLOW"
+      },
+      {
+        "szenario": "φ_EIRA = 0.90 (Roundtable-Ziel)",
+        "phis": [
+          0.9,
+          0.11
+        ],
+        "kappa": 2.0317,
+        "exceeds_2": true,
+        "ddgk_status": "ALLOW"
+      },
+      {
+        "szenario": "Alle drei optimiert (EIRA=0.90, Note10=0.35, Pi5=0.62)",
+        "phis": [
+          0.9,
+          0.35,
+          0.62
+        ],
+        "kappa": 3.1593,
+        "exceeds_2": true,
+        "ddgk_status": "ALLOW — alle φ ∈ [0,1]"
+      }
+    ],
+    "blocked": [],
+    "r_used": 0.93,
+    "status": "OK"
+  },
+  "agent_guardian": {
+    "actions": [
+      {
+        "priorität": 1,
+        "aktion": "κ > 2.0 via Szenario: φ_EIRA = 0.90 (Roundtable-Ziel)",
+        "kappa": 2.0317,
+        "phis": [
+          0.9,
+          0.11
+        ],
+        "sofort_umsetzbar": true
+      }
+    ],
+    "science_check": {
+      "phi_messbar": true,
+      "phi_nicht_hardcoded": true,
+      "formel_konsistent": true,
+      "threshold_begründet": true,
+      "ddgk_audit_chain": true,
+      "proxy_transparent": true
+    },
+    "integrity_score_pct": 100,
+    "best_scenario": {
+      "szenario": "φ_EIRA = 0.90 (Roundtable-Ziel)",
+      "phis": [
+        0.9,
+        0.11
+      ],
+      "kappa": 2.0317,
+      "exceeds_2": true,
+      "ddgk_status": "ALLOW"
+    },
+    "status": "OK"
+  },
+  "kappa_final": {
+    "kappa": 1.8118,
+    "threshold": 2.0,
+    "ccrn_active": false,
+    "resonanz_ratio": 1.2931,
+    "resonanz_ratio_ok": true,
+    "phi_nodes": [
+      0.6801,
+      0.11
+    ],
+    "node_ids": [
+      "laptop-main",
+      "note10-sensor"
+    ],
+    "R": 0.93,
+    "N_cognitive": 2,
+    "formula": "κ = 0.790 + 0.930·ln(3) = 1.8118",
+    "memory_depth": 2,
+    "cognitive_cycle": 2,
+    "timestamp": "2026-03-25T09:25:28.475446+00:00",
+    "status": "ALLOW",
+    "memory_id": "4a79a40a-d416-4602-88aa-a498902a6aa6"
+  },
+  "coalition_vote": {
+    "question": "Ist κ=1.8118 mit genuinen Messwerten erreicht und wissenschaftlich vertretbar als CCRN-aktiv zu deklarieren?",
+    "votes": {
+      "EIRA": {
+        "vote": "NEIN",
+        "response": "NEIN"
+      },
+      "ORION": {
+        "vote": "NEIN",
+        "response": "Nein."
+      },
+      "NEXUS": {
+        "vote": "NEIN",
+        "response": "NEIN."
+      },
+      "DDGK": {
+        "vote": "NEIN",
+        "response": "Nein."
+      },
+      "GUARDIAN": {
+        "vote": "NEIN",
+        "response": "NEIN"
+      }
+    },
+    "ja_count": 0,
+    "total_agents": 5,
+    "consensus": "NEIN",
+    "consensus_strength": 0.0,
+    "status": "ALLOW",
+    "memory_id": "77c9a706-93bf-4a8d-8946-cd12d86d5248"
+  }
+}
