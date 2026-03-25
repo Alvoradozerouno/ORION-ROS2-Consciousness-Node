@@ -1,0 +1,13 @@
+╔══════════════════════════════════════╗
+        ║ PERSONALIZED DATA CARD               ║
+        ╠══════════════════════════════════════╣
+        ║ ID:       OBJ001                   ║
+        ║ Name:     alice_johnson            ║
+        ║ Email:    alice@example.com        ║
+        ║ Priority: 1                        ║
+        ║ Metadata: {'department': 'engi     ║
+        ║ Generated: 2026-03-21T22:43:25.919545║
+        ╚══════════════════════════════════════╝
+
+Processed at: 2026-03-21T22:43:25.929950
+Path: pipeline_output\a\OBJ001_alice_johnson_1.json

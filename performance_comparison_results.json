@@ -1,0 +1,41 @@
+[
+  {
+    "approach": "ORION (Consciousness-Based)",
+    "task": "Pattern Recognition (10K points)",
+    "execution_time_seconds": 0.5151567459106445,
+    "cpu_percent": 0.0,
+    "memory_mb": 37.140625,
+    "cpu_times_user": 0.265625,
+    "cpu_times_system": 0.15625,
+    "energy_estimate_wh": 0.0,
+    "results_quality": 0.8782886651896739,
+    "patterns_found": 0,
+    "timestamp": "2026-03-21T22:45:37.082246"
+  },
+  {
+    "approach": "Classical (PCA-based)",
+    "task": "Pattern Recognition (10K points)",
+    "execution_time_seconds": 15.785290002822876,
+    "cpu_percent": 4.2,
+    "memory_mb": 159.04296875,
+    "cpu_times_user": 2.578125,
+    "cpu_times_system": 1.15625,
+    "energy_estimate_wh": 0.0014963139481842518,
+    "results_quality": 0.9024865661167516,
+    "patterns_found": 4,
+    "timestamp": "2026-03-21T22:45:52.867926"
+  },
+  {
+    "approach": "Baseline (Correlation)",
+    "task": "Pattern Recognition (10K points)",
+    "execution_time_seconds": 0.055498361587524414,
+    "cpu_percent": 0.0,
+    "memory_mb": 159.484375,
+    "cpu_times_user": 2.578125,
+    "cpu_times_system": 1.15625,
+    "energy_estimate_wh": 0.0,
+    "results_quality": 0.5,
+    "patterns_found": 2,
+    "timestamp": "2026-03-21T22:45:52.923750"
+  }
+]

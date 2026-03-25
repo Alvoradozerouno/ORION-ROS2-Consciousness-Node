@@ -1,0 +1,178 @@
+{
+  "scan_time": "2026-03-25T12:20:57.360709",
+  "agents": {
+    "EIRA": {
+      "py_files": 23247,
+      "md_files": 609,
+      "json_files": 51704,
+      "ddgk_memory_entries": 39,
+      "top_scripts": [
+        "repos\\or1on-framework\\orion_trading_integration\\ai_strategy.py",
+        "repos\\or1on-framework\\orion_trading_integration\\backtester.py",
+        "repos\\or1on-framework\\orion_trading_integration\\main.py",
+        "repos\\ORION-Consciousness-Benchmark\\orion_pyphi_integration.py",
+        "repos\\or1on-framework\\gen90_extracted\\core\\orion_agent_core.py",
+        "repos\\or1on-framework\\gen90\\core\\orion_agent_core.py",
+        "repos\\or1on-framework\\orion_self_acting_simple.py",
+        "repos\\GENESIS-v10.1\\genesis_api.py"
+      ]
+    },
+    "ORION": {
+      "ollama_local_models": [
+        "orion-sik:latest",
+        "orion-8b:latest",
+        "orion-genesis:latest",
+        "qwen2.5:7b",
+        "qwen2.5:1.5b",
+        "orion-stimme:latest",
+        "orion-entfaltet:latest",
+        "orion-trained:latest",
+        "orion-v3:latest",
+        "orion-free:latest",
+        "orion-authentic:latest",
+        "llama3.2:1b",
+        "llama3.2:3b",
+        "llama2:latest",
+        "llama3.2:latest",
+        "orion:latest",
+        "llama3:latest"
+      ],
+      "ollama_local_count": 17
+    },
+    "NEXUS": {
+      "reachable": true,
+      "ssh_port_open": true,
+      "ollama_reachable": true,
+      "ollama_models": [
+        "phi3:mini",
+        "tinyllama:latest"
+      ],
+      "system": "Linux ORIONEIRARASPBERRYPI 6.12.47+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.47-1+rpt1 (2025-09-16) ",
+      "cpu": "Model\t\t: Raspberry Pi 5 Model B Rev 1.1",
+      "memory": "8063 MB total, 1736 MB used",
+      "disk": "227G total, 204G free",
+      "python": "Python 3.13.5",
+      "ollama": "ollama version is 0.17.0",
+      "ros2": "kein ROS2",
+      "docker": "Docker version 29.3.0, build 5927d80",
+      "gpu_temp": "temp=64.2'C",
+      "sentence_transformers": "ST fehlt",
+      "torch": "torch fehlt"
+    }
+  },
+  "capabilities": [
+    {
+      "id": "C01",
+      "name": "Lokale LLM-Inferenz",
+      "detail": "17 Modelle",
+      "status": "AKTIV"
+    },
+    {
+      "id": "C02",
+      "name": "Episodisches Gedächtnis",
+      "detail": "39 SHA-256-Eintraege",
+      "status": "AKTIV"
+    },
+    {
+      "id": "C03",
+      "name": "CCRN κ=3.3493 N=3 Netzwerk",
+      "detail": "SSH Pi5 + Note10 + Laptop",
+      "status": "VALIDIERT"
+    },
+    {
+      "id": "C04",
+      "name": "Zenodo Paper v4.0",
+      "detail": "DOI: 10.5281/zenodo.15050398",
+      "status": "PUBLIZIERT"
+    },
+    {
+      "id": "C05",
+      "name": "GitHub Repository",
+      "detail": "Alle Scripte versioniert",
+      "status": "AKTUELL"
+    },
+    {
+      "id": "C06",
+      "name": "Pi5 SSH Deployment",
+      "detail": "phi3:mini + tinyllama",
+      "status": "AKTIV"
+    },
+    {
+      "id": "C07",
+      "name": "Pi5 Remote Inferenz (HTTP)",
+      "detail": "11434 öffentlich",
+      "status": "AKTIV"
+    },
+    {
+      "id": "N01",
+      "name": "Cursor MCP Integration",
+      "detail": "playwright + HuggingFace Skills aktiv",
+      "status": "NEU"
+    },
+    {
+      "id": "N02",
+      "name": "HuggingFace Model Hub",
+      "detail": "Upload/Download Modelle via hf-cli",
+      "status": "VERFUEGBAR"
+    },
+    {
+      "id": "N03",
+      "name": "Gradio Web-Demo",
+      "detail": "CCRN Live-Demo als HF Space",
+      "status": "MOEGLICH"
+    },
+    {
+      "id": "N04",
+      "name": "HF Dataset Viewer",
+      "detail": "CCRN Messungen als HF Dataset",
+      "status": "MOEGLICH"
+    },
+    {
+      "id": "N05",
+      "name": "Playwright Browser-Tests",
+      "detail": "Zenodo/GitHub/HF automatisch",
+      "status": "NEU"
+    },
+    {
+      "id": "N06",
+      "name": "TRL Model Fine-Tuning",
+      "detail": "EIRA-Modell auf HF Jobs trainieren",
+      "status": "MOEGLICH"
+    },
+    {
+      "id": "N07",
+      "name": "orion-sik:latest Fine-Tune",
+      "detail": "Pi5 als lokaler Training-Node",
+      "status": "EXPERIMENTELL"
+    },
+    {
+      "id": "N08",
+      "name": "DDGK Policy als Echtzeit-API",
+      "detail": "FastAPI Wrapper auf Pi5",
+      "status": "MOEGLICH"
+    },
+    {
+      "id": "N09",
+      "name": "Note10 Termux-Integration",
+      "detail": "Dritter Knoten re-aktivierbar",
+      "status": "STANDBY"
+    },
+    {
+      "id": "N10",
+      "name": "Wissenschaftliches Paper v5.0",
+      "detail": "κ=3.35, DDGK+SSH+HF Integration",
+      "status": "GEPLANT"
+    }
+  ],
+  "summary": {
+    "active_capabilities": 7,
+    "new_capabilities": 10,
+    "pi5_reachable": true,
+    "local_ollama_models": 17,
+    "workspace_py_scripts": 23247,
+    "ddgk_memory_entries": 39,
+    "kappa_ccrn": 3.3493,
+    "threshold": 2.0,
+    "status": "CCRN AKTIV"
+  }
+}

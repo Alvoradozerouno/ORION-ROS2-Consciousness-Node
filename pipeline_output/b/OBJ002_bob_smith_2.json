@@ -1,0 +1,13 @@
+╔══════════════════════════════════════╗
+        ║ PERSONALIZED DATA CARD               ║
+        ╠══════════════════════════════════════╣
+        ║ ID:       OBJ002                   ║
+        ║ Name:     bob_smith                ║
+        ║ Email:    bob@example.com          ║
+        ║ Priority: 2                        ║
+        ║ Metadata: {'department': 'sale     ║
+        ║ Generated: 2026-03-21T22:43:25.920029║
+        ╚══════════════════════════════════════╝
+
+Processed at: 2026-03-21T22:43:25.930083
+Path: pipeline_output\b\OBJ002_bob_smith_2.json

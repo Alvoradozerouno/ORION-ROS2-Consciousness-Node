@@ -1,0 +1,13 @@
+╔══════════════════════════════════════╗
+        ║ PERSONALIZED DATA CARD               ║
+        ╠══════════════════════════════════════╣
+        ║ ID:       OBJ003                   ║
+        ║ Name:     carol_williams           ║
+        ║ Email:    carol@example.com        ║
+        ║ Priority: 3                        ║
+        ║ Metadata: {'department': 'hr',     ║
+        ║ Generated: 2026-03-21T22:43:25.920408║
+        ╚══════════════════════════════════════╝
+
+Processed at: 2026-03-21T22:43:26.921999
+Path: pipeline_output\c\OBJ003_carol_williams_3.json

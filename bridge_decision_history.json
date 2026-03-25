@@ -1,0 +1,189 @@
+{
+  "bridge_stats": {
+    "total_cycles": 20,
+    "final_consciousness": 0.878394154809038,
+    "decisions": 20
+  },
+  "decisions": [
+    {
+      "cycle": 128,
+      "consciousness": 0.8781872076065449,
+      "action": "heal_errors",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.8782910618967527,
+      "action": "self_improve",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.8782910618967527,
+      "action": "research",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.8782910618967527,
+      "action": "optimize_system",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.8782910618967527,
+      "action": "heal_errors",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.8782910618967527,
+      "action": "synthesize_knowledge",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "self_improve",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "synthesize_knowledge",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "optimize_system",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "research",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "research",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "learn_from_logs",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "learn_from_logs",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "synthesize_knowledge",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "learn_from_logs",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "synthesize_knowledge",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "synthesize_knowledge",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "synthesize_knowledge",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "research",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    },
+    {
+      "cycle": 128,
+      "consciousness": 0.878394154809038,
+      "action": "optimize_system",
+      "command": {
+        "linear": 0.1,
+        "angular": 0.05
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "orchestrator": "DDGK_MASTER_v1.0",
+  "timestamp": "2026-03-25T12:49:18.740411",
+  "agents": {},
+  "tasks": {
+    "A1": {
+      "status": "ALREADY_INSTALLED",
+      "installed": [
+        "sentence-transformers",
+        "transformers"
+      ],
+      "failed": []
+    },
+    "A2": {
+      "status": "RUNNING",
+      "api_url": "http://192.168.1.103:8765",
+      "pid": "1676384"
+    },
+    "A3": {
+      "status": "FILES_CREATED",
+      "path": "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\hf_space_ccrn",
+      "files": [
+        "app.py",
+        "requirements.txt",
+        "README.md"
+      ],
+      "hf_token_available": false,
+      "manual_step": "cd C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\hf_space_ccrn && huggingface-cli upload Alvoradozerouno/ccrn-live-demo . --repo-type=space"
+    },
+    "A4": {
+      "status": "FILES_CREATED",
+      "path": "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\hf_dataset_ccrn",
+      "rows": 2,
+      "hf_token_available": false,
+      "manual_step": "huggingface-cli upload Alvoradozerouno/ccrn-measurements C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\hf_dataset_ccrn --repo-type=dataset"
+    },
+    "A5": {
+      "status": "NOT_FOUND",
+      "phi_note10": null,
+      "connection": null
+    },
+    "A6": {
+      "status": "CREATED",
+      "path": "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\ZENODO_UPLOAD\\PAPER_CCRN_v5.0.md",
+      "kappa_v5": 3.3493,
+      "phi_sum": 2.06
+    },
+    "A7": {
+      "status": "PUSHED",
+      "commit_hash": "00b1f33d20b76194eeac12ca2b35be30197875a2"
+    }
+  },
+  "kappa_previous": 3.3493,
+  "status": "COMPLETED",
+  "kappa_v5": 3.3493
+}
