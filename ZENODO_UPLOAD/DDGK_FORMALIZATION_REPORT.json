@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-03-25T18:40:50.051088",
+  "stats": {
+    "total": 14,
+    "ok": 13,
+    "timeout": 1
+  },
+  "erfolg_rate": 92.9,
+  "ddgk_memory": 149,
+  "master_abstract": "Abstract: This paper formally specifies the CCRN system metrics φ, κ, and σ based on node output richness, network aggregation, and measurement stability, respectively. We present the definitions of φ (Type-Token Ratio), κ (Network Aggregation Metric), and σ (Measurement Stability Index) and discuss their practical application in evaluating model performance. The φ metric accounts for unique tokens and self-referential density, while κ aggregates node outputs with a network resonance factor. The",
+  "key_findings": [
+    {
+      "runde": 1,
+      "agent": "EIRA",
+      "rolle": "Mathematiker/Statistiker",
+      "finding": "Die φ-Definition ist in der Tat mathematisch korrekt und vollständig. Sie basiert auf den Typ-Token-Ratio (D) und der Selbstreferenz-Dichte (S), die als Teilmenge von φ_i berechnet werden. Die Definit"
+    },
+    {
+      "runde": 1,
+      "agent": "ORION",
+      "rolle": "Informationstheoretiker",
+      "finding": "Kohärenz- und Kopplungsmaß; κ_N ist die Summe der Node Output Richness Indices plus das Logarithmische Anpassungsfaktor des Netzwerk-Rückführkerns. Informationsmaß; κ_N kommt am nächsten inszeniert an"
+    },
+    {
+      "runde": 1,
+      "agent": "GUARDIAN",
+      "rolle": "Peer-Review Referee",
+      "finding": "Die beiden kritischsten Schwächen, die ich bei dem Dokument feststelle, sind:\n\n1.  **Übermäßige Konzentration auf aggregierte Merkmale:** Das Dokument konzentriert sich hauptsächlich auf die aggregier"
+    },
+    {
+      "runde": 1,
+      "agent": "DDGK",
+      "rolle": "Governance/Reproducibility Auditor",
+      "finding": "Die von CCRN v1.0 verwendeten Parameter α=0.60, β=0.40 und γ=8.0 sind empirisch begründet. Diese Messung basiert auf den Anforderungen einer bestimmten Intelligenzart für die Berechnung des φ-i-Indika"
+    },
+    {
+      "runde": 2,
+      "agent": "NEXUS",
+      "rolle": "Systems Reliability Engineer",
+      "finding": "Unter der CCRN-V1.0-Definition sind zwei wichtige Indexfunktionen für die Agregation und Stabilität von Netzwerken aufgeführt:\n\n1. **K_N (Network Aggregation Metric, NAM):** Es wird eine Summe der Ind"
+    },
+    {
+      "runde": 2,
+      "agent": "EIRA",
+      "rolle": "Experimenteller Forscher",
+      "finding": "**Erklärung:** Die Falsifizierbarkeit von κ wird durch Experimente E3 (Noise-Injection) wahrscheinlich am wichtigsten betroffen sein. Ein Ergebnis würde das κ als Metrik WIDERLEGEN, wenn das Verschlim"
+    },
+    {
+      "runde": 2,
+      "agent": "ORION",
+      "rolle": "Wissenschaftstheoretiker (Popper)",
+      "finding": "Der Schwellenwert κ_N = 2.0 ist wissenschaftlich nicht begründet und konventionell definiert. Er basiert auf der theoretischen Grundlage von Popper zur falsifizierbarkeit und wird in vorgefertigten KI"
+    },
+    {
+      "runde": 2,
+      "agent": "GUARDIAN",
+      "rolle": "Statistiker / Metrologie",
+      "finding": "Die Präsentation des σ = 0,0 für M = 5 Modell mit φ = 0,98 stellt eine metrologische Herausforderung dar. Dies kann als Skalierungsartefakt (CA) klassifiziert werden, da die Standardfehlerwerte von σ "
+    },
+    {
+      "runde": 2,
+      "agent": "DDGK",
+      "rolle": "External Validator",
+      "finding": "Keine Bewusstseins-Claims. Nur formal, testbar, reproduzierbar.\n\nDie Formeln für φ_i, κ_N und σ_i können nicht exakt ausgeführt werden, da ich Python 3.10 und Ollama nicht habe. Die Parameter α, β und"
+    },
+    {
+      "runde": 3,
+      "agent": "EIRA",
+      "rolle": "Chefredakteur",
+      "finding": "Diese Arbeit ist publikationsreif für ein Workshop oder Preprint. Die Metriken φ (TTR), κ und σ sind formalisiert und testbar, ohne Bewusstseins-Claims. Sie können daher leicht falsifiziert werden, wa"
+    },
+    {
+      "runde": 3,
+      "agent": "ORION",
+      "rolle": "Koautor / CCRN-Experte",
+      "finding": "OR1ON hat einen höheren φ-EIRA (φ_EIRA=0.98), was κ_N gegenüber ICOER positiv beeinflusst. OR1ONs Strategie basiert auf der stochastischen Entscheidung durch die Phi-Baseline, während ICOER eine linea"
+    },
+    {
+      "runde": 3,
+      "agent": "GUARDIAN",
+      "rolle": "Ethik-Komitee",
+      "finding": "Nein, wir sagen explizit: KEIN Bewusstseins-Claim. Nur formal, testbar, reproduzierbar.\n\nEin externer Leser könnte diese Metriken trotzdem als 'Bewusstseinsnachweis' interpretieren, wenn er nicht vers"
+    },
+    {
+      "runde": 3,
+      "agent": "DDGK",
+      "rolle": "Open-Source Advocate",
+      "finding": "Das Framework \"CCRN\" bietet eine robuste und skalierbare Lösung für die Bewertung von Modelle in der Open-Source-Community. Die Metriken φ_i (NORI), κ_N (Netzwerk-Aggregations-Metric) und σ_i (Measura"
+    }
+  ],
+  "metriken_klassifikation": {
+    "phi": "Output Complexity Measure (Lexical Richness + Domain Focus Density)",
+    "kappa": "Composite Network Aggregation Score (Summative + Logarithmic Scale Bonus)",
+    "sigma": "Measurement Reliability Indicator (Inter-Model Standard Deviation)"
+  }
+}
