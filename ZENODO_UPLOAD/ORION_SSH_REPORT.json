@@ -1,0 +1,264 @@
+{
+  "title": "ORION DDGK SSH FULL REPORT",
+  "ts_start": "2026-03-25T10:50:32.508585+00:00",
+  "pi5_host": "192.168.1.103",
+  "pi5_user": "alvoradozerouno",
+  "kappa_initial": {
+    "kappa": 2.1246,
+    "ccrn_active": true,
+    "res_ratio": 0.9264,
+    "phi_list": [
+      0.9929,
+      0.11
+    ],
+    "phi_sum": 1.1029,
+    "N": 2,
+    "R": 0.93,
+    "formula": "κ = 1.103 + 0.930·ln(3) = 2.1246",
+    "ts": "2026-03-25T10:50:32.508672+00:00"
+  },
+  "pi5_ssh": {
+    "connected": true,
+    "host": "192.168.1.103",
+    "info": "ORIONEIRARASPBERRYPI\nPython 3.13.5\nNAME                ID              SIZE      MODIFIED    \nphi3:mini           4f2222927938    2.2 GB    2 weeks ago    \ntinyllama:latest    2644915ede35    637 MB  "
+  },
+  "pi5_deploy": {
+    "status": "OK",
+    "phi_pi5": 0.95,
+    "script_deployed": true
+  },
+  "agent_eira": {
+    "phi_eira": 1.0,
+    "method": "cosine",
+    "mean_sim": 0.494,
+    "model": "orion-sik:latest"
+  },
+  "agent_nexus": {
+    "R": 0.93,
+    "phi_note10": 0.11,
+    "nodes_online": 3
+  },
+  "agent_ddgk": {
+    "scenarios": [
+      {
+        "name": "Status quo N=2 (gemessen)",
+        "phis": [
+          1.0,
+          0.11
+        ],
+        "kappa": 2.1317,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "Pi5+EIRA+Note10  N=3 (aktuell)",
+        "phis": [
+          1.0,
+          0.11,
+          0.95
+        ],
+        "skip": false,
+        "kappa": 3.3493,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "phi_EIRA=0.90 N=2",
+        "phis": [
+          0.9,
+          0.11
+        ],
+        "kappa": 2.0317,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "phi_EIRA=0.90 + Note10=0.35 N=2",
+        "phis": [
+          0.9,
+          0.35
+        ],
+        "kappa": 2.2717,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "Pi5 + EIRA=0.90 + Note10=0.35 N=3",
+        "phis": [
+          0.9,
+          0.35,
+          0.95
+        ],
+        "kappa": 3.4893,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "3-Knoten voll optimiert N=3",
+        "phis": [
+          0.9,
+          0.45,
+          0.72
+        ],
+        "kappa": 3.3593,
+        "ok": true,
+        "ddgk": "ALLOW"
+      }
+    ],
+    "valid": [
+      {
+        "name": "Status quo N=2 (gemessen)",
+        "phis": [
+          1.0,
+          0.11
+        ],
+        "kappa": 2.1317,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "Pi5+EIRA+Note10  N=3 (aktuell)",
+        "phis": [
+          1.0,
+          0.11,
+          0.95
+        ],
+        "skip": false,
+        "kappa": 3.3493,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "phi_EIRA=0.90 N=2",
+        "phis": [
+          0.9,
+          0.11
+        ],
+        "kappa": 2.0317,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "phi_EIRA=0.90 + Note10=0.35 N=2",
+        "phis": [
+          0.9,
+          0.35
+        ],
+        "kappa": 2.2717,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "Pi5 + EIRA=0.90 + Note10=0.35 N=3",
+        "phis": [
+          0.9,
+          0.35,
+          0.95
+        ],
+        "kappa": 3.4893,
+        "ok": true,
+        "ddgk": "ALLOW"
+      },
+      {
+        "name": "3-Knoten voll optimiert N=3",
+        "phis": [
+          0.9,
+          0.45,
+          0.72
+        ],
+        "kappa": 3.3593,
+        "ok": true,
+        "ddgk": "ALLOW"
+      }
+    ],
+    "R": 0.93
+  },
+  "agent_guardian": {
+    "integrity_score": 75,
+    "checks": {
+      "phi_EIRA_gemessen": true,
+      "phi_EIRA_nicht_hardcoded": false,
+      "phi_EIRA_stabil": false,
+      "pi5_phi_genuessen": true,
+      "formel_ln_N+1": true,
+      "ddgk_audit_aktiv": true,
+      "proxy_transparent": true,
+      "ssh_verifiziert": true
+    },
+    "actions": [
+      {
+        "prio": 1,
+        "titel": "κ > 2.0 mit N=3 aktiv: Pi5+EIRA+Note10  N=3 (aktuell)",
+        "kappa": 3.3493
+      }
+    ],
+    "best_scenario": {
+      "name": "Status quo N=2 (gemessen)",
+      "phis": [
+        1.0,
+        0.11
+      ],
+      "kappa": 2.1317,
+      "ok": true,
+      "ddgk": "ALLOW"
+    }
+  },
+  "kappa_final": {
+    "kappa": 3.3493,
+    "ccrn_active": true,
+    "res_ratio": 0.6259,
+    "phi_list": [
+      1.0,
+      0.11,
+      0.95
+    ],
+    "phi_sum": 2.06,
+    "N": 3,
+    "R": 0.93,
+    "formula": "κ = 2.060 + 0.930·ln(4) = 3.3493",
+    "ts": "2026-03-25T10:55:10.556105+00:00"
+  },
+  "coalition_vote": {
+    "kappa": 3.3493,
+    "votes": {
+      "EIRA": {
+        "vote": "NEIN",
+        "response": "[timed out]"
+      },
+      "ORION": {
+        "vote": "JA",
+        "response": "JA.\n\nDie Berechnung des CCRN-Netzwerks mit einem genuinen Messwert für `kappa_CCRN` = 3.3493 basierend auf gemessenen We"
+      },
+      "Pi5-NEXUS": {
+        "vote": "NEIN",
+        "response": "[timed out]"
+      },
+      "DDGK": {
+        "vote": "JA",
+        "response": "JA.\n\nBegründung:\nDer Wert für kappa_CCRN wurde mit genuinen Messwerten berechnet, was die valide Bereitstellung der notw"
+      },
+      "GUARDIAN": {
+        "vote": "JA",
+        "response": "JA.\n\nBegründung: Das CCRN-Netzwerk ist in einem wissenschaftlich validen Aktivierungszustand, da der Wert für kappa_CCRN"
+      }
+    },
+    "ja": 3,
+    "total": 5,
+    "pct": 0.6,
+    "consensus": "JA — CCRN AKTIV",
+    "quorum_ok": true
+  },
+  "ts_end": "2026-03-25T10:57:12.363561+00:00",
+  "elapsed_s": 399.8,
+  "summary": {
+    "phi_eira": 1.0,
+    "phi_note10": 0.11,
+    "phi_pi5": 0.95,
+    "kappa": 3.3493,
+    "ccrn_active": true,
+    "res_ratio": 0.6259,
+    "integrity_pct": 75,
+    "consensus": "JA — CCRN AKTIV",
+    "memory_depth": 39
+  }
+}
