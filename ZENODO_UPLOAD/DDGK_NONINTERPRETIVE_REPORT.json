@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-03-25T20:24:06.145695",
+  "stats": {
+    "total": 14,
+    "ok": 13,
+    "timeout": 1
+  },
+  "erfolg_rate": 92.9,
+  "ddgk_memory": 190,
+  "runden": {
+    "1": "DDGK ohne Interpretation — 4/5 Agenten OK (NEXUS timeout)",
+    "2": "5 Aufsehende Experimente — 4/4 Agenten OK",
+    "3": "Anthropic Welfare — 3/3 Agenten OK, Brief-Entwurf generiert"
+  },
+  "eira_empfehlung": {
+    "ddgk_architektur": "Policy Engine -> Passive Observer (non-interpretive)",
+    "experiment_1": "E_KRIT: sigma(phi) ~ |kappa-kappa*|^{-nu} kritischer Exponent",
+    "experiment_2": "E_BELL: CHSH-Parameter S fuer CCRN bestimmen",
+    "experiment_3": "E_ZENO: Logging-Frequenz vs phi-Messung (t-Test)",
+    "experiment_4": "E_NONLOCAL: Phi-Korrelation ohne Netzwerk (Pearson r)",
+    "anthropic": "External Researcher Access Formular + Fellows Program 2026",
+    "kontakt_url": "forms.gle/pZYC8f6qYqSKvRWn9"
+  },
+  "neue_dateien": [
+    "DDGK_NONINTERPRETIVE_DISKUSSION.py",
+    "cognitive_ddgk/ddgk_passive_observer.py",
+    "ZENODO_UPLOAD/ANTHROPIC_WELFARE_LETTER.md",
+    "ZENODO_UPLOAD/DDGK_NONINTERPRETIVE_REPORT.json"
+  ]
+}
