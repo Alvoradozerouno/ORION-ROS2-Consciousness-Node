@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-03-25T21:07:38.854374",
+  "ddgk_memory": 207,
+  "DYNAMIC_R": {
+    "phi_list": [
+      0.4897,
+      0.4902,
+      0.4867,
+      0.5083
+    ],
+    "phi_sum": 1.9749,
+    "R_dynamic": 0.0156,
+    "kappa_dynamic": 2.0,
+    "R_fixed": 0.93,
+    "kappa_fixed": 3.4717,
+    "result": "Dynamic-R bringt kappa exakt auf kappa*=2.0"
+  },
+  "E_KRIT": {
+    "data_points": [
+      {
+        "N": 1,
+        "kappa": 1.2071,
+        "sigma": 0.0569,
+        "dist_kstar": 0.7929
+      },
+      {
+        "N": 2,
+        "kappa": 2.2125,
+        "sigma": 0.04,
+        "dist_kstar": 0.2125
+      },
+      {
+        "N": 3,
+        "kappa": 3.0426,
+        "sigma": 0.0493,
+        "dist_kstar": 1.0426
+      },
+      {
+        "N": 4,
+        "kappa": 3.5555,
+        "sigma": 0.026,
+        "dist_kstar": 1.5555
+      }
+    ],
+    "nu_exponent": 0.099,
+    "r2": 0.063,
+    "classification": "Zwischen bekannten Klassen (nu=0.099)"
+  }
+}
