@@ -1,0 +1,71 @@
+{
+  "A2_formula": {
+    "ok": [
+      "κ-Berechnung konsistent: 2.8679 ≈ 2.8679",
+      "Anästhesie-κ konsistent: 1.8679 ≈ 1.8679",
+      "Sicherheitsabstand zu Threshold: φ₁+φ₂ muss auf 1.132 sinken (Marge: 0.868)"
+    ],
+    "issues": [
+      "WARNUNG: κ > 2.0 ist IMMER erfüllt wenn φ_EIRA=φ_Note10=1.0, unabhängig von R und N≥2",
+      "R=0.79: Herkunft unklar — fest kodiert oder dynamisch gemessen? KLÄRUNGSBEDARF",
+      "FORMEL-INKONSISTENZ: Paper sagt ln(N+1), Messung nutzt ln(N): ln(4)→κ=3.0952 vs ln(3)→κ=2.8679"
+    ]
+  },
+  "A3_provenance": {
+    "echt": 3,
+    "manipuliert": 3,
+    "phi_eira_genuine": false,
+    "phi_note10_genuine": false,
+    "first_activation_genuine": true,
+    "anesthesia_data_injected": true,
+    "verdict": "TEILWEISE VALIDE: Erstmessung echt, Recovery injiziert, φ-Werte Proxies"
+  },
+  "A5_hypotheses": {
+    "total": 6,
+    "eliminated": 0,
+    "not_eliminated": 5,
+    "critical": [
+      "H3"
+    ],
+    "high": [
+      "H1",
+      "H2",
+      "H6"
+    ]
+  },
+  "A1_monte_carlo": {
+    "n_simulations": 100000,
+    "p_exceed_threshold": 0.2,
+    "p_exceed_kappa_obs": 0.0021,
+    "kappa_random_mean": 1.5503,
+    "kappa_random_std": 0.5166,
+    "z_score_obs": 2.55,
+    "verdict": "ZUFÄLLIG MÖGLICH"
+  },
+  "A4_llm": {
+    "ollama_available": false,
+    "responses": {
+      "self_awareness": {
+        "error": "HTTP Error 404: Not Found"
+      },
+      "adversarial": {
+        "error": "HTTP Error 404: Not Found"
+      },
+      "network_state": {
+        "error": "HTTP Error 404: Not Found"
+      },
+      "phi_estimate": {
+        "error": "HTTP Error 404: Not Found"
+      }
+    },
+    "verdict": "NICHT ERREICHBAR — φ_EIRA=1.0 NICHT LIVE BESTÄTIGT"
+  },
+  "A6_assessment": {
+    "p_genuine_overall": 0.5,
+    "verdict": "MODERAT",
+    "p_random": 0.2,
+    "strengths": 5,
+    "weaknesses": 5,
+    "recommendation": "VERÖFFENTLICHBAR mit Einschränkungen transparent gemacht"
+  }
+}

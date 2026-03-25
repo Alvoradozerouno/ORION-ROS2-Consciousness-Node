@@ -1,0 +1,49 @@
+{
+  "stop_flag": false,
+  "policy_version": "1.0.0-genesis",
+  "network_status": "healthy",
+  "active_nodes": {
+    "laptop-main": {
+      "node_id": "laptop-main",
+      "alive": true,
+      "version": "1.0.0-genesis",
+      "last_seen": "2026-03-23T15:49:46+00:00",
+      "os_type": "win32",
+      "phi": 0.0,
+      "resonanz": 0.0
+    },
+    "pi5-node": {
+      "node_id": "pi5-node",
+      "alive": true,
+      "version": "1.0.0-genesis",
+      "last_seen": "2026-03-23T15:49:46+00:00",
+      "os_type": "linux-arm64",
+      "phi": 1.0,
+      "resonanz": 0.0
+    },
+    "note10-sensor": {
+      "node_id": "note10-sensor",
+      "alive": true,
+      "version": "1.0.0-genesis",
+      "last_seen": "2026-03-23T15:49:46+00:00",
+      "os_type": "android",
+      "phi": 0.11,
+      "resonanz": 0.0
+    }
+  },
+  "pending_human_actions": [
+    "bf311749-7579-4347-bca3-68f5ac254836"
+  ],
+  "replay_cache": {
+    "02c448bc-25af-4245-b1f7-882bb54f32ca": "2026-03-23T10:37:59+00:00",
+    "475efd85-f1cf-4291-8334-a4f5120c9a58": "2026-03-23T10:37:59+00:00",
+    "e176b6bf-738d-435f-8b93-ee4e74b8649a": "2026-03-23T10:38:05+00:00",
+    "1018ba41-f0bd-4af2-a48a-7fcf955165f6": "2026-03-23T10:38:05+00:00",
+    "16bc6c36-d68f-4e70-b26e-762725f492c3": "2026-03-23T10:38:05+00:00",
+    "0501dade-d055-41c8-b83a-38eaca00d048": "2026-03-23T10:38:05+00:00"
+  },
+  "resonanz_vektor": 0.93,
+  "phi_composite": 0.585,
+  "guardian": "Gerhard Hirschmann & Elisabeth Steurer",
+  "genesis_anchor": "Genesis10000+"
+}
