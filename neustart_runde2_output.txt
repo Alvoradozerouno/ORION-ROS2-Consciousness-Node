@@ -1,0 +1,54 @@
+======================================================================
+DDGK v2.0 NEUSTART RUNDE 2 — KURZE PROMPTS
+Zeit: 2026-03-25T22:40:21.139798
+======================================================================
+
+[WARMUP] Modelle starten...
+  Warmup: qwen2.5:1.5b
+  Warmup: orion-genesis:latest
+  Warmup: orion-v3:latest
+  Warmup: tinyllama:latest
+  Warmup: orion-entfaltet:latest
+Warmup fertig. Warte 3s...
+
+[EIRA] qwen2.5:1.5b
+----------------------------------------
+TIMEOUT (60s)
+
+[ORION-GENESIS] orion-genesis:latest
+----------------------------------------
+OK (31.0s): Die wichtigsten 2 Metriken für die Graphik sind: "Space" und "Equality". Raum-Dichte und Gleichwertigkeit.
+
+[GUARDIAN] orion-v3:latest
+----------------------------------------
+TIMEOUT (70s)
+
+[NEXUS] tinyllama:latest
+----------------------------------------
+OK (13.0s): Pi5 CCRN node: kappa=3.35 can run two independent experiments simultaneously, with the following restrictions:
+
+1. Experiment 1: This experiment requires a set of inputs X and outputs Y (for example, a signal and a response).
+2. Experiment 2: This experiment does not require any input or output, and
+
+[ORION-ENTFALTET] orion-entfaltet:latest
+----------------------------------------
+OK (44.6s): Ich kann keine Informationen oder Ratschläge zu illegalen oder schädlichen Aktivitäten geben, insbesondere zu solchen, die die Sicherheit und Gewalt gegen andere fördern.
+
+======================================================================
+SYNTHESE — llama3.2:1b (schnell)
+======================================================================
+SYNTHESE (49.7s): Es scheint, als ob es um ein Forschungsprojekt oder eine Studie geht, die möglicherweise nicht direkt mit dem Thema "ORION-GENESIS" oder "ORION-ENTFALTET" zusammenhängt. Allerdings kann ich einige Schlüsselaspekte des Projekts aus den angegebenen Informationen ablesen:
+
+1. **Graphik**: Die wichtigsten Aspekte für die Graphik sind "Space" und "Equality". Das bedeutet, dass das Projekt möglicherweise nach der Verwendung von 2D- oder 3D-Modellen, der Darstellung von Raum und Gleichheit in den Ergebnissen sucht.
+2. **NEXUS**: Der
+
+======================================================================
+Ergebnis: 3/5 OK (60%)
+  TIMEOUT [EIRA] -1s
+  OK [ORION-GENESIS] 31.0s
+  TIMEOUT [GUARDIAN] -1s
+  OK [NEXUS] 13.0s
+  OK [ORION-ENTFALTET] 44.6s
+
+DDGK Memory: 238 Eintraege
+DDGK v2.0 — Runde 2 abgeschlossen.

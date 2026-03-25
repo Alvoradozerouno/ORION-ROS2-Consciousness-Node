@@ -16,7 +16,7 @@ tags:
   - ccrn
   - phi-metric
   - kappa-metric
-short_description: Interactive CCRN Calculator — κ, φ, σ, Dynamic-R, Critical Exponent ν
+short_description: CCRN Calculator — κ, φ, σ, Dynamic-R, ν
 ---
 
 # CCRN Live Explorer

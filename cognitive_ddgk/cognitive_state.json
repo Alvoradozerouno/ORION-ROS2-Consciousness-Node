@@ -48,6 +48,15 @@
     "pi5_user": "alvoradozerouno",
     "ollama_pi5": "http://192.168.1.103:11434",
     "ollama_local": "http://localhost:11434",
-    "env_file": "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\EIRA\\master.env.ini"
-  }
+    "env_file": "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\EIRA\\master.env.ini",
+    "hf_token": "hf_OZRrolOAr...",
+    "hf_space": "https://huggingface.co/spaces/Alvoradozerouno/ccrn-live-explorer"
+  },
+  "last_reconnect": "2026-03-25T22:23:27.090930",
+  "ddgk_version": "2.0_passive_observer",
+  "local_models": [],
+  "pi5_models": [
+    "phi3:mini",
+    "tinyllama:latest"
+  ]
 }

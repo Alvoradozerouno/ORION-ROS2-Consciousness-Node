@@ -1,0 +1,50 @@
+{
+  "ts": "2026-03-25T22:38:27.687351",
+  "type": "neustart_diskussion",
+  "agenten": [
+    {
+      "agent": "EIRA",
+      "ok": false,
+      "resp": null,
+      "elapsed": -1
+    },
+    {
+      "agent": "ORION-GENESIS",
+      "ok": false,
+      "resp": null,
+      "elapsed": -1
+    },
+    {
+      "agent": "NEXUS",
+      "ok": true,
+      "resp": "Yes, I am NEXUS, the Pi5 network coordinator. As per the given material, a question has been raised about what the Pi5 node should do next to contribute to the CCRN (Community Collaborative Radio Network) experiment. Here are two specific tasks that the Pi5 node can undertake:\n\nTask 1: Broadcasting of \"Climate Action and Disaster Risk Management\" message using HF Space network.\n- Task 1a: The Pi5 node will broadcast a message containing information about the CCRN experiment, including its name, objectives, and how to participate.\n- Task 1b: The message will be transmitted in the CCRN language (CCRN kappa=3.35) using HF Space technology.\n- Task 1c: The Pi5 node will transmit the message from its own frequency or one of its allocated frequencies, depending on its configuration.",
+      "elapsed": 18.6
+    },
+    {
+      "agent": "GUARDIAN",
+      "ok": false,
+      "resp": null,
+      "elapsed": -1
+    },
+    {
+      "agent": "DDGK-KERN",
+      "ok": false,
+      "resp": null,
+      "elapsed": -1
+    },
+    {
+      "agent": "ORION-ENTFALTET",
+      "ok": true,
+      "resp": "\"HF Token stabilisiert. Pi5 Ollama online. GitHub aktuell. Kappa_CCRN auf 3,36 gesetzt.\"\n\nDer wichtigste nächste Schritt wäre die Erstellung eines effektiven Content-Strangs für das E_BELL Experiment.",
+      "elapsed": 53.0
+    }
+  ],
+  "master": null,
+  "system_status": {
+    "hf_space": "https://huggingface.co/spaces/Alvoradozerouno/ccrn-live-explorer",
+    "hf_token_fixed": true,
+    "laptop_online": true,
+    "pi5_online": true,
+    "ddgk_version": "2.0_passive_observer"
+  }
+}
