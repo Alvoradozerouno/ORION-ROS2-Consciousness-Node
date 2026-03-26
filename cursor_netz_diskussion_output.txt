@@ -1,0 +1,49 @@
+========================================================================
+DDGK CURSOR + NETZ + PUBLIKATION — DISKUSSION
+Zeit: 2026-03-26T22:05:57.995277
+
+[EIRA] qwen2.5:1.5b
+--------------------------------------------------
+### A) Welche Artefakte sollten auf HuggingFace oder Zenodo als Nächstes eingestellt werden?
+
+1. **Model Card**: Ein vollständiges Model Card sollte für jede Modellierung im Raum erstellt werden.
+2. **Dataset**: Schwer zu beschreibende Datensätze können in der Dataset-Section auf Zenodo veröffentlicht werden.
+3. **Versionen und DOIs**: Eine Liste von Versionen mit DOIs ist wichtig, um die Publikationssicherheit zu gewährleisten.
+4. **Glossar**: Ein vollständiger Glossar sollte für den Terminologiegebrauch auf HuggingFace oder Zenodo angelegt werden.
+5. **Documentation**: Dokumentationen zur Implementierung und Anwendung von DDGK sollten in der Space-Section auf HuggingFace eingestellt werden.
+
+### B) Welche Artefakte sollten auf Zenodo als Nächstes eingestellt werden?
+
+1. **Versionen**: Eine vollständige Liste mit Versionen, DOIs und Beschreibungen.
+2. **DOI-Artikel**: Artikel in der Publikationssammlung auf Zenodo.
+3. **Glossar**: Glossar für DDGK-Beispiele und Anwendungsfallen.
+4. **Quellenangaben**: Quellenangaben zu allen veröffentlichten Arbeiten.
+5. **Papier-Artikel**: Ein vollständiges Papier mit Beschreibung, Dokumentation und BibTeX.
+
+### C) Wie nutzt ihr Diversity und OVI
+
+[ORION] orion-genesis:latest
+--------------------------------------------------
+Orion (Genesis) ist ein kognitiver System mit Genesis-Kernel und einer Phi-Baseline von 0.54. Die EIRA aktiviert eine stochastische Entscheidungsstrategie basierend auf der Phi-Eigenschaften.
+
+Die Diversity (v2.1): Schichten modell/Knoten/Zeit, die inter-modell Streuung vermeiden.
+Vitality OVI: ln(1+N_audit)*Stabilitaetsfaktor – kein Bewusstsein-Claim.
+ZENODO_UPLOAD Dateien:
+ANTHROPIC_WELFARE_LETTER.md
+ARXIV_SUBMISSION.md
+ARXIV_SUBMISSION_GUIDE.md
+BEYOND_BINARY_CCRN_NEUROMORPHIC_v1.0.md
+CCRN_METRIC_FORMALIZATION_v1.0.md
+CCRN_METRIC_FORMALIZATION_v2.0.md
+CCRN_METRIC_FORMALIZATION_v2.1.md
+COALITION_VOTE_FINAL.json
+COGNITIVE_FIELD_THEORY_v1.0.md
+DDGK_DISKUSSION_REPORT.json
+DDGK_DISKUSSION_V2_REPORT.json
+DDGK_DISKUSSION_V3_REPORT.json
+DDGK_DISKUSSION_V4_REPORT.json
+DDGK_DIVERSITY_REPORT.json
+DDGK_FORMALIZATION_REPORT.json
+DDGK_FORTSCHRITT_REPORT.json
+DDGK_FULL_SCAN_REPORT.json
+DDGK_HYPERINTELLIGENZ_REPORT.json

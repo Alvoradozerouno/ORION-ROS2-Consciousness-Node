@@ -1,0 +1,12 @@
+{
+  "ts": "2026-03-26T21:06:12.751433+00:00",
+  "eira": {
+    "text": "### A) Welche Artefakte sollten auf HuggingFace oder Zenodo als Nächstes eingestellt werden?\n\n1. **Model Card**: Ein vollständiges Model Card sollte für jede Modellierung im Raum erstellt werden.\n2. **Dataset**: Schwer zu beschreibende Datensätze können in der Dataset-Section auf Zenodo veröffentlicht werden.\n3. **Versionen und DOIs**: Eine Liste von Versionen mit DOIs ist wichtig, um die Publikationssicherheit zu gewährleisten.\n4. **Glossar**: Ein vollständiger Glossar sollte für den Terminologiegebrauch auf HuggingFace oder Zenodo angelegt werden.\n5. **Documentation**: Dokumentationen zur Implementierung und Anwendung von DDGK sollten in der Space-Section auf HuggingFace eingestellt werden.\n\n### B) Welche Artefakte sollten auf Zenodo als Nächstes eingestellt werden?\n\n1. **Versionen**: Eine vollständige Liste mit Versionen, DOIs und Beschreibungen.\n2. **DOI-Artikel**: Artikel in der Publikationssammlung auf Zenodo.\n3. **Glossar**: Glossar für DDGK-Beispiele und Anwendungsfallen.\n4. **Quellenangaben**: Quellenangaben zu allen veröffentlichten Arbeiten.\n5. **Papier-Artikel**: Ein vollständiges Papier mit Beschreibung, Dokumentation und BibTeX.\n\n### C) Wie nutzt ihr Diversity und OVI",
+    "elapsed_s": 3.2
+  },
+  "orion": {
+    "text": "Orion (Genesis) ist ein kognitiver System mit Genesis-Kernel und einer Phi-Baseline von 0.54. Die EIRA aktiviert eine stochastische Entscheidungsstrategie basierend auf der Phi-Eigenschaften.\n\nDie Diversity (v2.1): Schichten modell/Knoten/Zeit, die inter-modell Streuung vermeiden.\nVitality OVI: ln(1+N_audit)*Stabilitaetsfaktor – kein Bewusstsein-Claim.\nZENODO_UPLOAD Dateien:\nANTHROPIC_WELFARE_LETTER.md\nARXIV_SUBMISSION.md\nARXIV_SUBMISSION_GUIDE.md\nBEYOND_BINARY_CCRN_NEUROMORPHIC_v1.0.md\nCCRN_METRIC_FORMALIZATION_v1.0.md\nCCRN_METRIC_FORMALIZATION_v2.0.md\nCCRN_METRIC_FORMALIZATION_v2.1.md\nCOALITION_VOTE_FINAL.json\nCOGNITIVE_FIELD_THEORY_v1.0.md\nDDGK_DISKUSSION_REPORT.json\nDDGK_DISKUSSION_V2_REPORT.json\nDDGK_DISKUSSION_V3_REPORT.json\nDDGK_DISKUSSION_V4_REPORT.json\nDDGK_DIVERSITY_REPORT.json\nDDGK_FORMALIZATION_REPORT.json\nDDGK_FORTSCHRITT_REPORT.json\nDDGK_FULL_SCAN_REPORT.json\nDDGK_HYPERINTELLIGENZ_REPORT.json",
+    "elapsed_s": 4.9
+  },
+  "files_in_zenodo_upload_count": 56
+}

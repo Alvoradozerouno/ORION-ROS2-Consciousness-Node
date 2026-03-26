@@ -19,6 +19,8 @@ FILES = [
     WS / "ZENODO_UPLOAD" / "WWW_RESEARCH_LIVE.json",
     WS / "ZENODO_UPLOAD" / "DDGK_FORTSCHRITT_REPORT.json",
     WS / "fortschritt_runden_output.txt",
+    WS / "ZENODO_UPLOAD" / "DDGK_CURSOR_NETZ_REPORT.json",
+    WS / "cursor_netz_diskussion_output.txt",
 ]
 
 def token() -> str | None:
