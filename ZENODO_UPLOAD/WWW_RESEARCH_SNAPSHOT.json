@@ -1,0 +1,29 @@
+{
+  "ts": "2026-03-26T12:00:00Z",
+  "purpose": "Kuratierte WWW-Stuetzpunkte fuer DDGK-Diskussion (ohne Live-API)",
+  "llm_noise_and_variability": [
+    {
+      "topic": "Entropy dynamics / reasoning diagnostics",
+      "note": "EDIS: Entropy Dynamics Instability Score — zeitliche Entropie-Verlaeufe zur Erkennung fehlerhafter Reasoning-Muster (Burst-Spikes etc.).",
+      "hint": "arXiv: EDIS (Diagnosing LLM Reasoning via Entropy Dynamics)"
+    },
+    {
+      "topic": "Calibration",
+      "note": "THERMOMETER (ICML): Kalibrierung von Konfidenz ueber Hilfsmodell; feste Temperature oft suboptimal pro Instanz."
+    },
+    {
+      "topic": "Pragmatic experiment",
+      "note": "Fuer CCRN: sigma_phi als inter-Modell-Streuung; zusaetzlich N-fache Sampling mit gleicher Temperatur -> messbares Rauschen ohne Bewusstseins-Claim."
+    }
+  ],
+  "note10_exynos_npu": [
+    {
+      "topic": "Exynos 9820",
+      "note": "Integrierte NPU fuer KI-Workloads (z.B. Kamera/AR); haengt von Geraete-Variante (Exynos vs Snapdragon) ab."
+    },
+    {
+      "topic": "Praxis Termux",
+      "note": "On-Device LLM: oft CPU/NNAPI; NPU-Nutzung modell- und runtime-abhaengig — eigenes Benchmark (Tokens/s, Watt) sinnvoll."
+    }
+  ]
+}

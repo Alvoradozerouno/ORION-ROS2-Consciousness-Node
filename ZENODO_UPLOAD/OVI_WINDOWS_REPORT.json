@@ -1,0 +1,19 @@
+{
+  "source": "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\cognitive_ddgk\\cognitive_memory.jsonl",
+  "windows": [
+    {
+      "day_utc": "2026-03-25",
+      "N_audit": 236,
+      "sigma_phi_sample": 0.144494,
+      "phi_samples_count": 10,
+      "OVI": 1.405713
+    },
+    {
+      "day_utc": "2026-03-26",
+      "N_audit": 32,
+      "sigma_phi_sample": 0.0,
+      "phi_samples_count": 0,
+      "OVI": 3.496508
+    }
+  ]
+}

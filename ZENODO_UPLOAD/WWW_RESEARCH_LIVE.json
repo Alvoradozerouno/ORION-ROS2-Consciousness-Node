@@ -1,0 +1,91 @@
+{
+  "queries": [
+    {
+      "q": "LLM output variability entropy calibration measurement 2024",
+      "top": [
+        {
+          "title": "From Entropy to Calibrated Uncertainty: Training Language ...",
+          "link": "https://arxiv.org/pdf/2603.06317",
+          "snippet": "We introduced a novel uncertainty calibration reward grounded in an established entropy-based uncertainty measure for LLMs. Our approach not ..."
+        },
+        {
+          "title": "Entropy Trajectory Shape Predicts LLM Reasoning Reliability",
+          "link": "https://arxiv.org/html/2603.18940v1",
+          "snippet": "A substantial body of work studies the calibration of LLM predictions at the output level (Guo et al., 2017; Kadavath et al., 2022; Xiong et al."
+        },
+        {
+          "title": "(PDF) From Calibration to Collaboration: LLM Uncertainty ...",
+          "link": "https://www.researchgate.net/publication/392530037_From_Calibration_to_Collaboration_LLM_Uncertainty_Quantification_Should_Be_More_Human-Centered",
+          "snippet": "We argue that current practices for uncertainty quantification in LLMs are not optimal for developing useful UQ for human users making decisions in real-world ..."
+        },
+        {
+          "title": "On the Entropy Calibration of Language Models",
+          "link": "https://openreview.net/forum?id=ZpQ2SqQNXf",
+          "snippet": "A language model is entropy calibrated if its entropy over generations, ie its confidence, matches the log loss it incurs on actual text."
+        },
+        {
+          "title": "LLMs related research papers published on 23rd May, 2024",
+          "link": "https://www.llmsresearch.com/p/llms-related-research-papers-published-23rd-may-2024",
+          "snippet": "The research paper proposes a solution to reduce the computational cost of LLMs by introducing a technique called Output-adaptive Calibration ( ..."
+        }
+      ]
+    },
+    {
+      "q": "Samsung Exynos 9820 NPU mobile on-device inference",
+      "top": [
+        {
+          "title": "Samsung Brings On-device AI Processing for Premium ...",
+          "link": "https://news.samsung.com/medialibrary/global/photo/35704/search/ai?&page=53",
+          "snippet": "The Exynos 9820 features a fourth-generation custom CPU, 2.0-gigabits-per-second (Gbps) LTE Advanced Pro modem, and an enhanced neural processing unit (NPU) to ..."
+        },
+        {
+          "title": "On-device AI processing with the new Exynos 9 Series 9820",
+          "link": "https://semiconductor.samsung.com/news-events/news/on-device-ai-processing-with-the-new-exynos-9-series-9820/",
+          "snippet": "The Exynos 9820 features a fourth-generation custom CPU, 2.0-gigabits-per-second- (Gbps) LTE Advanced Pro modem, and an enhanced neural processing unit (NPU)."
+        },
+        {
+          "title": "Samsung Brings On-device AI Processing for Premium ...",
+          "link": "https://news.samsung.com/global/samsung-brings-on-device-ai-processing-for-premium-mobile-devices-with-exynos-9-series-9820-processor",
+          "snippet": "The Exynos 9820 is an intelligent powerhouse with a separate hardware AI-accelerator, or NPU, which performs AI tasks around seven times faster ..."
+        },
+        {
+          "title": "Samsung Exynos 9820: 8nm, dedicated NPU",
+          "link": "https://semiwiki.com/forum/threads/samsung-exynos-9820-8nm-dedicated-npu.10934/",
+          "snippet": "But I see no evidence that they especially require an NPU; the data volumes are small, and they worked as well as they do today on pre-NPU iOS ..."
+        },
+        {
+          "title": "The 'Exynos 9 (9820)': 7 times faster AI computation speed",
+          "link": "https://semiconductor.samsung.com/news-events/tech-blog/card-news-the-exynos-99820-premium-mobile-ap-7x-boost-in-ai-computation-speed/",
+          "snippet": "The Exynos 9 (9820) features an integrate NPU (Neural Processing Unit) for AI computations, providing consumers with an accelerated and more dynamic mobile ..."
+        }
+      ]
+    },
+    {
+      "q": "next experiment distributed LLM network evaluation reproducibility",
+      "top": [
+        {
+          "title": "A statistical framework for evaluating the repeatability and ...",
+          "link": "https://www.medrxiv.org/content/10.1101/2025.08.06.25333170v3.full.pdf",
+          "snippet": "Within both repeatability and reproducibility, we evaluate LLM outputs along two complementary dimensions: semantic and internal metrics ..."
+        },
+        {
+          "title": "A statistical framework for evaluating the repeatability and ...",
+          "link": "https://pubmed.ncbi.nlm.nih.gov/41282788/",
+          "snippet": "By providing a systematic approach to quantifying LLM repeatability and reproducibility, our framework supports more reliable use of LLMs in ..."
+        },
+        {
+          "title": "Benchmarking LLM Agents for Replicability in Social and ...",
+          "link": "https://arxiv.org/html/2602.11354v1",
+          "snippet": "We evaluate ReplicatorAgent across four underlying large language models (LLMs), as well as different design choices of programming language and ..."
+        },
+        {
+          "title": "Understanding and Mitigating Numerical Sources of ...",
+          "link": "https://neurips.cc/virtual/2025/poster/118169",
+          "snippet": "We demonstrate that the reproducibility of LLM performance is fragile: changing system configuration, such as evaluation batch size, GPU count, ..."
+        }
+      ]
+    }
+  ],
+  "error": null,
+  "source": "serpapi"
+}

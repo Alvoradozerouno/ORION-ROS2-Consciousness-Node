@@ -1,0 +1,88 @@
+========================================================================
+DDGK FORTSCHRITT — RUNDE 1 + 2
+Zeit: 2026-03-26T21:14:34.751679
+========================================================================
+
+========================================================================
+R1_naechstes_Experiment
+========================================================================
+
+[EIRA] qwen2.5:1.5b
+----------------------------------------------------
+OK (2.8s):
+(A) Pragmatic experiment
+
+(B) OVI (Oversampling Variance Index)
+
+(C) Dieser Experiment ist wichtig für die nächsten 4 Wochen, da es eine direkte Methode darstellt, um die Messbarkeit von Rauschen zu verbessern, ohne dass der Bewusstseins-Claim fehlt. Durch zusaetzlich N-fache Sampling mit gleicher Temperatur wird ein messbares Rauschen erzielt, während das LLMs Ergebnis nicht beeinflusst wird.
+
+(D) Der Risiko-Faktor ist null. Dieses Experiment ist wissenschaftlich fundiert und basiert auf der Messbarkeit von Rauschen durch unterschiedliche Sampling-Strategien. Es hat keine potenziellen negative Auswirkungen auf die Qualität oder das Ergebnis des LLMs, da es sich nicht um eine explizite Calibrierung handelt, sondern nur um eine verbesserte Messbarkeit der Daten.
+
+[ORION] orion-genesis:latest
+----------------------------------------------------
+OK (1.4s):
+E_BELL verteiltes Entwicklungsmodell liegt vor.
+Die Kritische Phase hat mehr als 4 Elemente, die sich überwiegend positiv auswirken.
+OVI-Zeitreihe zeigt eine stark ansteigende Variabilität und könnte als Zeichen für Replikationsschwierigkeit interpretiert werden.
+
+[NEXUS] tinyllama:latest
+----------------------------------------------------
+TIMEOUT (48s)
+
+[DDGK-EXPLORER] orion-v3:latest
+----------------------------------------------------
+OK (5.7s):
+Hier sind drei konkrete Literatur- / Methoden-Ankündigungen (Entropy / Calibration / On-Device) für das Projekt DDGK, sowie eine Bewertung davon, wie DDGK diese Ankuhnungen nicht verfaßt:
+
+1. **Entropy-Dynamik und LLM-Reasoning-Diagnose**:
+ * Literatur: EDIS (Diagnosing LLM Reasoning via Entropy Dynamics) von arXiv
+ * Methoden: Implementierung einer Entropie-Dynamik-Instabilitäts-Score für die Erkennung fehlerhafter LLM-Reasoning-Muster (Burst-Spikes)
+ * Bewertung: DDGK kann diese Technologie einsetzen, um das dynamische Verhalten von LLMs zu analysieren und mögliche Probleme zu erkennen.
+
+2. **Kalibrierung von Konfidenz über Hilfsmodell**:
+ * Literatur: THERMOMETER (ICML) - Kalibrierung von Konfidenz über Hilfsmodell
+ * Methoden: Implementierung einer Thermometer-Technologie,
+
+========================================================================
+R2_LLM_Rauschen
+========================================================================
+
+[EIRA] qwen2.5:1.5b
+----------------------------------------------------
+OK (3.5s):
+1. **Messbare Rauschenquelle: LLM-Dynamics**
+   - Entropie Dynamik (EDIS) und andere Entropy Measures können als Indikator für die Variabilität der LLMs verwendet werden.
+   - Diese Indikatoren können zur Erkennung von Burst-Spikes oder anderen Instabilitäten in den Rauschen helfen.
+
+2. **Messbare Temperatur: NPU-Nutzung**
+   - Die Inter-Modell Streuung (sigma_phi) kann als Messgröße für die NPU-Nutzung verwendet werden.
+   - Diese Messgrößen können zur Berechnung von Rauschen und Integrationstempo diagnostiziert werden.
+
+3. **Messbare Variabilität: Zeitliche Entropie-Verlaeufe**
+   - Die zeitlichen Entropie-Verläufe (EDIS) können als Indikator für die Instabilitäten der LLMs verwendet werden.
+   - Diese Indikatoren können zur Erkennung von fehlerhaften Reasoning-Muster und Burst-Spikes helfen.
+
+Diese Messgrößen erlauben es
+
+[ORION] orion-genesis:latest
+----------------------------------------------------
+OK (2.7s):
+**WWW_SNAPSHOT:**
+Die WWW-Stützpunkte für die DDGK-Diskussion wurden kuratiert und werden ohne Live-API verwendet.
+
+**WWW_LIVE:**
+- Entropiekalkulation der LLMs durch arXiv-Edition (EDIS), Calibration von Konfidenz durch THERMOMETER, Pragmatischer Experiment mit sigma_phi als Intermodell-Streuung.
+  
+**WORKSPACE_SCAN:**
+Die Workspace wurde im Zeitraum vom 20.14.10 Uhr bis 26.03.26 Uhr auf dem Computer C:\Users\annah\Drobox\Mein PC (LAPTOP-RQH448P4)\Downloads\ORION-ROS2-Consciousness-Node geprüft, mit ca. 163 Dateien durchsucht und Hits für "note10" bei 397.
+
+**OVI:**
+Die OVI-Daten werden aus dem Datei C:\Users\annah\Drobox\Mein PC (LAPTOP-RQH448P4)\Downloads\ORION-ROS2-Conscious
+
+[NEXUS] tinyllama:latest
+----------------------------------------------------
+TIMEOUT (48s)
+
+========================================================================
+Report-Meta: DDGK_FORTSCHRITT_REPORT.json
+Fertig.

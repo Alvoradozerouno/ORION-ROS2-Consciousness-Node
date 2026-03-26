@@ -1,0 +1,17 @@
+{
+  "ts": "2026-03-26T21:16:40.112612",
+  "context_files": [
+    "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\ZENODO_UPLOAD\\WWW_RESEARCH_SNAPSHOT.json",
+    "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\ZENODO_UPLOAD\\WWW_RESEARCH_LIVE.json",
+    "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\ZENODO_UPLOAD\\WORKSPACE_SCAN_DDGK.json",
+    "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\ZENODO_UPLOAD\\OVI_WINDOWS_REPORT.json"
+  ],
+  "output_log": "C:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\fortschritt_runden_output.txt",
+  "summary_ddgk": {
+    "next_experiment_priority": "E_BELL verteilt / OVI-Zeitreihe vs kappa — laut ORION; EIRA: N-faches Sampling + sigma_phi zur Rausch-Messung",
+    "llm_rauschen": "Trennung ueber Entropie-/Kalibrierungs-Literatur (WWW) vs CCRN: wiederholte Laeufe, sigma ueber Modelle und Seeds",
+    "nexus_pi5": "Timeouts — Edge-Last; Messung Latenz/Tok/s empfohlen",
+    "note10_npu": "Exynos-9820-NPU-Kontext im Snapshot; eigenes Benchmark auf Geraet sinnvoll",
+    "zenodo": "Upload benoetigt ZENODO_API_TOKEN in Umgebung oder vollstaendige master.env.ini-Zeile"
+  }
+}
