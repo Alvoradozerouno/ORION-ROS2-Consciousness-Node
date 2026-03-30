@@ -1,0 +1,45 @@
+{
+  "ts": "2026-03-30T15:17:46.729592",
+  "tools": {
+    "check_kappa": {
+      "name": "check_kappa",
+      "description": "CCRN kappa-Kohaerenz pruefen",
+      "risk_level": "LOW",
+      "validated": true,
+      "file": "c:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\hyper_tools\\check_kappa.py",
+      "created_at": "2026-03-30T09:48:40.476350",
+      "run_count": 3,
+      "last_result": "{'status': 'OK', 'tool': 'check_kappa', 'result': {'kappa': 3.3493, 'ccrn_active': True, 'threshold_ok': True}}"
+    },
+    "list_workspace": {
+      "name": "list_workspace",
+      "description": "Workspace-Dateien auflisten und analysieren",
+      "risk_level": "LOW",
+      "validated": true,
+      "file": "c:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\hyper_tools\\list_workspace.py",
+      "created_at": "2026-03-30T09:48:40.514176",
+      "run_count": 3,
+      "last_result": "{'status': 'OK', 'tool': 'list_workspace', 'result': {'count': 55, 'files': ['check_models.py', 'compute_ovi_windows.py', 'DDGK_AGENTEN_DISKUSSION.py', 'DDGK_CURSOR_NETZ_DISKUSSION.py', 'ddgk_dashboar"
+    },
+    "memory_stats": {
+      "name": "memory_stats",
+      "description": "DDGK Memory-Statistiken abrufen",
+      "risk_level": "LOW",
+      "validated": true,
+      "file": "c:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\hyper_tools\\memory_stats.py",
+      "created_at": "2026-03-30T09:48:40.526495",
+      "run_count": 3,
+      "last_result": "{'status': 'OK', 'tool': 'memory_stats', 'result': {'cognitive_memory': 348, 'loop_memory': 25, 'hyper_memory': 27, 'nuclear_audit': 30}}"
+    },
+    "zaehle_wie_viele_jsonl_eintrae": {
+      "name": "zaehle_wie_viele_jsonl_eintrae",
+      "description": "zaehle wie viele JSONL-Eintraege in cognitive_memory existieren und berechne deren Groesse in KB",
+      "risk_level": "MEDIUM",
+      "validated": false,
+      "file": "c:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\hyper_tools\\zaehle_wie_viele_jsonl_eintrae.py",
+      "created_at": "2026-03-30T09:49:32.207684",
+      "run_count": 0,
+      "last_result": null
+    }
+  }
+}

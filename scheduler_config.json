@@ -1,0 +1,100 @@
+{
+  "_comment": "ORION Autonomous Scheduler — DDGK-governed. HIGH-RISK tasks require HITL.",
+  "version": "1.0.0",
+  "schedule": [
+    {
+      "id": "dashboard",
+      "action": "start_dashboard",
+      "trigger": "on_start",
+      "interval_sec": null,
+      "risk": "LOW",
+      "auto_execute": true,
+      "description": "DDGK Live Dashboard auf Port 7860 starten"
+    },
+    {
+      "id": "watchdog_disk",
+      "action": "check_disk",
+      "trigger": "interval",
+      "interval_sec": 300,
+      "risk": "LOW",
+      "auto_execute": true,
+      "threshold_pct": 95,
+      "description": "Disk-Auslastung überwachen, bei >95% Cleanup auslösen"
+    },
+    {
+      "id": "watchdog_ram",
+      "action": "check_ram",
+      "trigger": "interval",
+      "interval_sec": 120,
+      "risk": "LOW",
+      "auto_execute": true,
+      "threshold_pct": 90,
+      "description": "RAM-Auslastung überwachen"
+    },
+    {
+      "id": "usb_sync",
+      "action": "usb_deploy",
+      "trigger": "interval",
+      "interval_sec": 3600,
+      "risk": "MEDIUM",
+      "auto_execute": true,
+      "target_drive": "D:\\",
+      "description": "ORION-Kern stündlich auf D:\\ synchronisieren"
+    },
+    {
+      "id": "autonomous_loop",
+      "action": "run_loop",
+      "trigger": "on_start",
+      "interval_sec": 1800,
+      "risk": "LOW",
+      "auto_execute": true,
+      "goal": "Systemstatus prüfen, κ berechnen, neue Erkenntnisse gewinnen",
+      "cycles": 3,
+      "description": "Autonomen Lern-Loop alle 30 Minuten ausführen"
+    },
+    {
+      "id": "lab_fabrication",
+      "action": "check_and_fabricate_tools",
+      "trigger": "interval",
+      "interval_sec": 7200,
+      "risk": "MEDIUM",
+      "auto_execute": true,
+      "description": "Prüfen ob neue Tools gebraucht werden + fabrizieren"
+    },
+    {
+      "id": "cleanup_auto",
+      "action": "auto_cleanup",
+      "trigger": "on_disk_critical",
+      "interval_sec": null,
+      "risk": "LOW",
+      "auto_execute": true,
+      "description": "Automatisches Cleanup wenn Disk kritisch (>95%)"
+    },
+    {
+      "id": "nuclear_sim",
+      "action": "nuclear_safety_check",
+      "trigger": "interval",
+      "interval_sec": 86400,
+      "risk": "LOW",
+      "auto_execute": true,
+      "description": "Täglicher Nuclear Safety Simulator Run"
+    }
+  ],
+  "hitl_required_for": [
+    "git_push",
+    "ssh_remote",
+    "email_send",
+    "delete_user_files",
+    "deploy_external"
+  ],
+  "auto_allowed": [
+    "start_dashboard",
+    "check_disk",
+    "check_ram",
+    "auto_cleanup",
+    "run_loop",
+    "check_and_fabricate_tools",
+    "nuclear_safety_check",
+    "usb_deploy"
+  ]
+}

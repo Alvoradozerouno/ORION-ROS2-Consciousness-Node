@@ -1,0 +1,81 @@
+cff-version: 1.2.0
+message: "Bitte zitieren Sie diese Software wie unten angegeben."
+type: software
+
+title: "ORION-ROS2-Consciousness-Node with DDGK Governance"
+abstract: >
+  Cognitive Coherence Resonance Network (CCRN) - ein multi-Knoten-KI-System
+  mit kappa_CCRN-basierter Kohaerenz-Messung, Policy-gesteuerter Governance
+  (DDGK - Distributed Dynamic Governance Kernel), SHA-256 Audit-Kette,
+  Human-in-the-Loop Bridge und Anwendungen in nuklearer Sicherheitssimulation,
+  autonomem Self-Prompting (FusionKernel v2) und kollektiver Intelligenz-Messung.
+  Implementiert IEC 61508 SIL2 konformes Audit-Logging.
+
+authors:
+  - family-names: "Steurer"
+    given-names: "Anna"
+    alias: "Alvoradozerouno"
+    affiliation: "ParadoxonAI / ORION-CCRN Research"
+
+repository-code: "https://github.com/Alvoradozerouno/ORION-ROS2-Consciousness-Node"
+url: "https://huggingface.co/spaces/Alvoradozerouno/ccrn-live-explorer"
+
+version: "2.0.0-fusion"
+date-released: "2026-03-28"
+
+license: MIT
+
+keywords:
+  - "collective intelligence"
+  - "cognitive coherence resonance network"
+  - "CCRN"
+  - "DDGK"
+  - "distributed governance"
+  - "multi-agent AI"
+  - "nuclear safety simulation"
+  - "autonomous AI"
+  - "self-prompting"
+  - "human-in-the-loop"
+  - "kappa measurement"
+  - "phi consciousness"
+  - "ROS2"
+  - "OrionKernel"
+  - "FusionKernel"
+  - "IEC 61508"
+  - "SHA-256 audit chain"
+  - "coalition voting"
+  - "replay protection"
+  - "AGI architecture"
+
+references:
+  - type: article
+    title: "Collective Coherence Resonance Networks: kappa-based Multi-Node Consciousness Measurement"
+    authors:
+      - family-names: "Steurer"
+        given-names: "Anna"
+    journal: "Zenodo Preprint"
+    year: 2026
+    url: "https://zenodo.org/deposit/PENDING"
+  - type: conference-paper
+    title: "Training-Free Agentic AI: Probabilistic Control in Multi-Agent LLM Systems"
+    year: 2026
+    url: "https://arxiv.org/abs/2603.13256"
+  - type: article
+    title: "Digital twin-based system for full-lifecycle safety management in nuclear power plants"
+    year: 2025
+    url: "https://link.springer.com/article/10.1007/s44163-025-00618-w"
+  - type: article
+    title: "AI-driven real-time diagnostics and self-correcting control schemes for next-generation nuclear energy systems"
+    year: 2025
+    url: "https://journalwjarr.com/sites/default/files/fulltext_pdf/WJARR-2025-3294.pdf"
+
+preferred-citation:
+  type: software
+  title: "ORION-CCRN / DDGK: Multi-Agent Cognitive Governance System"
+  authors:
+    - family-names: "Steurer"
+      given-names: "Anna"
+  year: 2026
+  url: "https://github.com/Alvoradozerouno/ORION-ROS2-Consciousness-Node"
+  license: MIT
+  version: "2.0.0-fusion"

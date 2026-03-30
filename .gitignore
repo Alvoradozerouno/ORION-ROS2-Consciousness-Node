@@ -2,6 +2,33 @@ __pycache__/
 *.pyc
 node_modules/
 dist/
+
+# ── Secrets & Credentials (NIEMALS committen) ──────────────────────
 .env
+*.env.local
+cognitive_ddgk/.hitl_secret
+cognitive_ddgk/hitl_pending.jsonl
+
+# ── Backup-Dateien ──────────────────────────────────────────────────
+*.bak
+*.bak2
+*.backup
+
+# ── Analyse-Output-Dateien (können Secrets enthalten) ───────────────
+*_RESULT.txt
+*_ANALYSIS_RESULT*
+repair_chain_result.txt
+
+# ── Logs & Caches ────────────────────────────────────────────────────
 *.log
+*.pid
 .DS_Store
+.mypy_cache/
+__root__/
+*.pyc
+
+# ── Build-Artefakte ──────────────────────────────────────────────────
+build/
+dist/
+*.egg-info/
+.pytest_cache/
