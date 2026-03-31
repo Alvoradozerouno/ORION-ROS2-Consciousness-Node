@@ -34,7 +34,10 @@ start /min "ORION-Dashboard" python -X utf8 ddgk_dashboard.py
 
 timeout /t 2 /nobreak > nul
 
-echo  [4/4] Starte ORION Autonomous Runner...
+echo  [3b/4] Zeitbewusstsein-Briefing...
+python -X utf8 orion_temporal_awareness.py
+
+echo  [4/4] Starte ORION Autonomous Runner (Daemon)...
 start "ORION-Autorun" python -X utf8 orion_autorun.py
 
 echo.

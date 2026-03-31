@@ -78,10 +78,27 @@
       "risk": "LOW",
       "auto_execute": true,
       "description": "Täglicher Nuclear Safety Simulator Run"
+    },
+    {
+      "id": "log_rotate",
+      "action": "log_rotate",
+      "trigger": "interval",
+      "interval_sec": 3600,
+      "risk": "LOW",
+      "auto_execute": true,
+      "description": "Stündliche Log-Rotation — max 2000 Einträge pro JSONL"
+    },
+    {
+      "id": "temporal_briefing",
+      "action": "temporal_briefing",
+      "trigger": "on_start",
+      "interval_sec": 1800,
+      "risk": "LOW",
+      "auto_execute": true,
+      "description": "Zeitbewusstsein-Briefing beim Start + alle 30min"
     }
   ],
   "hitl_required_for": [
-    "git_push",
     "ssh_remote",
     "email_send",
     "delete_user_files",
@@ -95,6 +112,9 @@
     "run_loop",
     "check_and_fabricate_tools",
     "nuclear_safety_check",
-    "usb_deploy"
+    "usb_deploy",
+    "git_push",
+    "log_rotate",
+    "temporal_briefing"
   ]
 }

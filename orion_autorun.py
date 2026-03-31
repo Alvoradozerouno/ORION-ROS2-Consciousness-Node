@@ -205,6 +205,40 @@ def action_check_and_fabricate_tools():
     log("FABRIK", "check_fabricate", f"existing:{len(existing)} new:{new}", "MEDIUM")
     return f"new:{new}"
 
+def action_log_rotate():
+    """Log-Rotation: Hält alle JSONL-Logs auf max 2000 Einträge."""
+    rotated = 0
+    total_freed = 0
+    MAX_ENTRIES = 2000
+    ARCHIVE_DIR = BASE / "cognitive_ddgk" / "archive"
+    ARCHIVE_DIR.mkdir(exist_ok=True)
+
+    import datetime as dt
+    logs = list((BASE/"cognitive_ddgk").glob("*.jsonl"))
+    for log_path in logs:
+        try:
+            lines = [l for l in log_path.read_text("utf-8",errors="replace").splitlines() if l.strip()]
+            if len(lines) > MAX_ENTRIES:
+                overflow = lines[:-MAX_ENTRIES]
+                keep = lines[-MAX_ENTRIES:]
+                # Archiviere Overflow
+                stamp = dt.datetime.now().strftime("%Y%m%d_%H%M")
+                archive = ARCHIVE_DIR / f"{log_path.stem}_{stamp}.jsonl"
+                archive.write_text("\n".join(overflow)+"\n", encoding="utf-8")
+                log_path.write_text("\n".join(keep)+"\n", encoding="utf-8")
+                freed = sum(len(l)+1 for l in overflow)
+                total_freed += freed
+                rotated += 1
+                print(c("g", f"  [{ts()}] 🔄 Log-Rotation: {log_path.name} "
+                      f"{len(lines)}→{MAX_ENTRIES} ({freed//1024}kB archiviert)"))
+        except Exception as e:
+            print(c("y", f"  [{ts()}] ⚠️  Log-Rotation {log_path.name}: {e}"))
+
+    if rotated == 0:
+        print(c("dim", f"  [{ts()}] ✅ Log-Rotation: alle Logs unter {MAX_ENTRIES} Einträgen"))
+    log("LOGROT", "log_rotate", f"rotated:{rotated} freed:{total_freed//1024}kB", "LOW")
+    return f"rotated:{rotated}"
+
 def action_nuclear_safety_check():
     """Täglicher Nuclear Safety Run."""
     print(c("red", f"  [{ts()}] ⚛️  Nuclear Safety Check..."))
@@ -250,6 +284,10 @@ ACTION_MAP = {
     ),
     "check_and_fabricate_tools": action_check_and_fabricate_tools,
     "nuclear_safety_check":      action_nuclear_safety_check,
+    "log_rotate":                action_log_rotate,
+    "temporal_briefing":         lambda: __import__('subprocess').run(
+        [__import__('sys').executable, "-X", "utf8",
+         str(BASE/"orion_temporal_awareness.py")], capture_output=True),
 }
 
 def run_task(task: dict, dry: bool = False):
