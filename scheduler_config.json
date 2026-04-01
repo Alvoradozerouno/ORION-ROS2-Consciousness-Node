@@ -96,6 +96,39 @@
       "risk": "LOW",
       "auto_execute": true,
       "description": "Zeitbewusstsein-Briefing beim Start + alle 30min"
+    },
+    {
+      "id": "market_trajectory",
+      "action": "market_trajectory_scan",
+      "trigger": "daily",
+      "daily_time": "06:00",
+      "interval_sec": 86400,
+      "risk": "LOW",
+      "auto_execute": true,
+      "script": "ddgk_market_trajectory.py",
+      "description": "Täglicher κ_market Scan — GitHub, arXiv, DuckDuckGo Signale"
+    },
+    {
+      "id": "memory_consolidate",
+      "action": "memory_pipeline_run",
+      "trigger": "daily",
+      "daily_time": "06:05",
+      "interval_sec": 86400,
+      "risk": "LOW",
+      "auto_execute": true,
+      "script": "cognitive_ddgk/memory_pipeline.py",
+      "description": "Memory Pipeline Phase 1+2 — konsolidiert cognitive_memory.jsonl → .md"
+    },
+    {
+      "id": "api_server_daemon",
+      "action": "start_api_server",
+      "trigger": "on_start",
+      "interval_sec": null,
+      "risk": "LOW",
+      "auto_execute": true,
+      "script": "ddgk_api_server.py",
+      "port": 8000,
+      "description": "DDGK REST API Server — persistent auf Port 8000"
     }
   ],
   "hitl_required_for": [
@@ -115,6 +148,9 @@
     "usb_deploy",
     "git_push",
     "log_rotate",
-    "temporal_briefing"
+    "temporal_briefing",
+    "market_trajectory_scan",
+    "memory_pipeline_run",
+    "start_api_server"
   ]
 }

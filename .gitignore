@@ -8,6 +8,29 @@ dist/
 *.env.local
 cognitive_ddgk/.hitl_secret
 cognitive_ddgk/hitl_pending.jsonl
+.orion/api_keys.json
+.orion/*.json
+
+# ── Deploy-Scripts mit hardcoded Credentials ────────────────────────
+ddgk_pi5_deploy.py
+
+# ── Runtime-Logs (Audit-Daten, lokal bleiben) ───────────────────────
+cognitive_ddgk/*.jsonl
+cognitive_ddgk/agent_stats.json
+cognitive_ddgk/orchestrator_state.json
+cognitive_ddgk/*.txt
+cognitive_ddgk/market_trajectory.jsonl
+cognitive_ddgk/.last_seen
+
+# ── IDE / Cursor ─────────────────────────────────────────────────────
+.cursor/
+.playwright-mcp/
+
+# ── Lokale API-Keys (nie ins Repo) ──────────────────────────────────
+*.key
+*.pem
+*.p12
+master.env.ini
 
 # ── Backup-Dateien ──────────────────────────────────────────────────
 *.bak
