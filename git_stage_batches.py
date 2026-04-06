@@ -35,6 +35,7 @@ BATCHES: list[tuple[str, list[str]]] = [
             "note10_start_from_laptop.py",
             "note10_ssh_check.py",
             "scripts/termux_note10_bootstrap.sh",
+            "scripts/termux_install_minimum.sh",
             ".env.example",
             ".gitignore",
             ".github/workflows/ci.yml",
