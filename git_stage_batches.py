@@ -48,6 +48,7 @@ BATCHES: list[tuple[str, list[str]]] = [
             "DDGK_FINAL_SESSION_2026-04-01.py",
             "DDGK_FULL_EXECUTOR_FINAL.py",
             "DDGK_EDGE_CLUSTER_ASSEMBLY.py",
+            "ORION_GO.py",
             "ddgk_note10_agent.py",
             "NOTE10_SETUP.md",
             "agents/agent_1.py",

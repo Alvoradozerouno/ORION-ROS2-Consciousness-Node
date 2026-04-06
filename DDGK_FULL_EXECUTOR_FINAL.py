@@ -13,6 +13,16 @@ import subprocess
 import asyncio
 from pathlib import Path
 
+_ROOT = Path(__file__).resolve().parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+try:
+    from workspace_env import load_workspace_dotenv
+
+    load_workspace_dotenv(override=False)
+except ImportError:
+    pass
+
 class DDGKExecutor:
     def __init__(self):
         self.system_start = datetime.datetime.now()
@@ -608,11 +618,12 @@ if __name__ == "__main__":
     print("  python DDGK_FULL_EXECUTOR_FINAL.py --run")
     print("\nEdge-Cluster (16 Agenten, Ollama/Note10/GPU-Probes):")
     print("  python DDGK_EDGE_CLUSTER_ASSEMBLY.py")
+    print("\nAlles in einem Rutsch (Struktur + Assembly + Credentials):")
+    print("  python ORION_GO.py")
     
     if len(sys.argv) > 1 and sys.argv[1] == "--run":
         print("\n🚀 Starte unendliche Ausführungsschleife...")
         try:
             asyncio.run(executor.run_execution_loop())
-[Done] exited with code=1 in 5.984 seconds
         except KeyboardInterrupt:
             print("\n⏹️  Ausführung gestoppt durch Benutzer")
