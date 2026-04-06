@@ -37,7 +37,7 @@ def main() -> int:
     except ImportError:
         pass
 
-    print("[ORION_GO] DDGK_FULL_EXECUTOR_FINAL: Struktur + Agent-Pool …", flush=True)
+    print("[ORION_GO] DDGK_FULL_EXECUTOR_FINAL: Struktur + Agent-Pool ...", flush=True)
     import DDGK_FULL_EXECUTOR_FINAL as ex
 
     ex.DDGKExecutor()
@@ -54,13 +54,13 @@ def main() -> int:
         cmd = [sys.executable, str(ROOT / "DDGK_EDGE_CLUSTER_ASSEMBLY.py")]
         if args.edge_dry_run:
             cmd.append("--dry-run")
-        print("[ORION_GO] Edge-Cluster-Assembly …", flush=True)
+        print("[ORION_GO] Edge-Cluster-Assembly ...", flush=True)
         r = subprocess.run(cmd, cwd=str(ROOT))
         if r.returncode != 0:
             return r.returncode
 
     if args.multi_agent:
-        print("[ORION_GO] MULTI_AGENT_ASSET_ANALYSIS …", flush=True)
+        print("[ORION_GO] MULTI_AGENT_ASSET_ANALYSIS ...", flush=True)
         r2 = subprocess.run(
             [sys.executable, str(ROOT / "MULTI_AGENT_ASSET_ANALYSIS.py"), "--skip-seed-sync"],
             cwd=str(ROOT),
