@@ -1,0 +1,27 @@
+{
+  "scan_time_utc": "2026-03-26T22:35:00Z",
+  "method": "PowerShell Get-ChildItem + Name-Regex; Downloads depth 5; E: depth 6",
+  "agents": {
+    "EIRA": "Downloads C:\\Users\\annah\\Downloads — Dateinamen ORION|OR1ON|EIRA|Genesis",
+    "NEXUS": "Laufwerk E:\\ — ORION_SEED_COMPLETE, genesis_extracted, Archive",
+    "ORION": "Aggregation Treffer + Priorisierung Kernarchive",
+    "DDGK": "Report JSON + Zenodo",
+    "GUARDIAN": "Keine Inhalte gelesen; nur Pfade; personenbezogene Buchhaltungsdateien auf E:\\ ignoriert fuer Empfehlungen"
+  },
+  "downloads_highlights": [
+    "ORION_IGNITE*.py/jsonl — Ignite-Lauf",
+    "EIRA\\ — genesis_* orion_* or1on_* Skripte, GENESIS_ANCHOR, orion_bridge",
+    "genesis-copilot-full\\ — ORION_*.md, orion_master.py, .cursor/rules",
+    "OR1ON_* Deploy zips, ORION_SEED_COMPLETE.zip, OrionKernel.zip",
+    "PAPER_CCRN_2.0.pdf, READMEorioncursor.md"
+  ],
+  "e_drive_highlights": [
+    "E:\\ORION_SEED_COMPLETE\\ — grosses Seed-Paket (viele orion_*.py)",
+    "E:\\genesis_extracted\\ — attached_assets OR1ON/ORION",
+    "E:\\GENESIS10000_COMPLETE_GEN90 (1).zip, orion_genesis_backup.tar.gz, orion_extra_extraction.tar.gz"
+  ],
+  "notes": [
+    "Dropbox-Downloads-Pfad spiegelt Standard-Downloads; bei Bedarf separat scannen.",
+    "Tiefe beschraenkt — sehr tiefe Unterordner koennten zusaetzliche Treffer haben."
+  ]
+}

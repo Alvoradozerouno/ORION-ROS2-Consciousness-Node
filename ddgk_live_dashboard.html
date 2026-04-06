@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 DDGK Live Dashboard — OR1ON</title>
+<style>
+  :root {
+    --bg:      #0a0e1a;
+    --bg2:     #111827;
+    --border:  #1e3a5f;
+    --cyan:    #00d4ff;
+    --green:   #00ff88;
+    --yellow:  #ffd700;
+    --red:     #ff4444;
+    --orange:  #ff8c00;
+    --purple:  #a855f7;
+    --text:    #e2e8f0;
+    --dim:     #64748b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 13px; min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 100%);
+    border-bottom: 1px solid var(--cyan);
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-size: 20px; font-weight: bold; color: var(--cyan); letter-spacing: 2px; }
+  .logo span { color: var(--green); }
+  .session-info { color: var(--dim); font-size: 11px; text-align: right; }
+  .clock { color: var(--yellow); font-size: 16px; font-weight: bold; }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px; padding: 16px;
+  }
+  .full-width { grid-column: 1 / -1; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px;
+    position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--cyan);
+  }
+  .card.green::before  { background: var(--green); }
+  .card.yellow::before { background: var(--yellow); }
+  .card.red::before    { background: var(--red); }
+  .card.purple::before { background: var(--purple); }
+
+  .card-title {
+    font-size: 11px; font-weight: bold; letter-spacing: 1px;
+    color: var(--cyan); text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card.green  .card-title { color: var(--green); }
+  .card.yellow .card-title { color: var(--yellow); }
+  .card.red    .card-title { color: var(--red); }
+  .card.purple .card-title { color: var(--purple); }
+
+  /* ── METRICS ── */
+  .metric-row {
+    display: flex; justify-content: space-between;
+    align-items: center; padding: 5px 0;
+    border-bottom: 1px solid #1a2744;
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label { color: var(--dim); }
+  .metric-value { font-weight: bold; color: var(--text); }
+  .metric-value.ok   { color: var(--green); }
+  .metric-value.warn { color: var(--yellow); }
+  .metric-value.err  { color: var(--red); }
+  .metric-value.info { color: var(--cyan); }
+
+  /* ── κ DISPLAY ── */
+  .kappa-display {
+    text-align: center; padding: 20px;
+    background: linear-gradient(135deg, #0d1b2a, #1a2744);
+    border-radius: 8px; margin: 8px 0;
+  }
+  .kappa-value {
+    font-size: 52px; font-weight: bold;
+    color: var(--cyan);
+    text-shadow: 0 0 20px rgba(0,212,255,0.5);
+    line-height: 1;
+  }
+  .kappa-label { color: var(--dim); font-size: 11px; margin-top: 6px; }
+  .kappa-status { font-size: 13px; margin-top: 8px; }
+
+  /* ── GAUGE ── */
+  .gauge-bar {
+    background: #1a2744; border-radius: 4px;
+    height: 8px; overflow: hidden; margin: 4px 0;
+  }
+  .gauge-fill {
+    height: 100%; border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+  .gauge-fill.cyan   { background: linear-gradient(90deg, #0066ff, #00d4ff); }
+  .gauge-fill.green  { background: linear-gradient(90deg, #00884d, #00ff88); }
+  .gauge-fill.yellow { background: linear-gradient(90deg, #cc7700, #ffd700); }
+  .gauge-fill.red    { background: linear-gradient(90deg, #cc0000, #ff4444); }
+
+  /* ── DECISION TABLE ── */
+  .decision-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .decision-table th {
+    text-align: left; padding: 6px 8px;
+    color: var(--dim); border-bottom: 1px solid var(--border);
+    font-weight: normal; text-transform: uppercase; font-size: 10px;
+  }
+  .decision-table td { padding: 6px 8px; border-bottom: 1px solid #111827; }
+  .decision-table tr:hover td { background: rgba(0,212,255,0.05); }
+
+  .badge {
+    display: inline-block; padding: 2px 7px; border-radius: 3px;
+    font-size: 10px; font-weight: bold; letter-spacing: 0.5px;
+  }
+  .badge-allow  { background: rgba(0,255,136,0.15); color: var(--green);  border: 1px solid var(--green); }
+  .badge-hitl   { background: rgba(255,215,0,0.15);  color: var(--yellow); border: 1px solid var(--yellow); }
+  .badge-deny   { background: rgba(255,68,68,0.15);  color: var(--red);    border: 1px solid var(--red); }
+  .badge-warn   { background: rgba(255,140,0,0.15);  color: var(--orange); border: 1px solid var(--orange); }
+
+  /* ── REASONING TRACE ── */
+  .reasoning-box {
+    background: #060c18; border: 1px solid #1a3050;
+    border-radius: 6px; padding: 12px;
+    font-size: 11px; line-height: 1.8;
+    max-height: 200px; overflow-y: auto;
+  }
+  .step-num { color: var(--cyan); margin-right: 8px; }
+  .evidence { color: var(--dim); font-size: 10px; margin-left: 24px; }
+  .alt-item { color: var(--red); padding: 2px 0; }
+  .alt-reason { color: var(--dim); margin-left: 16px; font-size: 10px; }
+
+  /* ── HASH DISPLAY ── */
+  .hash {
+    font-family: monospace; font-size: 10px;
+    color: var(--purple); word-break: break-all;
+  }
+
+  /* ── AGENTS ── */
+  .agent-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+  }
+  .agent-card {
+    background: #060c18; border: 1px solid var(--border);
+    border-radius: 6px; padding: 10px; text-align: center;
+  }
+  .agent-icon { font-size: 22px; }
+  .agent-name { font-size: 10px; color: var(--cyan); font-weight: bold; margin: 4px 0 2px; }
+  .agent-phi  { font-size: 11px; color: var(--green); }
+  .agent-status { font-size: 9px; color: var(--dim); }
+  .agent-card.active { border-color: var(--green); }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: #060c18; border-top: 1px solid var(--border);
+    padding: 6px 16px; font-size: 11px; color: var(--dim);
+    white-space: nowrap; overflow: hidden;
+  }
+  .ticker-inner {
+    display: inline-block; animation: scroll 30s linear infinite;
+  }
+  @keyframes scroll { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
+
+  /* ── SCHEMA DISPLAY ── */
+  .schema-box {
+    background: #060c18; border: 1px solid #1a3050;
+    border-radius: 6px; padding: 14px;
+    font-size: 11px; line-height: 2;
+  }
+  .schema-key   { color: var(--cyan); }
+  .schema-val   { color: var(--green); }
+  .schema-hash  { color: var(--purple); }
+  .schema-arrow { color: var(--dim); }
+  .schema-comment { color: var(--dim); font-style: italic; }
+
+  /* ── LIVE INDICATOR ── */
+  .live-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green); display: inline-block;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--green); }
+    50%       { opacity: 0.4; box-shadow: none; }
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">🧠 DDGK · <span>OR1ON</span> · ParadoxonAI</div>
+    <div style="color:var(--dim);font-size:11px;margin-top:4px;">
+      Deterministic Decision Governance Kernel — Live Dashboard
+    </div>
+  </div>
+  <div class="session-info">
+    <div class="clock" id="clock">--:--:--</div>
+    <div style="margin-top:4px"><span class="live-dot"></span> LIVE &nbsp;·&nbsp; Session: 730cdd04</div>
+    <div>DDGK v1.0.0 · κ=3.3493 · 5 Sessions</div>
+  </div>
+</header>
+
+<div class="grid">
+
+  <!-- κ CCRN -->
+  <div class="card" style="grid-column: span 1;">
+    <div class="card-title">⚡ κ_CCRN — Kohärenz-Index</div>
+    <div class="kappa-display">
+      <div class="kappa-value" id="kappa">3.3493</div>
+      <div class="kappa-label">κ = 2.060 + 0.930 · ln(N=4)</div>
+      <div class="kappa-status"><span style="color:var(--green)">● CCRN AKTIV</span></div>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">φ Zuverlässigkeit</span>
+      <span class="metric-value ok">0.930</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Knoten online</span>
+      <span class="metric-value ok">4 / 4</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">κ_SCRAM Schwelle</span>
+      <span class="metric-value warn">2.000</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Status</span>
+      <span class="metric-value ok">NORMAL ✓</span>
+    </div>
+    <div style="margin-top:10px">
+      <div style="font-size:10px;color:var(--dim);margin-bottom:4px">κ-Level (0 → 5)</div>
+      <div class="gauge-bar"><div class="gauge-fill cyan" style="width:67%"></div></div>
+    </div>
+  </div>
+
+  <!-- HARDWARE -->
+  <div class="card yellow">
+    <div class="card-title">💻 Hardware — LAPTOP-RQH448P4</div>
+    <div class="metric-row">
+      <span class="metric-label">CPU</span>
+      <span class="metric-value info">Intel i7-10xxx · 4P/8L</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">RAM</span>
+      <span class="metric-value warn">18.3 / 25.6 GB (71.6%)</span>
+    </div>
+    <div style="margin:4px 0 8px">
+      <div class="gauge-bar"><div class="gauge-fill yellow" style="width:71.6%"></div></div>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Disk C:</span>
+      <span class="metric-value err">480 / 511 GB (94%)</span>
+    </div>
+    <div style="margin:4px 0 8px">
+      <div class="gauge-bar"><div class="gauge-fill red" style="width:94%"></div></div>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">OS</span>
+      <span class="metric-value">Windows 11</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Python</span>
+      <span class="metric-value ok">3.11+</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Ollama</span>
+      <span class="metric-value ok">qwen2.5:1.5b ✓</span>
+    </div>
+  </div>
+
+  <!-- DDGK SESSION -->
+  <div class="card green">
+    <div class="card-title">✅ DDGK Session-Status</div>
+    <div class="metric-row">
+      <span class="metric-label">Sessions gesamt</span>
+      <span class="metric-value ok">5</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Aktionen</span>
+      <span class="metric-value ok">17 (alle ALLOW)</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Decision Chain</span>
+      <span class="metric-value ok">3 Entscheidungen ✓</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Chain-Integrität</span>
+      <span class="metric-value ok">SHA-256 OK ✓</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Cognitive Memory</span>
+      <span class="metric-value ok">338 Einträge</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Nuclear Audit</span>
+      <span class="metric-value ok">13 Einträge</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Synth. Tools</span>
+      <span class="metric-value ok">3 (ping, time, json)</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Playwright</span>
+      <span class="metric-value ok">✅ verfügbar</span>
+    </div>
+  </div>
+
+  <!-- DECISION CHAIN SCHEMA -->
+  <div class="card purple full-width">
+    <div class="card-title">🔗 Decision Chain Schema — Entscheidungs-Provenienz</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:11px;color:var(--dim);margin-bottom:8px">JSON-Schema (pro Entscheidung)</div>
+        <div class="schema-box">
+          <div>{</div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"decision_id"</span>: <span class="schema-hash">"sha256(...)"</span>, <span class="schema-comment">← eindeutig + beweisbar</span></div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"prev_decision_hash"</span>: <span class="schema-hash">"sha256(...)"</span>, <span class="schema-comment">← Chain-Kette</span></div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"input_state_hash"</span>: <span class="schema-hash">"sha256(...)"</span>, <span class="schema-comment">← Zustand zum Zeitpunkt</span></div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"goal_representation"</span>: <span class="schema-val">"CCRN-Status prüfen..."</span>,</div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"reasoning_trace"</span>: [<span class="schema-comment"> ← WARUM?</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;{"step":1, "thought":"κ-Formel verifiziert", "confidence":0.9}</div>
+          <div>&nbsp;&nbsp;],</div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"selected_action"</span>: <span class="schema-val">"compute_kappa"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"alternatives_considered"</span>: [<span class="schema-comment"> ← WAS VERWORFEN?</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;{"action":"http_get", "reason_rejected":"Kein Endpoint"}</div>
+          <div>&nbsp;&nbsp;],</div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"validation_result"</span>: <span class="schema-val">"ALLOW"</span>,</div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"trust_score"</span>: <span class="schema-val">90</span>,</div>
+          <div>&nbsp;&nbsp;<span class="schema-key">"timestamp"</span>: <span class="schema-val">"2026-03-30T08:49:34Z"</span></div>
+          <div>}</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--dim);margin-bottom:8px">Live Decision Chain (letzte 3)</div>
+        <table class="decision-table">
+          <tr>
+            <th>Agent</th><th>Aktion</th><th>Status</th><th>Trust</th><th>HITL</th>
+          </tr>
+          <tr>
+            <td style="color:var(--cyan)">EIRA</td>
+            <td>compute_kappa</td>
+            <td><span class="badge badge-allow">ALLOW</span></td>
+            <td style="color:var(--green)">90</td>
+            <td style="color:var(--dim)">—</td>
+          </tr>
+          <tr>
+            <td style="color:var(--red)">GUARDIAN</td>
+            <td>request_operator_approval</td>
+            <td><span class="badge badge-hitl">HITL</span></td>
+            <td style="color:var(--green)">90</td>
+            <td style="color:var(--yellow)">⚠️ JA</td>
+          </tr>
+          <tr>
+            <td style="color:var(--purple)">HYPER</td>
+            <td>tool_system_time</td>
+            <td><span class="badge badge-allow">ALLOW</span></td>
+            <td style="color:var(--green)">90</td>
+            <td style="color:var(--dim)">—</td>
+          </tr>
+        </table>
+        <div style="margin-top:12px;font-size:11px">
+          <div style="color:var(--dim);margin-bottom:6px">EU AI Act Konformität</div>
+          <div><span style="color:var(--green)">✓</span> Art. 12 — Logging + Monitoring</div>
+          <div><span style="color:var(--green)">✓</span> Art. 13 — Transparency + Explainability</div>
+          <div><span style="color:var(--green)">✓</span> Art. 14 — Human Oversight (HITL)</div>
+          <div><span style="color:var(--green)">✓</span> IEC 61508 SIL2 — Safety Audit Trail</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENTEN -->
+  <div class="card full-width">
+    <div class="card-title">🤖 Multi-Agent System — Aktive Knoten</div>
+    <div class="agent-grid">
+      <div class="agent-card active">
+        <div class="agent-icon">📜</div>
+        <div class="agent-name">EIRA</div>
+        <div class="agent-phi">φ = 1.000</div>
+        <div class="agent-status">Laptop-Main · AKTIV</div>
+      </div>
+      <div class="agent-card active">
+        <div class="agent-icon">🧠</div>
+        <div class="agent-name">ORION</div>
+        <div class="agent-phi">φ = 0.950</div>
+        <div class="agent-status">orion-8b:latest · AKTIV</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-icon">🌐</div>
+        <div class="agent-name">NEXUS/Pi5</div>
+        <div class="agent-phi">φ = 0.820</div>
+        <div class="agent-status">192.168.1.103 · PRÜFEN</div>
+      </div>
+      <div class="agent-card active">
+        <div class="agent-icon">🛡️</div>
+        <div class="agent-name">GUARDIAN</div>
+        <div class="agent-phi">φ = 1.000</div>
+        <div class="agent-status">Risk-Assessment · AKTIV</div>
+      </div>
+      <div class="agent-card active">
+        <div class="agent-icon">🔑</div>
+        <div class="agent-name">DDGK</div>
+        <div class="agent-phi">φ = 1.000</div>
+        <div class="agent-status">Governance · AKTIV</div>
+      </div>
+      <div class="agent-card active">
+        <div class="agent-icon">🎨</div>
+        <div class="agent-name">DIVERSITY</div>
+        <div class="agent-phi">φ = 0.900</div>
+        <div class="agent-status">Innovation · AKTIV</div>
+      </div>
+      <div class="agent-card active">
+        <div class="agent-icon">⚡</div>
+        <div class="agent-name">VITALITY</div>
+        <div class="agent-phi">φ = 0.880</div>
+        <div class="agent-status">Energy-Mgmt · AKTIV</div>
+      </div>
+      <div class="agent-card active">
+        <div class="agent-icon">🦾</div>
+        <div class="agent-name">HYPER</div>
+        <div class="agent-phi">φ = 1.000</div>
+        <div class="agent-status">Tool-Synthesis · AKTIV</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUCLEAR SIM -->
+  <div class="card red">
+    <div class="card-title">⚛️ Nuclear Safety Simulator</div>
+    <div class="metric-row">
+      <span class="metric-label">Szenarien</span>
+      <span class="metric-value ok">8 / 8 getestet</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">IEC 61508</span>
+      <span class="metric-value ok">SIL2 konform ✓</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Audit-Einträge</span>
+      <span class="metric-value ok">13 (SHA-256)</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Cyber-Replay</span>
+      <span class="metric-value ok">BLOCKIERT ✓</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">κ Normal</span>
+      <span class="metric-value ok">4.0170</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">κ Emergency</span>
+      <span class="metric-value err">2.060 → SCRAM</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Coalition-Vote</span>
+      <span class="metric-value ok">5 Agenten ✓</span>
+    </div>
+  </div>
+
+  <!-- HYPER AGENT -->
+  <div class="card purple">
+    <div class="card-title">🦾 HyperAgent — Tool Synthesis</div>
+    <div class="metric-row">
+      <span class="metric-label">tool_ping</span>
+      <span class="metric-value ok">✓ registriert</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">tool_system_time</span>
+      <span class="metric-value ok">✓ ausgeführt</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">tool_json_validate</span>
+      <span class="metric-value ok">✓ registriert</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">AST Validator</span>
+      <span class="metric-value ok">aktiv — LLM-Code geprüft</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Safety Patterns</span>
+      <span class="metric-value ok">os.system, eval() → DENY</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Persistenz</span>
+      <span class="metric-value ok">synthesized_tools/ ✓</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">HyperMemory</span>
+      <span class="metric-value ok">16 SHA-256 Einträge</span>
+    </div>
+  </div>
+
+  <!-- ONSIGHT -->
+  <div class="card yellow">
+    <div class="card-title">⚡ ZEITKRITISCH — Onsight Ventures</div>
+    <div style="text-align:center;padding:12px;background:#1a1000;border-radius:6px;margin:8px 0">
+      <div style="font-size:24px;color:var(--yellow);font-weight:bold">31.03.2026 · 10:00</div>
+      <div style="color:var(--dim);font-size:11px;margin-top:4px">Dennis Weiß · VC Investor</div>
+      <div style="margin-top:8px">
+        <a href="https://calendly.com/dw-onsight/45min" target="_blank"
+           style="color:var(--cyan);font-size:12px;text-decoration:none">
+          📅 calendly.com/dw-onsight/45min
+        </a>
+      </div>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Demo-Script</span>
+      <span class="metric-value ok">bereit ✓</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">FusionKernel Demo</span>
+      <span class="metric-value ok">κ=3.3493 ✓</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Nuclear Demo</span>
+      <span class="metric-value ok">8 Szenarien ✓</span>
+    </div>
+    <div class="metric-row">
+      <span class="metric-label">Paper DOI</span>
+      <span class="metric-value info">10.5281/zenodo.14999136</span>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">
+    &nbsp;&nbsp;&nbsp;
+    🟢 DDGK AKTIV &nbsp;·&nbsp;
+    κ=3.3493 CCRN AKTIV &nbsp;·&nbsp;
+    338 SHA-256 Einträge &nbsp;·&nbsp;
+    3 Tools synthetisiert &nbsp;·&nbsp;
+    ⚡ 31.03.2026 10:00 Onsight Ventures Call &nbsp;·&nbsp;
+    🔗 Decision Chain: 3 Einträge, Integrität OK &nbsp;·&nbsp;
+    ⚛️ Nuclear Simulator: Cyber-Replay BLOCKIERT &nbsp;·&nbsp;
+    🦾 HyperAgent: tool_system_time ausgeführt ✓ &nbsp;·&nbsp;
+    🔑 EU AI Act Art.12/13/14 konform &nbsp;·&nbsp;
+    📜 DOI: 10.5281/zenodo.14999136 &nbsp;·&nbsp;
+    🌐 paradoxonai.at &nbsp;·&nbsp;
+  </span>
+</div>
+
+<script>
+  // Live Clock
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('clock').textContent =
+      now.toTimeString().split(' ')[0] + ' UTC+2';
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // κ Animation
+  let kappaBase = 3.3493;
+  setInterval(() => {
+    const noise = (Math.random() - 0.5) * 0.008;
+    const kappa = (kappaBase + noise).toFixed(4);
+    document.getElementById('kappa').textContent = kappa;
+  }, 2500);
+</script>
+
+</body>
+</html>

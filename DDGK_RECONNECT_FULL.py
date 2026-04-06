@@ -125,7 +125,10 @@ try:
         capture_output=True, text=True, cwd=str(WS)
     )
     ok(f"Letzter Commit:\n  {result2.stdout.strip()}")
-    ddgk_log("RECONNECT", "github_status", {"remote": result.stdout[:80]})
+    # Token aus Remote-URL entfernen bevor ins Log
+    import re as _re
+    safe_remote = _re.sub(r'ghp_[A-Za-z0-9]+@', 'ghp_REDACTED@', result.stdout)
+    ddgk_log("RECONNECT", "github_status", {"remote": safe_remote[:80]})
 except Exception as ex:
     warn(f"Git: {ex}")
 

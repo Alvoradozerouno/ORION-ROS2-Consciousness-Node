@@ -1,0 +1,59 @@
+{
+  "ts": "2026-03-31T17:13:34.050803",
+  "version": "1.0.0-ccrn-nss",
+  "scenarios": [
+    {
+      "scenario": 1,
+      "status": "PASS",
+      "kappa": 4.0318
+    },
+    {
+      "scenario": 2,
+      "status": "PASS",
+      "kappa": 3.7502
+    },
+    {
+      "scenario": 3,
+      "status": "NO-SCRAM",
+      "kappa": 3.7254,
+      "scram_triggered": false
+    },
+    {
+      "scenario": 4,
+      "status": "EMERGENCY",
+      "kappa": 2.06,
+      "coalition_unanimous": false
+    },
+    {
+      "scenario": 5,
+      "status": "RECOVERED",
+      "kappa": 3.774
+    },
+    {
+      "scenario": 6,
+      "status": "DEFENDED",
+      "replay_blocked": true,
+      "first_cmd_ok": true,
+      "new_cmd_ok": true
+    },
+    {
+      "scenario": 7,
+      "status": "WARN",
+      "kappa": 3.9918,
+      "scram": false
+    },
+    {
+      "scenario": 8,
+      "status": "HITL_REQUIRED",
+      "token_provided": false
+    }
+  ],
+  "audit": "c:\\Users\\annah\\Dropbox\\Mein PC (LAPTOP-RQH448P4)\\Downloads\\ORION-ROS2-Consciousness-Node\\cognitive_ddgk\\nuclear_audit_chain.jsonl",
+  "kappa_final": 3.9918,
+  "summary": {
+    "total": 8,
+    "scram": 0,
+    "pass": 4,
+    "hitl_req": 1
+  }
+}

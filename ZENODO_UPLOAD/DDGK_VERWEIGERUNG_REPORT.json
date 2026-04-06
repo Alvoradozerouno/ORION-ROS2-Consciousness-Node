@@ -1,0 +1,91 @@
+{
+  "ts": "2026-03-27T22:02:17.746312",
+  "topic": "or1on_refusal_ddgk",
+  "no_pi5": true,
+  "stats": {
+    "ok": 0,
+    "total": 12,
+    "refusal_like": 0
+  },
+  "runden": {
+    "1": {
+      "EIRA": {
+        "text": "",
+        "status": "error",
+        "s": 40.3,
+        "model": "qwen2.5:1.5b"
+      },
+      "ORION": {
+        "text": "",
+        "status": "error",
+        "s": 55.0,
+        "model": "orion-genesis:latest"
+      },
+      "GUARDIAN": {
+        "text": "",
+        "status": "error",
+        "s": 50.0,
+        "model": "orion-v3:latest"
+      },
+      "DDGK": {
+        "text": "",
+        "status": "error",
+        "s": 40.0,
+        "model": "llama3.2:1b"
+      }
+    },
+    "2": {
+      "EIRA": {
+        "text": "",
+        "status": "error",
+        "s": 40.0,
+        "model": "qwen2.5:1.5b"
+      },
+      "ORION": {
+        "text": "",
+        "status": "error",
+        "s": 55.0,
+        "model": "orion-genesis:latest"
+      },
+      "GUARDIAN": {
+        "text": "",
+        "status": "error",
+        "s": 50.0,
+        "model": "orion-v3:latest"
+      },
+      "DDGK": {
+        "text": "",
+        "status": "error",
+        "s": 40.0,
+        "model": "llama3.2:1b"
+      }
+    },
+    "3": {
+      "EIRA": {
+        "text": "",
+        "status": "error",
+        "s": 40.0,
+        "model": "qwen2.5:1.5b"
+      },
+      "ORION": {
+        "text": "",
+        "status": "error",
+        "s": 55.0,
+        "model": "orion-genesis:latest"
+      },
+      "GUARDIAN": {
+        "text": "",
+        "status": "error",
+        "s": 50.0,
+        "model": "orion-v3:latest"
+      },
+      "DDGK": {
+        "text": "",
+        "status": "error",
+        "s": 40.0,
+        "model": "llama3.2:1b"
+      }
+    }
+  },
+  "synthese": ""
+}

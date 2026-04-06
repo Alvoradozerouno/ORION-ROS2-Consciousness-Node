@@ -24,6 +24,7 @@ jobs:
     
     - name: Install dependencies
       run: |
+        pip install -q -r requirements.txt
         pip install -q pytest requests rich fastapi uvicorn httpx
         pip install -q psutil paramiko 2>/dev/null || true
     

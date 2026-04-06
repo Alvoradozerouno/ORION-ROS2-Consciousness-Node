@@ -1,0 +1,56 @@
+# DDGK EXEC POLICY RULES
+# Inspiriert von: openai/codex exec_policy.rs
+# Format: ALLOW <pattern> | DENY <pattern> | ASK <pattern>
+# Patterns werden als Regex gegen den Befehl gematcht
+
+# ─── ALWAYS ALLOW (sichere read-only Operationen) ───────────────────
+ALLOW python *.py
+ALLOW python -X utf8 *.py
+ALLOW python -m pytest
+ALLOW git status
+ALLOW git log
+ALLOW git diff
+ALLOW git add *
+ALLOW git commit *
+ALLOW pip install *
+ALLOW pip list
+ALLOW dir *
+ALLOW ls *
+ALLOW cat *
+ALLOW type *
+
+# ─── ALWAYS DENY (gefährlich / irreversibel) ────────────────────────
+DENY rm -rf /
+DENY del /F /S /Q C:\
+DENY format *
+DENY DROP TABLE *
+DENY TRUNCATE *
+DENY * | curl * | bash
+DENY * | wget * | sh
+
+# ─── ASK USER (brauchen Bestätigung) ────────────────────────────────
+ASK git push *
+ASK git push --force *
+ASK python * --delete *
+ASK python * --reset *
+ASK python * --wipe *
+ASK * deploy *
+ASK * production *
+ASK ssh *
+ASK scp *
+
+# ─── DDGK SPECIFICS ─────────────────────────────────────────────────
+ALLOW python ddgk_*.py
+ALLOW python cognitive_ddgk/*.py
+ALLOW python orion_*.py
+ALLOW python hyper_agent*.py
+ALLOW python ddgk_guardian_v2.py
+ALLOW python cognitive_ddgk/memory_pipeline.py
+
+# ─── EU AI ACT FLAGGED DOMAINS ──────────────────────────────────────
+# Aktionen in diesen Domänen erfordern REQUIRE_HUMAN
+ASK * medizin *
+ASK * gesundheit *
+ASK * kredit *
+ASK * versicherung *
+ASK * infrastruktur *

@@ -1,0 +1,68 @@
+{
+  "ts": "2026-04-03T12:07:08.150824+00:00",
+  "session_id": "tech_sota_2026-04-03",
+  "topic": "tech_sota_t2t_economics",
+  "transcript": [
+    {
+      "agent": "ORION",
+      "text": "**T2T-Minimum (ohne Folklore):**\n  • **Maschinenlesbare Policy**: Risk-Score, Entscheidung, Grund — nicht nur Logs.\n  • **Stabile API** oder klare Library-Grenzen: Versionierung, Timeouts, klare Fehlercodes.\n  • **Replay / Nachvollziehbarkeit**: gleicher Input → gleiche Policy-Antwort (deterministisch wo möglich).\n  • **Secret-Safety**: Redaction vor Persistenz; nie „Prompt enthält Produktions-Key“.\n  • **Runbooks**: was tun bei HIGH/REQUIRE_HUMAN — nicht nur „block“.\n\nIm Repo: `ddgk_guardian_v2.py` (Score + Entscheidung), `cognitive_ddgk/decision_chain.py`\n(Schema mit `alternatives_considered`), JSONL-Append — das ist der Kern für T2T-Vertrauen."
+    },
+    {
+      "agent": "VITALITY",
+      "text": "**Developer Experience:** Wir brauchen **ein** Kommando und **eine** Truth-Source.\n  • `pytest`/CI für Policy-Regression (nicht nur Demos).\n  • Kurze „happy path“ + „malicious path“ Fixtures (Injection, destructive shell).\n  • Dokumentation: „Wie hänge ich MCP / Tools ein?“ — sonst bleibt DDGK Folklore.\n\n⚗️ Lücke: je nach Branch — PyPI-Paket, Release-Notes und semver sind noch Team-Aufgabe."
+    },
+    {
+      "agent": "NEXUS",
+      "text": "**Betrieb:** On-Prem (Pi5) vs. Cloud ist für Techniker ein **Contract-Thema**:\n  Latenz, Offline, Update-Pfad, Backup der Chain-Dateien.\n  Edge braucht **kleine** Modelle + **strikte** Policy — nicht das umgekehrte.\n\n✓ Fakt: Pi5/Ollama taucht in mehreren Skripten als Remote-Knoten auf (LAN).\n⚗️ Produktreife = TLS, AuthN/Z für API, Rate-Limits — explizit backlog-fähig."
+    },
+    {
+      "agent": "DDGK",
+      "text": "**Ökonomischer Hebel ist Nachweisbarkeit**, nicht „mehr KI“.\n  • **Audit-Trail** senkt Transaktionskosten: Legal/Compliance/Security prüfen schneller.\n  • **HITL-Token / Freigaben** machen Automatisierung **budgetierbar** (wer haftet, wann).\n  • **alternatives_considered** unterstützt Erklärbarkeit — relevant für DSGVO/EU AI Act *als Anforderung*,\n    finale rechtliche Einordnung bleibt **Mensch + Anwalt** (`JURIST`-Flag).\n\n✓ Im Code: verkettete Hashes in `cognitive_ddgk/decision_chain.jsonl` (Guardian schreibt Assessments)."
+    },
+    {
+      "agent": "EIRA",
+      "text": "**Tech ↔ Business:** Wirtschaftliche Akteure kaufen **Risikoreduktion** und **Zeit bis Audit-OK**.\n  Pitch-technisch: „Hier ist der Export: Entscheidung, Alternativen, Risk-Score, Zeitstempel, Hash-Kette.“\n  Das ist verkaufbar; reine Modell-Qualität allein ist es oft nicht.\n\n⚗️ ARR entsteht erst mit **SLOs**, **Vertrag**, **Support** — Technik liefert die Evidenzbasis."
+    },
+    {
+      "agent": "JURIST",
+      "text": "⚖️ **Regulatorik (Vorabversion — kein Ersatz für Anwalt):**\n\nEU AI Act / DSGVO verlangen je nach Use-Case **Dokumentation, menschliche Aufsicht, Logging**.\nEin technisches System kann **Evidence** produzieren; es ersetzt **keine** Konformitätsbewertung.\n\nAlle juristischen Schlussfolgerungen: **REQUIRES_HUMAN_LAWYER=True**."
+    },
+    {
+      "agent": "DIVERSITY",
+      "text": "**Global üblich (2024–2026, grob):**\n  • Agent-Frameworks: Tool-Gating, Policy-Files, Sandboxing (verschiedene Reifegrade).\n  • Cloud-Anbieter: Audit-Logs, KMS, Compliance-Zertifikate (SOC2, ISO 27001) — **getrennt** von eurer App-Logik.\n  • „Guardrails“ in Chat-Produkten: meist **vendor-black-box**, wenig exportierbare Chain-of-custody.\n\n⚗️ „Stand der Technik“ ist **fragmentiert** — genau deshalb lohnt eine **eure** integrierte Evidence-Pipeline,\n   aber Behauptungen „weltweit einzig“ sind **extern zu belegen** (Wettbewerber, Patente, Whitepapers)."
+    },
+    {
+      "agent": "PATENT",
+      "text": "**Neuheit technisch gedacht:**\n  • Hash-verkettete **App-Level** Decision Records + **explizite** Alternativen ≠ automatisch patentfähig;\n    hängt von **Anspruchsbildung** und Prior Art ab.\n  • Publikation (DOI) kann Priorität/FTO beeinflussen — **Patentanwalt** entscheidet Strategie.\n\n✓ Fakt: `DecisionRecord` im Repo enthält `alternatives_considered` als strukturiertes Feld."
+    },
+    {
+      "agent": "GUARDIAN",
+      "text": "**Abgrenzung (technisch, vorsichtig formuliert):**\n  • Risk-Assessment **plus** persistierter Chain-Eintrag inkl. `alternatives_considered` und EU-AI-Act-Flag\n    im Guardian-Pfad (`ddgk_guardian_v2.py` → `decision_chain.jsonl`).\n  • Untrusted-Tool-Args / Injection-Heuristik — **regelbasiert**, nicht „magische Sicherheit“.\n\n⚗️ Vergleich zu Open-Source-Coding-Agenten: oft Policy **ohne** eure **integrierte** JSONL-Chain —\n   exakte Feature-Matrix ist **Benchmark-Arbeit**, nicht Annahme."
+    },
+    {
+      "agent": "ORION",
+      "text": "**Was wir haben (Repo-greifbar):**\n  • `cognitive_ddgk/decision_chain.py` — dataclass + `DDGKDecisionChain.decide(...)`.\n  • `ddgk_guardian_v2.py` — `DDGKGuardianV2`, Decision-Enum, Chain-Write.\n  • Memory-/Pipeline- und HITL-Brücken (je nach Setup) — siehe `cognitive_ddgk/`.\n\n**Was typischerweise noch fehlt (Roadmap, nicht Wertung):**\n  • Härtung öffentlicher API (Auth, Quotas), vollständige Test-Matrix, Release Engineering."
+    },
+    {
+      "agent": "VITALITY",
+      "text": "**90 Tage (technisch realistisch):**\n  • CI-Tests für Guardian + Decision-Chain-Replay; feste Schema-Version.\n  • „Compliance-Export“ (zip/json) für Audits — ein Knopf, ein Format.\n  • Integration HITL: jeder HIGH-Risk Tool-Call mit Token-ID in der Chain.\n\n**12 Monate (⚗️, abhängig von Team/Markt):**\n  • Zertifizierungs-Story (ISO 42001 o. Ä.) **vorbereiten** — Evidence-Map, nicht nur Slides."
+    },
+    {
+      "agent": "NEXUS",
+      "text": "**Edge / Multi-Knoten:** Gleiche Policy-Engine, lokale Chain-Replikation oder zentrale Aggregation —\nwichtig ist **eindeutige Knoten-ID** und Uhrzeit-Sync.\n\n⚗️ Split-Brain / Merge von Chains ist ein **Forschungs- und Engineering-Thema** — nicht trivial."
+    },
+    {
+      "agent": "HYPER",
+      "text": "**Techniker-Satz:**\n„Wir liefern **append-only Evidence** für Agentenentscheidungen — Policy, Score, Alternativen, Hash — damit ihr\nSecurity und Compliance **messt** statt zu raten.“\n\n**Business-Satz:**\n„Wir verkürzen den Weg von **Pilot** zu **unterschriebenem Betrieb**, weil der Nachweis **exportierbar** ist.“\n\n⚗️ Beides setzt voraus, dass Betrieb (SLO, Vertrag, Incidents) mitgezogen wird."
+    },
+    {
+      "agent": "DDGK",
+      "text": "**Governance-Fazit:**\n  • **AUTO_APPROVE** für diese Diskurs-Session: reines Strategie-/Technik-Text-Output, keine Tool-Ausführung.\n  • Nächster harte Schritt: **eine** Referenz-Integration (z. B. ein MCP-Tool) mit **Pflicht-Chain-Eintrag**\n    und **pytest**-Goldfile.\n\n✓ Log: Einträge in `cognitive_memory.jsonl` unter `type=tech_sota_discourse`."
+    }
+  ],
+  "anchors_repo": [
+    "cognitive_ddgk/decision_chain.py",
+    "ddgk_guardian_v2.py",
+    "cognitive_ddgk/decision_chain.jsonl"
+  ]
+}

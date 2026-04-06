@@ -256,7 +256,7 @@ head("GUARDIAN — Wissenschaftliche Integrität & κ-Status")
 print("Letztes validiertes κ_CCRN = 3.3493  (N=3, Schwelle 2.0 → +67%)")
 print("Resonanz-Ratio             = 0.6259  (> δ_min=0.5 ✓)")
 print("Coalition-Vote             = 3/5 JA  (60%, Quorum erreicht ✓)")
-print("DDGK Memory-Eintraege      = 39 SHA-256-verkettete Events")
+print(f"DDGK Memory-Eintraege      = {mem_entries} SHA-256-verkettete Events")
 print("Zenodo DOI                 = 10.5281/zenodo.15050398")
 print("GitHub                     = gepusht & aktuell")
 

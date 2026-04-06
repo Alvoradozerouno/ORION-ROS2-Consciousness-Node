@@ -1,0 +1,2 @@
+# ORION-ROS2-Consciousness-Node — gemeinsame CLI-/Tool-Abhängigkeiten
+python-dotenv>=1.0.0,<2

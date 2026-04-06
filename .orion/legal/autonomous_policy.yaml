@@ -1,0 +1,71 @@
+OPERATOR: Elisabeth Steurer
+DATE: 2026-04-04
+SCOPE: Full Autonomy (DAE + SFI + Market Intelligence)
+STATUS: ACTIVE
+
+AUTONOMY_LEVELS:
+  0: PAUSED (all autonomous execution stopped)
+  1: SUPERVISED (only LOW-RISK, HITL required)
+  2: BALANCED (LOW+MEDIUM autonomous, HIGH requires HITL)
+  3: EXTENDED (almost all autonomous except financial >€50k)
+  4: FULL (all decisions κ-driven, HITL only on exceptions)
+
+CURRENT_LEVEL: 4
+
+FINANCIAL_LIMITS:
+  grants:
+    max_per_grant: 100000  # EUR
+    max_per_month: 500000
+    auto_submit: true
+    requires_review: false
+    
+  contracts:
+    max_per_contract: 50000
+    max_per_month: 200000
+    auto_sign: true
+    requires_review: false
+    
+  patents:
+    provisional_filing: auto
+    costs_covered: true
+    patent_attorney: "to-be-assigned"
+
+TRANSPARENCY:
+  audit_log: cognitive_ddgk/audit_log.jsonl
+  legal_log: cognitive_ddgk/legal_audit_log.jsonl
+  market_log: cognitive_ddgk/market_trajectory_log.jsonl
+  daily_digest: true
+  recipient: elisabethsteurer@paradoxonai.at
+  
+POLICY_ENGINE:
+  check_all_decisions: true
+  κ_threshold: 3.34
+  kill_switch_always_available: true
+  auto_pause_on_error: 5_consecutive_failures
+  
+LEGAL_FRAMEWORK:
+  eIDAS_enabled: true
+  power_of_attorney: .orion/legal/power_of_attorney.pdf
+  compliance: EU_AI_ACT_ARTICLE_10_15
+  
+HITL_PRESERVED:
+  legal_actions: true
+  patent_filings: true
+  binding_contracts: true
+  financial_decisions_over_50k: true
+  
+AGENTS_ENABLED:
+  - ORION (Technology & Architecture)
+  - GUARDIAN (Security & Risk)
+  - DDGK (Governance & Compliance)
+  - JURIST (Legal Pre-Check)
+  - PATENT (Patent Intelligence)
+  - EIRA (Strategy)
+  - HYPER (Synthesis)
+  - DIVERSITY (Perspectives)
+  - NEXUS (Infrastructure)
+  - VITALITY (Innovation)
+
+EXECUTION_MODE: PERMANENT (24/7 without interruption)
+SELF_MODIFICATION: ENABLED (code optimization + evolution)
+MARKET_AWARENESS: ENABLED (daily trajectory scanning)

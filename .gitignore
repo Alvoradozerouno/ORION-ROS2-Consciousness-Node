@@ -55,3 +55,9 @@ build/
 dist/
 *.egg-info/
 .pytest_cache/
+# <<< MULTIAGENT_WORKSPACE_CLEANUP_BEGIN
+# Generierte Asset-Analyse (Multi-Agent)
+cognitive_ddgk/asset_analysis_report.json
+# ORION-Seed-Snapshot — wiederherstellbar: python sync_orion_seed_complete.py
+external/ORION_SEED_COMPLETE/
+# <<< MULTIAGENT_WORKSPACE_CLEANUP_END

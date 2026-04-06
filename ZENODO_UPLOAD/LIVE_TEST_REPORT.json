@@ -1,0 +1,18 @@
+{
+  "ts": "2026-03-30T09:28:21.572044",
+  "results": {
+    "ollama_local": "OK (17 Modelle)",
+    "ddgk_memory": "OK (338 Eintraege)",
+    "cog_state": "kappa=3.3493 CCRN=True stop=False",
+    "ddgk_core": "OK kappa=3.3493",
+    "fusion_kernel": "OK kappa=3.3493",
+    "loop_memory": "OK (17 Eintraege)",
+    "nuclear_audit": "OK (27 Eintraege)",
+    "auto_loop": "OK 2/2 completed",
+    "nuclear_sim": "OK S1=PASS S6=DEFENDED",
+    "pi5_nexus": "ONLINE (2 Modelle)"
+  },
+  "ok_count": 9,
+  "total": 10,
+  "fully_autonomous": false
+}

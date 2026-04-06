@@ -308,6 +308,117 @@ paradoxonai.at""",
     }
 
 
+def get_roi_ventures_email() -> dict:
+    """ROI Ventures Follow-Up (haben bereits geantwortet — heißester Lead!)."""
+    return {
+        "to": "office@roi-ventures.com",  # Kontakt aus Traction im TechBrief
+        "subject": "Pitch Deck Ready — Paradoxon AI Deterministic Industrial AI",
+        "body": """Dear ROI Ventures Team,
+
+Thank you for your positive response to our initial pitch.
+
+As requested, here is our updated overview (April 2026).
+
+WHAT'S NEW SINCE MARCH:
+• AEC Structural Compliance Checks (Eurocode EC2/EC3/EC8) — Live System
+• Vision Bridge: Mobile Camera → Local LLM → On-Premise Analysis (no cloud)
+• 5 Neural Network Architectures including GANN (Governance-Aware NN, patentable)
+• EIC Pathfinder consortium in formation
+• 4-node heterogeneous edge network running live
+
+OUR CORE:
+Paradoxon AI builds SIK (Sovereign Industrial Kernel) — deterministic AI where
+every decision is formally proven or abstained. Zero false positives for verified
+rules. EU AI Act compliant by architecture, not by wrapper.
+
+METRICS:
+• DOI: 10.5281/zenodo.18955077 (peer-citable)
+• TRL: 4 (functional proof-of-concept, all modules running)
+• TAM: $200B+ (Industrial AI + Disaster Response + AEC combined)
+• Ask: €250.000 Seed + up to €4M non-dilutive (EIC Pathfinder, May 2026)
+
+Could we schedule a 30-minute call this week?
+
+Best regards,
+Elisabeth Steurer
+CEO, Paradoxon AI
+elisabethsteurer@paradoxonai.at | +43 677 62934474
+paradoxonai.at | DOI: 10.5281/zenodo.18955077""",
+    }
+
+
+def get_eic_ncp_email() -> dict:
+    """EIC Pathfinder Beratungsanfrage — NCP Austria (URGENT: Deadline Mai 2026!)."""
+    return {
+        "to": "eic-ncp@ffg.at",
+        "subject": "Beratungsanfrage EIC Pathfinder Open 2026 — Paradoxon AI",
+        "body": """Sehr geehrte Damen und Herren,
+
+wir sind ein Deep-Tech-Startup aus Innsbruck (Paradoxon AI) und entwickeln
+deterministische KI-Architekturen für sicherheitskritische industrielle
+Anwendungen — EU AI Act konform by design.
+
+Wir möchten einen Antrag für den EIC Pathfinder Open 2026 einreichen und
+ersuchen um ein kostenloses Beratungsgespräch.
+
+UNSER PROJEKT (Kurzfassung):
+  Titel:       "GANN — Governance-Aware Neural Networks for Certifiable AI"
+  Paradigm:    Formale Beweisführung in neuronalen Netzen (Abstention Principle)
+  TRL:         4 (funktionierender Proof-of-Concept)
+  DOI:         10.5281/zenodo.18955077
+  Team:        Gerhard Hirschmann (CTO) + Elisabeth Steurer (CEO)
+  Standort:    St. Johann in Tirol / Innsbruck
+
+KONSORTIUM in Aufbau:
+  - Paradoxon AI (Lead, AT)
+  - Kontakt zu Prof. Prodan, UIBK (Edge AI Cooperation bereits besprochen)
+  - EU-Partner gesucht: TU Wien, ETH Zürich oder Politecnico Milano
+
+Könnten wir einen Telefontermin für diese Woche vereinbaren?
+
+Mit freundlichen Grüßen,
+Elisabeth Steurer
+CEO, Paradoxon AI
+elisabethsteurer@paradoxonai.at | +43 677 62934474
+paradoxonai.at""",
+    }
+
+
+def get_bmaw_email() -> dict:
+    """BMAW / AI Mission Austria — Kontaktaufnahme."""
+    return {
+        "to": "innovation@bmaw.gv.at",
+        "subject": "AI Mission Austria — Paradoxon AI, deterministisches Industrial AI System",
+        "body": """Sehr geehrte Damen und Herren,
+
+im Rahmen der AI Mission Austria möchten wir Ihnen Paradoxon AI vorstellen —
+ein Deep-Tech-Startup aus St. Johann in Tirol.
+
+Wir entwickeln SIK (Sovereign Industrial Kernel), ein deterministisches
+KI-Entscheidungssystem, das:
+• EU AI Act Anforderungen (Art. 13/14) by Architecture erfüllt
+• Vollständige Audit-Trails generiert (formal beweisbar)
+• Edge-fähig ist (20 Watt statt 10 kW Cloud)
+• Österreichische Datensouveränität gewährleistet
+
+RELEVANZ FÜR AI MISSION AUSTRIA:
+  Unser System ist genau das, was der EU AI Act für hochriskante Systeme
+  verlangt — und wir bauen es als Österreichisches Produkt.
+
+AKTUELLE TRACTION:
+  DOI: 10.5281/zenodo.18955077 | TRL 4
+  Pilot-Gespräche: TIWAG (Tiroler Wasserkraft)
+  EIC Pathfinder Antrag in Vorbereitung
+
+Wir würden uns über ein Gespräch oder eine Vorstellung beim BMAW freuen.
+
+Mit freundlichen Grüßen,
+Elisabeth Steurer
+CEO, Paradoxon AI
+elisabethsteurer@paradoxonai.at | +43 677 62934474 | paradoxonai.at""",
+    }
+
+
 def get_tiwag_followup_email() -> dict:
     """TIWAG Follow-Up Email."""
     return {
@@ -351,8 +462,8 @@ def main():
     parser.add_argument("--inbox",     action="store_true", help="Posteingang lesen")
     parser.add_argument("--dry-run",   action="store_true", help="Nur Vorschau, nicht senden")
     parser.add_argument("--target",    default="self",
-                        choices=["self", "hhi", "tiwag", "all"],
-                        help="Ziel: self=Test-Email, hhi=Hermann Hauser, tiwag=TIWAG")
+                        choices=["self", "hhi", "tiwag", "roi", "eic", "bmaw", "all"],
+                        help="Ziel: self | hhi | tiwag | roi | eic | bmaw | all")
     args = parser.parse_args()
 
     env = load_env()
@@ -415,6 +526,15 @@ def main():
 
         if args.target in ["tiwag", "all"]:
             emails_to_send.append(get_tiwag_followup_email())
+
+        if args.target in ["roi", "all"]:
+            emails_to_send.append(get_roi_ventures_email())
+
+        if args.target in ["eic", "all"]:
+            emails_to_send.append(get_eic_ncp_email())
+
+        if args.target in ["bmaw", "all"]:
+            emails_to_send.append(get_bmaw_email())
 
         print(f"\n  {len(emails_to_send)} Email(s) geplant:")
         for e in emails_to_send:

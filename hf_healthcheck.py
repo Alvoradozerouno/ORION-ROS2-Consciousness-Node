@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Hugging Face Zugang pruefen — liest HF_TOKEN / HUGGINGFACE_TOKEN aus master.env.ini.
+Hugging Face Zugang pruefen — liest master.env.ini.
+whoami/API: ausschliesslich HUGGINGFACE_TOKEN (Abschnitt ~Zeile 306). HF_TOKEN wird nur angezeigt, nicht fuer die API genutzt.
 Gibt NIE den vollen Token aus (nur Laenge + Status).
 """
 import json, pathlib, re, sys, urllib.error, urllib.request
@@ -45,14 +46,16 @@ def whoami(token: str) -> tuple[int, dict | None]:
 def main() -> int:
     print("=== HF Healthcheck (keine Secrets in der Ausgabe) ===\n")
     t_ini, t_hg = load_hf_from_ini()
-    primary = t_ini or t_hg
-    if not primary:
-        print("FEHL: Kein HF_TOKEN / HUGGINGFACE_TOKEN in master.env.ini gefunden.")
+    # API nur mit HUGGINGFACE_TOKEN (~Zeile 306); HF_TOKEN ignorieren.
+    if not t_hg:
+        print("FEHL: HUGGINGFACE_TOKEN fehlt in master.env.ini (~Zeile 306).")
+        print("      HF_TOKEN allein reicht fuer diesen Check nicht.")
         return 2
+    primary = t_hg
     same = t_ini and t_hg and (t_ini == t_hg)
-    print(f"INI: HF_TOKEN={'gesetzt' if t_ini else 'fehlt'} (Laenge {len(t_ini) if t_ini else 0})")
-    print(f"INI: HUGGINGFACE_TOKEN={'gesetzt' if t_hg else 'fehlt'} (Laenge {len(t_hg) if t_hg else 0})")
-    print(f"Beide gleich: {same}\n")
+    print(f"INI: HF_TOKEN (nur Info, nicht fuer API)={'gesetzt' if t_ini else 'fehlt'} (Laenge {len(t_ini) if t_ini else 0})")
+    print(f"INI: HUGGINGFACE_TOKEN (API)={'gesetzt' if t_hg else 'fehlt'} (Laenge {len(t_hg) if t_hg else 0})")
+    print(f"HF_TOKEN == HUGGINGFACE_TOKEN: {same}\n")
 
     code, data = whoami(primary)
     if code == 200 and isinstance(data, dict):
@@ -70,9 +73,8 @@ def main() -> int:
         "So beheben:\n"
         "  1) https://huggingface.co/settings/tokens — neuen Access Token erstellen\n"
         "     (mindestens Read; fuer Spaces/Upload: Write oder fine-grained passend).\n"
-        "  2) In master.env.ini ZWEI Zeilen setzen (gleicher Wert):\n"
-        "       HF_TOKEN=hf_...\n"
-        "       HUGGINGFACE_TOKEN=hf_...\n"
+        "  2) In master.env.ini HUGGINGFACE_TOKEN setzen (~Zeile 306) — dieser Check nutzt nur diesen Key.\n"
+        "       Optional: HF_TOKEN=... nur fuer andere Tools, die diese Variable erwarten.\n"
         "  3) Optional: huggingface-cli login  (speichert unter ~/.cache/huggingface/token)\n"
         "  4) Dieses Skript erneut: python hf_healthcheck.py\n"
     )

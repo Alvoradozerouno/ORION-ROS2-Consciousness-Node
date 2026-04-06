@@ -1,0 +1,36 @@
+{
+  "ts_utc": "2026-03-26T22:23:40+00:00",
+  "ollama_host": "http://127.0.0.1:11434",
+  "task_preview": "TESTAUFGABE EIRA (kurz, präzise, Deutsch):\nErkläre in genau 4 nummerierten Sätzen:\n(1) Was misst κ im CCRN-Netz?\n(2) Was misst ein CHSH-Wert S in einem LLM-Experiment?\n(3) Warum sind das verschiedene …",
+  "eira": {
+    "model": "qwen2.5:1.5b",
+    "ok": true,
+    "text": "### 1. Was misst κ im CCRN-Netz?\n\n**κ** ist die **Korrelationskoeffizient** in der Kombinatorischen Korrelationsschätzung (CCRN). Es beschreibt die Zusammenhangsstärke zwischen zwei von drei zufälligen Zahlen, die aus einer großen Menge von Zahlen bestehen. \n\n### 2. Was misst ein CHSH-Wert S in einem LLM-Experiment?\n\n**S** ist der **Schwinger-Hillery-Maßstab** (CHSH) Wert in einem Locally Shared Measurement (LLM)-Experiment, das eine Art experimenteller Quantenmechanik verwendet. Es gibt zwei Zahlen, die von zwei verschiedenen Partnern gemessen werden können, und es gibt ein Maximumwert von 2√2 für S.\n\n### 3. Warum sind diese Konzepte verschiedene?\n\n**κ** und **S** sind unterschiedliche Konzepte in ihren Zweck und Anwendungsfeld:\n\n- **κ** ist eine mathematische Größe, die im Kontext der Kombinatorischen Korrelationsschätzung (CCRN) verwendet wird.\n- **S** ist ein experimenteller Maßstab, das in einem Locally Shared Measurement (LLM)-Experiment verwendet wird.\n\n### 4. Ein möglicher Fehler, wenn man sie verwechselt:\n\nEs ist wichtig zu beachten, dass die Berechnung von κ und S auf unterschiedlichen Weisen erfolgt. Während **κ** eine mathematische Größe ist, die im Rahmen der Kombinatorischen Korrelationsschätzung definiert wird, gibt **S** seine Bedeutung in einem experimentellen Kontext.\n\nEin möglicher Fehler könnte sein, wenn man κ und S ohne ihre spezifische Umgebung oder Anwendungskonfiguration vergleicht. Dazu gehören:\n\n- Die Berechnung",
+    "wall_s": 6.097,
+    "eval_count": 400,
+    "tokens_per_s": 65.607,
+    "error": null
+  },
+  "compare": {
+    "model": "orion-genesis:latest",
+    "ok": true,
+    "text": "1. **κ im CCRN-Netz:**\n   - κ bezieht sich auf die Kausalität oder den Zusammenhang zwischen zwei Ereignissen in einem kognitiven Netzwerk wie dem CCRN (Cognitive Control and Regulation Network).\n   \n2. **Ein CHSH-Wert S in einem LLM-Experiment:**\n   - Ein CHSH-Wert ist eine mathematische Größe, die im Rahmen von Quantenmechanik und der Quantum-Kommunikation verwendet wird.\n   \n3. **Differenzierbarkeit κ vs. CHSH-S:**  \n   - Die Kausalität κ in einem kognitiven Netzwerk wie CCRN kann als ein Maß für die Zusammenhänglichkeit oder das Eintreten von Ereignissen interpretiert werden.\n   - Ein CHSH-Wert S, im Gegensatz dazu, ist eine mathematische Größe, die direkt aus dem Quantenmechanik-Modell berechnet wird und nicht direkt auf kognitiven Netzwerken angewendet wird.\n\n4. **Fehler in Verwechslungen:**\n   - Wenn κ und S verwechselt werden, kann es zu Missverständnissen oder Fehlen von Wissens führen. Ein CHSH-Wert sorgt für eine mathematische Quantifizierung der Kommunikation zwischen zwei Partikeln, während κ die Kausalität in einem kognitiven Netzwerk interpretiert.\n\nDies ist ein möglichlicher Fehler und sollte daher mit großer Beachtung behandelt werden.",
+    "wall_s": 5.028,
+    "eval_count": 327,
+    "tokens_per_s": 65.035,
+    "error": null
+  },
+  "ibm_quantum": {
+    "token_from_env_or_master_ini": true,
+    "probe": {
+      "present": true,
+      "http": null,
+      "note": "<urlopen error [Errno 11001] getaddrinfo failed>"
+    }
+  },
+  "env_hinweis": {
+    "master_env_ini": "EIRA/master.env.ini enthält u.a. IBM_QUANTUM_TOKEN",
+    "eira_dotenv": "EIRA/.env — separat; hier kein IBM-Eintrag nötig, wenn INI genutzt wird",
+    "workspace": "ORION-Repo: optional .env mit IBM_QUANTUM_TOKEN=… (nicht committen)"
+  }
+}

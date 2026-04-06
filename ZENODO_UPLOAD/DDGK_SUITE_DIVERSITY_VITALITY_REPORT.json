@@ -1,0 +1,22 @@
+{
+  "ts_utc": "2026-03-26T22:44:08+00:00",
+  "suite": "DDGK_DIVERSITY_VITALITY_v1",
+  "steps": [
+    {
+      "script": "DDGK_DIVERSITY_DISKUSSION.py",
+      "exit": 0
+    },
+    {
+      "script": "DDGK_VITALITAET_DISKUSSION.py",
+      "exit": 0
+    }
+  ],
+  "reports_expected": [
+    "DDGK_DIVERSITY_REPORT.json",
+    "DDGK_VITALITAET_REPORT.json"
+  ],
+  "features": [
+    "diversity: methodische Vielfalt, sigma, DDGK v2 passive observer",
+    "vitalitaet: OVI, CCRN_METRIC_FORMALIZATION_v2.1, Master orion-sik"
+  ]
+}

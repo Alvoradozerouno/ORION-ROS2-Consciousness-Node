@@ -1,0 +1,43 @@
+{
+  "experiment": "E_BELL_CHSH_CCRN",
+  "ts_utc": "2026-03-26T22:14:21+00:00",
+  "model": "qwen2.5:1.5b",
+  "host": "http://127.0.0.1:11434",
+  "trials_requested": 3,
+  "trials_valid": 1,
+  "E_ab": 1.0,
+  "E_ab_prime": 1.0,
+  "E_a_prime_b": 1.0,
+  "E_a_prime_b_prime": 1.0,
+  "S_CHSH": 2.0,
+  "S_note": "|E_ab+E_ab'+E_a'b-E_a'b'| aus Mittelwerten der Produkte (semantisches LLM-Protokoll)",
+  "classical_bound": 2.0,
+  "tsirelson_bound": 2.828427,
+  "layers_ms": {
+    "algorithmic_prep_reported_in_trial": 0.005,
+    "llm_total": 34882.163,
+    "wall_total": 34892.639,
+    "post_audit_write": 7.093,
+    "memory_append_ms": 5.97
+  },
+  "dominance": {
+    "llm_fraction_of_wall": 0.9997,
+    "non_llm_fraction_of_wall": 0.0003,
+    "interpretation": {
+      "im_algorithmus": "non_llm_fraction — Python/JSON/Parsing ohne Ollama-Generate",
+      "darueber_llm": "llm_fraction — Zeit in Ollama (nicht nur 'Algorithmus')",
+      "postsynthetisch": "post_audit_ms — Report + Memory nach Messung"
+    }
+  },
+  "synthetic": {
+    "prompts_templated": true,
+    "seed_randomized": true,
+    "synthetic_vs_postsynthetic": "synthetisch = erzeugte Kontexte; postsynthetisch = Auswertung+Audit nach Messung"
+  },
+  "log_path": "experiments\\logs\\e_bell_chsh_ccrn.jsonl",
+  "speed": {
+    "tokens_generated_total": 34,
+    "llm_calls": 12,
+    "mean_tokens_per_s": 0.9747
+  }
+}
