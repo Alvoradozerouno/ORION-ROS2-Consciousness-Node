@@ -38,6 +38,11 @@ CREDENTIAL_ENV_KEYS: tuple[str, ...] = (
     "OPENAI_API_KEY",
     "ANTHROPIC_API_KEY",
     "DDGK_API_KEY",
+    "OLLAMA_HOST",
+    "OLLAMA_PI5",
+    "OLLAMA_NOTE10",
+    "NOTE10_DDGK_URL",
+    "ORION_USB_ROOT",
 )
 
 

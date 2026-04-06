@@ -76,6 +76,29 @@ def get_vitality() -> dict:
         # psutil nicht installiert → Fallback
         return {"vitality": 70.0, "note": "psutil nicht installiert (pip install psutil)"}
 
+def probe_ml_edge() -> dict:
+    """Termux/Android: welche Laufzeiten fuer NPU/NNAPI/TFLite erkennbar sind (ohne Modellpfad)."""
+    info: dict = {
+        "tflite_runtime": False,
+        "tensorflow": False,
+        "tensorflow_lite": False,
+    }
+    try:
+        import tflite_runtime.interpreter as _tfl  # noqa: F401
+
+        info["tflite_runtime"] = True
+    except ImportError:
+        pass
+    try:
+        import tensorflow as tf
+
+        info["tensorflow"] = True
+        info["tensorflow_lite"] = hasattr(tf, "lite")
+    except ImportError:
+        pass
+    return info
+
+
 def check_vision() -> dict:
     """Prüft ob IP Webcam App auf Port 8080 läuft."""
     try:
@@ -128,11 +151,16 @@ class Note10Handler(BaseHTTPRequestHandler):
                 "status":    "online",
                 "watt_limit":WATT_LIMIT,
                 "vitality":  vitality,
+                "ml_edge":   probe_ml_edge(),
                 "ts":        datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 "strengths": ["vision", "npu_inference", "mobile_test", "camera"],
                 "ip":        socket.gethostbyname(socket.gethostname()),
                 "port":      PORT,
             })
+
+        # GET /npu — ML/TFLite-Laufzeit-Status (kein Benchmark, keine Secrets)
+        elif path == "/npu":
+            self._send_json({"node": NODE_NAME, "ml_edge": probe_ml_edge()})
 
         # GET /vision — IP Webcam Status
         elif path == "/vision":
@@ -162,7 +190,7 @@ class Note10Handler(BaseHTTPRequestHandler):
                 "vision":    vision,
                 "guardian":  "active",
                 "strengths": ["vision", "npu_inference", "mobile_test", "camera"],
-                "endpoints": ["/health", "/status", "/vision", "/task", "/guardian"],
+                "endpoints": ["/health", "/status", "/npu", "/vision", "/task", "/guardian"],
                 "ts":        datetime.datetime.now(datetime.timezone.utc).isoformat(),
             })
 
@@ -268,6 +296,7 @@ def main():
     print(f"  Endpoints:")
     print(f"    GET  http://{local_ip}:{PORT}/health")
     print(f"    GET  http://{local_ip}:{PORT}/status")
+    print(f"    GET  http://{local_ip}:{PORT}/npu")
     print(f"    GET  http://{local_ip}:{PORT}/vision")
     print(f"    POST http://{local_ip}:{PORT}/task")
     print(f"    POST http://{local_ip}:{PORT}/guardian")

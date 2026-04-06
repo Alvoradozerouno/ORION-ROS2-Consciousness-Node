@@ -169,6 +169,18 @@ python ddgk_arbitrage.py
 
 ---
 
+## 🤖 16-Agenten Edge-Assembly (Laptop)
+
+Vom Repo-Root (nach `.env` mit `OLLAMA_*`, optional `NOTE10_DDGK_URL`):
+
+```bash
+python DDGK_EDGE_CLUSTER_ASSEMBLY.py
+```
+
+Report: `ZENODO_UPLOAD/DDGK_EDGE_CLUSTER_ASSEMBLY_REPORT.json` — prüft Ollama-Knoten, optional Note10-HTTP-Agent, Laptop-GPU, USB-Pfade; ruft `agents/agent_1..16.py` mit Mission `EDGE_CLUSTER` auf.
+
+---
+
 ## 🎯 Was das Note10 für DDGK bringt
 
 | Feature | Ohne Note10 | Mit Note10 |
