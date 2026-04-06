@@ -33,6 +33,7 @@ BATCHES: list[tuple[str, list[str]]] = [
             "ollama_nodes_scan.py",
             "note10_lan_discover.py",
             "note10_start_from_laptop.py",
+            "note10_ssh_check.py",
             "scripts/termux_note10_bootstrap.sh",
             ".env.example",
             ".gitignore",

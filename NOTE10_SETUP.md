@@ -202,6 +202,16 @@ python ddgk_arbitrage.py
 
 ---
 
+## SSH: „Connection timed out“ (Laptop → Note10)
+
+1. **IP prüfen** (auf dem Phone, Termux): `ip addr` oder `ifconfig` — **WLAN-IP** oft `wlan0`, nicht Loopback.
+2. **sshd läuft?** `sshd` — lauscht standardmäßig auf **8022**.
+3. **Gleiches Netz:** kein **Gäste-WLAN** mit **Client-Isolation**; Laptop und Phone dieselbe SSID.
+4. **Scan:** `python note10_lan_discover.py` — zeigt u. a. offene **8022**.
+5. **Diagnose:** `python note10_ssh_check.py` — TCP-Test zu `NOTE10_SSH_HOST` / Port + optional `/health`.
+
+---
+
 ## Start vom Laptop (SCP + SSH)
 
 Auf dem Note10: **`pkg install openssh python`**, **`passwd`**, **`sshd`** (Port **8022**). `whoami` → `NOTE10_SSH_USER`.
