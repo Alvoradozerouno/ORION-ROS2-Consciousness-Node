@@ -15,7 +15,7 @@
 ║   • Task Accept + Result zurück                                    ║
 ║                                                                    ║
 ║  Starten auf Note10 (Termux):                                     ║
-║    python ddgk_note10_agent.py                                    ║
+║    python3 ddgk_note10_agent.py                                   ║
 ║                                                                    ║
 ║  Test vom Laptop:                                                  ║
 ║    curl http://192.168.1.101:5001/health                          ║
@@ -23,10 +23,11 @@
 
 INSTALLATION (Termux auf Note10):
   pkg install python
-  pip install requests
+  python3 -m pip install --user requests psutil
   # Optional für Vision:
   # IP Webcam App installieren (Play Store) → Port 8080 starten
-  python ddgk_note10_agent.py
+  python3 ddgk_note10_agent.py
+  # Bei Errno 2: siehe NOTE10_SETUP.md — oft CRLF (sed) oder nur python3 statt python
 """
 from __future__ import annotations
 import sys, os, json, time, datetime, socket, hashlib, threading

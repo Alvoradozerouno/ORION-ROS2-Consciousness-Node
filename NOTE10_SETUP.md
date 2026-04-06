@@ -17,24 +17,25 @@ Oder: f-droid.org → Termux
 # In Termux eingeben:
 pkg update && pkg upgrade -y
 pkg install python python-pip -y
-pip install requests psutil
+python3 -m pip install --user requests psutil
 ```
 
 ### 3. Agent-Script kopieren
 ```bash
 # Option A: Via Git (wenn WLAN mit Laptop im selben Netz)
+# pkg install git   # falls "git: not found" / Errno 2
 git clone https://github.com/Alvoradozerouno/ORION-ROS2-Consciousness-Node
 cd ORION-ROS2-Consciousness-Node
-python ddgk_note10_agent.py
+python3 ddgk_note10_agent.py
 
 # Option B: Via USB (adb)
 adb push ddgk_note10_agent.py /data/data/com.termux/files/home/
-# In Termux: python ddgk_note10_agent.py
+# In Termux: python3 ~/ddgk_note10_agent.py
 ```
 
 ### 4. Agent starten
 ```bash
-python ddgk_note10_agent.py
+python3 ddgk_note10_agent.py
 ```
 **Ausgabe:**
 ```
@@ -72,6 +73,38 @@ curl http://192.168.1.101:5001/health
 # Arbitrage Engine neu starten → Note10 sollte ONLINE sein:
 python ddgk_arbitrage.py
 ```
+
+---
+
+## Fehlersuche: **Errno 2** („No such file or directory“) in Termux
+
+**Bedeutung:** Der Kernel findet **keine ausführbare Datei** oder **keinen Dateipfad** — nicht zu verwechseln mit „Permission denied“ (EACCES).
+
+| Meldung / Kontext | Typische Ursache | Was tun |
+|-------------------|------------------|---------|
+| `python: command not found` oder `cannot execute … python` | Nur **`python3`** installiert (häufig) | `pkg install python` · Aufruf: **`python3`** statt `python` · Prüfen: `command -v python3` |
+| `python3: command not found` | Python-Paket fehlt | `pkg update && pkg install python` |
+| `./ddgk_note10_agent.py: No such file or directory` (trotz `ls` zeigt Datei) | **Windows-Zeilenumbrüche (CRLF)** in der ersten Zeile / Shebang kaputt | Auf Laptop: Datei als **LF** speichern oder in Termux: `sed -i 's/\r$//' ddgk_note10_agent.py` · Start stets: `python3 ddgk_note10_agent.py` (ohne `./`) |
+| `ddgk_note10_agent.py: No such file or directory` | **Falsches Verzeichnis** | `pwd` · `ls` · `cd ~/ORION-ROS2-Consciousness-Node` (nach `git clone`) |
+| `git: command not found` bei `git clone` | Git nicht installiert | `pkg install git` |
+| `pip: command not found` | `pip` nicht im PATH | **`python3 -m pip install requests psutil`** (immer zuverlässig) |
+| `/usr/bin/env: 'python3': No such file or directory` beim `./script.py` | `python3` fehlt oder kaputt | `pkg reinstall python` |
+| Nach `adb push … /data/data/com.termux/files/home/` | Datei liegt in **Home**, du startest aber **ohne** `cd` woanders | In Termux: `ls ~` · `python3 ~/ddgk_note10_agent.py` oder ins Repo-Verzeichnis wechseln |
+| Ollama / anderes Binary | Binary nicht für **aarch64 Termux** gebaut oder nicht installiert | Eigenes Paket über `pkg` oder offizielle ARM64-Binaries; Pfade prüfen mit `which ollama` |
+
+**Minimal-Checkliste (Termux, nacheinander):**
+
+```bash
+command -v python3
+python3 --version
+pwd
+ls -la
+# im Repo-Root:
+python3 -m pip install --user requests psutil
+python3 ddgk_note10_agent.py
+```
+
+**Optional:** Repo-Skript **`scripts/termux_note10_bootstrap.sh`** auf das Handy kopieren, ausführbar machen (`chmod +x`), einmal ausführen — prüft `python3` und ob `ddgk_note10_agent.py` im aktuellen Verzeichnis liegt.
 
 ---
 
@@ -146,7 +179,7 @@ mkdir -p ~/.termux/boot/
 cat > ~/.termux/boot/ddgk_start.sh << 'EOF'
 #!/data/data/com.termux/files/usr/bin/bash
 cd ~/ORION-ROS2-Consciousness-Node
-python ddgk_note10_agent.py >> /tmp/ddgk_note10.log 2>&1 &
+python3 ddgk_note10_agent.py >> /tmp/ddgk_note10.log 2>&1 &
 EOF
 chmod +x ~/.termux/boot/ddgk_start.sh
 ```
