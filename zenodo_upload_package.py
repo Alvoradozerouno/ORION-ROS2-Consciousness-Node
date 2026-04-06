@@ -2,12 +2,17 @@
 # -*- coding: utf-8 -*-
 """
 Laedt aktuelle Artefakte auf einen Zenodo-Draft-Deposit hoch.
-Token: ZENODO_API_TOKEN (Umgebung) oder ZENODO_API_TOKEN= in master.env.ini
+Token: ZENODO_API_TOKEN oder ZENODO_TOKEN (Umgebung) bzw. in master.env.ini (siehe workspace_env).
 """
 import json, os, pathlib, re, urllib.request, urllib.error
 
 WS = pathlib.Path(__file__).resolve().parent
-INI = pathlib.Path(r"C:\Users\annah\Dropbox\Mein PC (LAPTOP-RQH448P4)\Downloads\EIRA\master.env.ini")
+try:
+    from workspace_env import load_workspace_dotenv, resolve_master_ini_path
+
+    load_workspace_dotenv(override=False)
+except ImportError:
+    pass
 BASE = "https://zenodo.org/api"
 
 FILES = [
@@ -24,14 +29,24 @@ FILES = [
 ]
 
 def token() -> str | None:
-    t = os.environ.get("ZENODO_API_TOKEN", "").strip()
-    if t:
-        return t
-    if not INI.exists():
+    for key in ("ZENODO_API_TOKEN", "ZENODO_TOKEN"):
+        t = os.environ.get(key, "").strip()
+        if t:
+            return t
+    try:
+        from workspace_env import resolve_master_ini_path
+
+        ini = resolve_master_ini_path()
+    except ImportError:
+        ini = None
+    if ini is None or not ini.is_file():
         return None
-    txt = INI.read_text("utf-8", errors="replace")
-    m = re.search(r"ZENODO_API_TOKEN\s*=\s*(\S+)", txt)
-    return m.group(1).strip() if m else None
+    txt = ini.read_text("utf-8", errors="replace")
+    for pat in (r"ZENODO_API_TOKEN\s*=\s*(\S+)", r"ZENODO_TOKEN\s*=\s*(\S+)"):
+        m = re.search(pat, txt)
+        if m:
+            return m.group(1).strip()
+    return None
 
 def api(tok: str, method: str, path: str, data=None):
     hdrs = {"Authorization": f"Bearer {tok}", "Content-Type": "application/json"}

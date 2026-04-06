@@ -2,13 +2,16 @@
 
 **🔐 Niemals** echte Tokens in diese Datei, in `settings.json` oder ins Git schreiben. Werte nur in **`.env`** (gitignored) oder **`EIRA/master.env.ini`** (gitignored) bzw. **GitHub → Settings → Secrets**.
 
+**Ausführlicher Ablauf (Multi-Agent, PowerShell, MCP):** siehe **`docs/GLOBAL_DEV_SETUP.md`**.
+
 ---
 
 ## 1. Lokales Projekt: `.env` (empfohlen)
 
 - Datei: **Workspace-Root** `.env` (Kopie von `.env.example`, dann ausfüllen).
-- **Cursor / VS Code:** `.vscode/settings.json` lädt `.env` automatisch für das **integrierte Terminal** (`terminal.integrated.envFile`).
-- **Python:** `workspace_env.py` lädt `.env` per `python-dotenv`; danach optional **Allowlist** aus `master.env.ini` (nur Pfade/Hosts).
+- **Cursor / VS Code:** `.vscode/settings.json` lädt `.env` für **Terminal** (`terminal.integrated.envFile`) und **Python-Extension / Debugger** (`python.envFile`).
+- **Python:** `workspace_env.py` lädt `.env` per `python-dotenv`; danach optional **Allowlist** aus `master.env.ini` (nur Pfade/Hosts). **`resolve_master_ini_path()`** findet die erste `master.env.ini` (Repo, `MASTER_ENV_INI`, Nachbar `EIRA/`).
+- **Status ohne Leaks:** `python scripts/env_credential_status.py` bzw. `--compact`.
 
 ---
 

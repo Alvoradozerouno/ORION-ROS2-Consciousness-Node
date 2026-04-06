@@ -11,4 +11,4 @@
 
 ## Settings & APIs (ohne Secrets in Git)
 
-Vollständige Übersicht: **`docs/CURSOR_GITHUB_HF_SETTINGS.md`** · Vorlage: **`.env.example`** · Terminal lädt **`.env`** via **`.vscode/settings.json`**.
+Globale Einrichtung inkl. Multi-Agent: **`docs/GLOBAL_DEV_SETUP.md`**. Kurz: **`docs/CURSOR_GITHUB_HF_SETTINGS.md`** · Vorlage: **`.env.example`** · Terminal + Python: **`.vscode/settings.json`** (`terminal.integrated.envFile`, `python.envFile`).

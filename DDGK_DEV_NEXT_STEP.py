@@ -9,9 +9,14 @@ import json, datetime, hashlib, os, pathlib, time, urllib.error, urllib.parse, u
 WS = pathlib.Path(__file__).resolve().parent
 MEM = WS / "cognitive_ddgk" / "cognitive_memory.jsonl"
 OUT = WS / "ZENODO_UPLOAD" / "DDGK_NEXT_STEP_REPORT.json"
-INI = pathlib.Path(
-    r"C:\Users\annah\Dropbox\Mein PC (LAPTOP-RQH448P4)\Downloads\EIRA\master.env.ini"
-)
+try:
+    from workspace_env import load_workspace_dotenv, resolve_master_ini_path
+
+    load_workspace_dotenv(override=False)
+    _INI_PATH = resolve_master_ini_path()
+except ImportError:
+    _INI_PATH = None
+
 LOC = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434")
 PI5 = os.environ.get("OLLAMA_PI5", "http://192.168.1.103:11434")
 
@@ -38,10 +43,11 @@ def ddgk_log(agent, action, data):
         f.write(json.dumps(e, ensure_ascii=False) + "\n")
 
 def load_ini() -> dict:
-    if not INI.exists():
+    path = _INI_PATH
+    if path is None or not path.is_file():
         return {}
     out = {}
-    for line in INI.read_text("utf-8", errors="replace").splitlines():
+    for line in path.read_text("utf-8", errors="replace").splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
             continue
@@ -167,7 +173,7 @@ def main():
         "github": check_github(pick(cfg, "GITHUB_TOKEN", "GITHUB_PAT")),
         "serpapi": check_serpapi(pick(cfg, "SERPAPI_KEY")),
         "newsapi": check_news_api(pick(cfg, "NEWS_API_KEY")),
-        "zenodo": check_zenodo(pick(cfg, "ZENODO_API_TOKEN")),
+        "zenodo": check_zenodo(pick(cfg, "ZENODO_API_TOKEN", "ZENODO_TOKEN")),
         "ollama_local": check_ollama(LOC),
         "ollama_pi5": check_ollama(PI5),
     }

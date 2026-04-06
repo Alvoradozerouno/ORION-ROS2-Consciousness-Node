@@ -1,12 +1,20 @@
 {
   "python.terminal.activateEnvironment": true,
+  "python.envFile": "${workspaceFolder}/.env",
   "terminal.integrated.envFile": "${workspaceFolder}/.env",
   "terminal.integrated.inheritEnv": true,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
   "files.exclude": {
     "**/__pycache__": true,
     "**/*.pyc": true,
     ".pytest_cache": true,
-    ".mypy_cache": true
+    ".mypy_cache": true,
+    "**/.ruff_cache": true
+  },
+  "files.watcherExclude": {
+    "**/external/ORION_SEED_COMPLETE/**": true,
+    "**/node_modules/**": true,
+    "**/.git/objects/**": true
   },
   "search.exclude": {
     "**/external/ORION_SEED_COMPLETE": true,

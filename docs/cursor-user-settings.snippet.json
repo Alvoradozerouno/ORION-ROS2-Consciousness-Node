@@ -1,5 +1,7 @@
 {
-  "_comment": "Optional in Cursor: Settings → Open User Settings (JSON). KEINE echten Tokens hier einfügen.",
+  "_comment": "Optional: Cursor → Open User Settings (JSON). KEINE Tokens hier. Für mehrere Repos lieber nur Workspace-.vscode/settings.json nutzen.",
   "terminal.integrated.envFile": "${workspaceFolder}/.env",
-  "python.terminal.activateEnvironment": true
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.terminal.activateEnvironment": true,
+  "git.autofetch": true
 }

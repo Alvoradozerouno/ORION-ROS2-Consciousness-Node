@@ -15,6 +15,7 @@ Optional: MASTER_ENV_INI mit absolutem Pfad zur INI-Datei
 from __future__ import annotations
 
 import os
+import re
 from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parent
@@ -121,3 +122,31 @@ def dotenv_available() -> bool:
 def master_ini_allowlist_keys() -> frozenset[str]:
     """Nur für Tests/Docs — welche Keys aus INI übernommen werden dürfen."""
     return frozenset(_MASTER_INI_ALLOWLIST)
+
+
+def resolve_master_ini_path() -> Path | None:
+    """Erste existierende `master.env.ini` aus MASTER_ENV_INI / Repo / EIRA-Nachbar."""
+    for p in _master_ini_paths():
+        if p.is_file():
+            return p
+    return None
+
+
+def load_hf_tokens_from_master_ini() -> tuple[str | None, str | None]:
+    """
+    Liest HF_TOKEN und HUGGINGFACE_TOKEN aus der ersten gefundenen master.env.ini.
+    Keine Logs der Werte. Fehlt die Datei → (None, None).
+    """
+    path = resolve_master_ini_path()
+    if path is None:
+        return None, None
+    try:
+        text = path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return None, None
+    hf = re.search(r"^HF_TOKEN\s*=\s*(\S+)", text, re.M)
+    hg = re.search(r"^HUGGINGFACE_TOKEN\s*=\s*(\S+)", text, re.M)
+    return (
+        hf.group(1).strip() if hf else None,
+        hg.group(1).strip() if hg else None,
+    )

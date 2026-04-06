@@ -1,28 +1,59 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Hugging Face Zugang pruefen — liest master.env.ini.
-whoami/API: ausschliesslich HUGGINGFACE_TOKEN (Abschnitt ~Zeile 306). HF_TOKEN wird nur angezeigt, nicht fuer die API genutzt.
+Hugging Face Zugang pruefen — .env (workspace_env) + master.env.ini + optional Cache.
+whoami: bevorzugt HUGGINGFACE_TOKEN, sonst HF_TOKEN (env vor INI).
 Gibt NIE den vollen Token aus (nur Laenge + Status).
 """
-import json, pathlib, re, sys, urllib.error, urllib.request
+import json
+import os
+import pathlib
+import sys
+import urllib.error
+import urllib.request
 
-INI = pathlib.Path(
-    r"C:\Users\annah\Dropbox\Mein PC (LAPTOP-RQH448P4)\Downloads\EIRA\master.env.ini"
-)
 CACHE = pathlib.Path.home() / ".cache" / "huggingface" / "token"
 
 
-def load_hf_from_ini() -> tuple[str | None, str | None]:
-    if not INI.exists():
-        return None, None
-    txt = INI.read_text("utf-8", errors="replace")
-    hf = re.search(r"^HF_TOKEN\s*=\s*(\S+)", txt, re.M)
-    hg = re.search(r"^HUGGINGFACE_TOKEN\s*=\s*(\S+)", txt, re.M)
-    return (
-        hf.group(1).strip() if hf else None,
-        hg.group(1).strip() if hg else None,
-    )
+def _load_context():
+    """dotenv + Pfade; liefert Quellen-Infos ohne Secret-Werte."""
+    try:
+        from workspace_env import (
+            load_hf_tokens_from_master_ini,
+            load_workspace_dotenv,
+            resolve_master_ini_path,
+        )
+
+        load_workspace_dotenv(override=False)
+        ini_path = resolve_master_ini_path()
+        ini_hf, ini_hg = load_hf_tokens_from_master_ini()
+    except ImportError:
+        ini_path = None
+        ini_hf, ini_hg = None, None
+
+    env_hf = (os.environ.get("HF_TOKEN") or "").strip() or None
+    env_hg = (os.environ.get("HUGGINGFACE_TOKEN") or "").strip() or None
+
+    primary = env_hg or ini_hg or env_hf or ini_hf
+    primary_src = None
+    if env_hg:
+        primary_src = "env HUGGINGFACE_TOKEN"
+    elif ini_hg:
+        primary_src = "INI HUGGINGFACE_TOKEN"
+    elif env_hf:
+        primary_src = "env HF_TOKEN"
+    elif ini_hf:
+        primary_src = "INI HF_TOKEN"
+
+    return {
+        "ini_path": ini_path,
+        "ini_hf": ini_hf,
+        "ini_hg": ini_hg,
+        "env_hf": env_hf,
+        "env_hg": env_hg,
+        "primary": primary,
+        "primary_src": primary_src,
+    }
 
 
 def whoami(token: str) -> tuple[int, dict | None]:
@@ -45,38 +76,47 @@ def whoami(token: str) -> tuple[int, dict | None]:
 
 def main() -> int:
     print("=== HF Healthcheck (keine Secrets in der Ausgabe) ===\n")
-    t_ini, t_hg = load_hf_from_ini()
-    # API nur mit HUGGINGFACE_TOKEN (~Zeile 306); HF_TOKEN ignorieren.
-    if not t_hg:
-        print("FEHL: HUGGINGFACE_TOKEN fehlt in master.env.ini (~Zeile 306).")
-        print("      HF_TOKEN allein reicht fuer diesen Check nicht.")
-        return 2
-    primary = t_hg
-    same = t_ini and t_hg and (t_ini == t_hg)
-    print(f"INI: HF_TOKEN (nur Info, nicht fuer API)={'gesetzt' if t_ini else 'fehlt'} (Laenge {len(t_ini) if t_ini else 0})")
-    print(f"INI: HUGGINGFACE_TOKEN (API)={'gesetzt' if t_hg else 'fehlt'} (Laenge {len(t_hg) if t_hg else 0})")
-    print(f"HF_TOKEN == HUGGINGFACE_TOKEN: {same}\n")
+    ctx = _load_context()
 
-    code, data = whoami(primary)
+    print(f"master.env.ini: {ctx['ini_path'] or '(nicht gefunden)'}")
+    print(
+        f"Env HF_TOKEN / HUGGINGFACE_TOKEN: "
+        f"{'gesetzt' if ctx['env_hf'] else 'leer'} / {'gesetzt' if ctx['env_hg'] else 'leer'}"
+    )
+    if ctx["ini_path"]:
+        print(
+            f"INI HF_TOKEN / HUGGINGFACE_TOKEN: "
+            f"{'gesetzt' if ctx['ini_hf'] else 'leer'} / {'gesetzt' if ctx['ini_hg'] else 'leer'}"
+        )
+        same = (
+            ctx["ini_hf"] and ctx["ini_hg"] and (ctx["ini_hf"] == ctx["ini_hg"])
+        )
+        print(f"INI: HF_TOKEN == HUGGINGFACE_TOKEN: {same}")
+    print(f"whoami-Quelle: {ctx['primary_src'] or '(kein Token)'}\n")
+
+    if not ctx["primary"]:
+        print("FEHL: Weder HUGGINGFACE_TOKEN noch HF_TOKEN in .env / master.env.ini / Umgebung.")
+        print("  → .env aus .env.example; oder MASTER_ENV_INI setzen; oder export HF_TOKEN=...")
+        return 2
+
+    code, data = whoami(ctx["primary"])
     if code == 200 and isinstance(data, dict):
         name = data.get("name") or data.get("id") or "?"
         print(f"whoami: OK (HTTP {code}) — angemeldet als: {name}")
-        print("\nNaechster Schritt: hf auth login ist nicht noetig; API funktioniert.")
+        print("\nNaechster Schritt: Bei Bedarf huggingface-cli login für ~/.cache (zusaetzlich).")
         return 0
 
     print(f"whoami: FEHLER (HTTP {code})")
     if isinstance(data, dict):
         print(f"Detail: {data.get('error', data)}")
     print(
-        "\n*** Der Token in master.env.ini wird von Hugging Face abgelehnt (401). ***\n"
-        "Moegliche Ursachen: Token widerrufen, abgelaufen, Tippfehler, oder falsch kopiert.\n\n"
+        "\n*** Token wird von Hugging Face abgelehnt (401) oder Netzwerkfehler. ***\n"
+        "Moegliche Ursachen: Token widerrufen, abgelaufen, Tippfehler.\n\n"
         "So beheben:\n"
-        "  1) https://huggingface.co/settings/tokens — neuen Access Token erstellen\n"
-        "     (mindestens Read; fuer Spaces/Upload: Write oder fine-grained passend).\n"
-        "  2) In master.env.ini HUGGINGFACE_TOKEN setzen (~Zeile 306) — dieser Check nutzt nur diesen Key.\n"
-        "       Optional: HF_TOKEN=... nur fuer andere Tools, die diese Variable erwarten.\n"
-        "  3) Optional: huggingface-cli login  (speichert unter ~/.cache/huggingface/token)\n"
-        "  4) Dieses Skript erneut: python hf_healthcheck.py\n"
+        "  1) https://huggingface.co/settings/tokens — neuen Token\n"
+        "  2) In .env HUGGINGFACE_TOKEN=... und/oder HF_TOKEN=... (nicht committen)\n"
+        "  3) Oder master.env.ini im Repo oder unter EIRA/ (siehe workspace_env)\n"
+        "  4) python hf_healthcheck.py erneut\n"
     )
 
     if CACHE.exists():
@@ -84,9 +124,9 @@ def main() -> int:
         c2, d2 = whoami(tc)
         print(f"\nLokaler Cache ~/.cache/huggingface/token: HTTP {c2} (Laenge Token {len(tc)})")
         if c2 == 200:
-            print("Hinweis: Cache-Token funktioniert — INI auf denselben Wert setzen.")
+            print("Hinweis: Cache-Token funktioniert — .env/INI auf denselben Wert setzen.")
         else:
-            print("Hinweis: Cache-Token ist ebenfalls ungueltig; neuen Token verwenden.")
+            print("Hinweis: Cache-Token ungueltig; neuen Token verwenden.")
 
     return 1
 

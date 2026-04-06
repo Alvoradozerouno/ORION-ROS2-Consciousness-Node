@@ -50,6 +50,12 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 from dataclasses import dataclass, field
 
 BASE_DIR = Path(__file__).parent
+try:
+    from workspace_env import load_workspace_dotenv
+
+    load_workspace_dotenv(override=False)
+except ImportError:
+    pass
 TOOLS_DIR = BASE_DIR / "cognitive_ddgk" / "synthesized_tools"
 TOOLS_DIR.mkdir(parents=True, exist_ok=True)
 MEMORY  = BASE_DIR / "cognitive_ddgk" / "hyper_agent_memory.jsonl"

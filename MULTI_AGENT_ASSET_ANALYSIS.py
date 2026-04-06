@@ -251,6 +251,14 @@ def run_analysis(skip_seed_sync: bool = False, workspace_cleanup: bool = False, 
         )
         print()
 
+    try:
+        from workspace_credentials import print_credentials_overview
+
+        print_credentials_overview(compact=True)
+    except Exception as ex:
+        print(f"🟡 🔐 Credential-Übersicht übersprungen: {ex}")
+        print()
+
     if not skip_seed_sync:
         _auto_sync_orion_seed()
         print()
@@ -351,6 +359,16 @@ if __name__ == "__main__":
     )
     args = ap.parse_args()
     if args.cleanup_only:
+        if not _DOTENV_PKG_OK:
+            print(
+                "🟡 ℹ️  python-dotenv fehlt — pip install -r requirements.txt\n"
+            )
+        try:
+            from workspace_credentials import print_credentials_overview
+
+            print_credentials_overview(compact=True)
+        except Exception as ex:
+            print(f"🟡 🔐 Credential-Übersicht übersprungen: {ex}\n")
         if not args.skip_seed_sync:
             _auto_sync_orion_seed()
             print()
