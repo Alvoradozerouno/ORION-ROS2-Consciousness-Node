@@ -31,6 +31,7 @@ BATCHES: list[tuple[str, list[str]]] = [
             "requirements.txt",
             "MULTI_AGENT_ASSET_ANALYSIS.py",
             "ollama_nodes_scan.py",
+            "note10_lan_discover.py",
             ".env.example",
             ".gitignore",
             ".github/workflows/ci.yml",

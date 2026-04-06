@@ -169,6 +169,20 @@ python ddgk_arbitrage.py
 
 ---
 
+## 🔍 Note10 / Ollama im LAN automatisch finden (WLAN + USB)
+
+Vom Repo-Root (nutzt `OLLAMA_PI5` aus `.env`, schlägt **anderes** Ollama als Note10 vor):
+
+```bash
+python note10_lan_discover.py
+```
+
+Optional Report: `python note10_lan_discover.py --json-out ZENODO_UPLOAD/NOTE10_LAN_DISCOVER.json`
+
+Sucht TCP **5001** (DDGK-Agent), **11434** (Ollama), **8022** (Termux-SSH) auf allen lokalen **192.168.x.0/24**-Subnetzen (mehrere Adapter = USB-Tethering + WLAN möglich).
+
+---
+
 ## 🤖 16-Agenten Edge-Assembly (Laptop)
 
 Vom Repo-Root (nach `.env` mit `OLLAMA_*`, optional `NOTE10_DDGK_URL`):
