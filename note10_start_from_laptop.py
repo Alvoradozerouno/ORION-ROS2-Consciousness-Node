@@ -3,6 +3,10 @@
 """
 Note10 DDGK-Agent vom Laptop starten (SSH + SCP).
 
+!!! NUR AUF DEM LAPTOP / PC AUSFUEHREN (Windows PowerShell im Repo-Ordner) !!!
+    NICHT in Termux auf dem Handy — dort gibt es diese Datei nicht und sie gehoert dort nicht hin.
+    Auf dem Phone nur:  python3 ddgk_note10_agent.py  (nach git clone oder nach SCP vom Laptop)
+
 Voraussetzung auf dem Note10 (Termux):
   pkg install openssh python
   passwd && sshd
@@ -60,7 +64,24 @@ def scp_file(local: Path, remote_path: str, host: str, port: int, user: str) -> 
     subprocess.run(cmd, check=True)
 
 
+def _running_inside_termux() -> bool:
+    pfx = (os.environ.get("PREFIX") or "").replace("\\", "/")
+    return pfx.startswith("/data/data/com.termux")
+
+
 def main() -> int:
+    if _running_inside_termux():
+        print(
+            "[note10-start] FEHL: Dieses Skript laeuft auf TERMUX (Phone).\n"
+            "  Es muss auf dem LAPTOP im geklonten Repo gestartet werden:\n"
+            "    cd .../ORION-ROS2-Consciousness-Node\n"
+            "    python note10_start_from_laptop.py\n"
+            "  Auf dem Note10 danach nur den Agenten:\n"
+            "    python3 ~/.../ddgk_note10_agent.py\n",
+            flush=True,
+        )
+        return 2
+
     ap = argparse.ArgumentParser(description="DDGK Note10-Agent vom Laptop per SSH starten")
     ap.add_argument("--host", default=os.environ.get("NOTE10_SSH_HOST", "").strip())
     ap.add_argument("--port", type=int, default=int(os.environ.get("NOTE10_SSH_PORT") or "8022"))

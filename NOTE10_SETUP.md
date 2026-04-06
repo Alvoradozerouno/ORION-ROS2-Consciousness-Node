@@ -212,6 +212,16 @@ python ddgk_arbitrage.py
 
 ---
 
+## Wichtig: `note10_start_from_laptop.py` **nicht** in Termux starten
+
+Dieses Skript liegt nur auf dem **Laptop** (Repo-Clone) und nutzt **SSH/SCP zum Handy**.  
+Wenn du in Termux `python note10_start_from_laptop.py` ausführst → **Errno 2** (Datei fehlt).
+
+- **Laptop:** `python note10_start_from_laptop.py` (im Projektordner, `.env` mit `NOTE10_SSH_*`)
+- **Termux (Note10):** nach dem Kopieren nur `python3 ddgk_note10_agent.py`
+
+---
+
 ## Start vom Laptop (SCP + SSH)
 
 Auf dem Note10: **`pkg install openssh python`**, **`passwd`**, **`sshd`** (Port **8022**). `whoami` → `NOTE10_SSH_USER`.
