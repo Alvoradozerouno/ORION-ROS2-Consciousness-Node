@@ -53,15 +53,28 @@ def _need(var: str) -> str:
     return v
 
 
+def _ssh_opts() -> list[str]:
+    return [
+        "-o",
+        "StrictHostKeyChecking=accept-new",
+        "-o",
+        "ConnectTimeout=20",
+        "-o",
+        "ServerAliveInterval=5",
+        "-o",
+        "ServerAliveCountMax=3",
+    ]
+
+
 def ssh_base(host: str, port: int, user: str) -> list[str]:
-    return ["ssh", "-p", str(port), "-o", "StrictHostKeyChecking=accept-new", f"{user}@{host}"]
+    return ["ssh", "-p", str(port), *_ssh_opts(), f"{user}@{host}"]
 
 
 def scp_file(local: Path, remote_path: str, host: str, port: int, user: str) -> None:
     dst = f"{user}@{host}:{remote_path}"
-    cmd = ["scp", "-P", str(port), "-o", "StrictHostKeyChecking=accept-new", str(local), dst]
+    cmd = ["scp", "-P", str(port), *_ssh_opts(), str(local), dst]
     print(f"[note10-start] {' '.join(cmd[:5])} ... -> {remote_path}", flush=True)
-    subprocess.run(cmd, check=True)
+    subprocess.run(cmd, check=True, timeout=180)
 
 
 def _running_inside_termux() -> bool:
@@ -101,6 +114,14 @@ def main() -> int:
     port = args.port
     rdir = args.remote_dir.replace("\\", "/")
 
+    print(
+        "[note10-start] WICHTIG: Auf dem LAPTOP ausfuehren — NICHT `sshd` in Windows-PowerShell "
+        "(sshd = nur auf dem Note10 in Termux).\n"
+        "[note10-start] SSH mit Passwort: dieses Terminal muss **interaktiv** sein (Passwort-Eingabe).\n"
+        "[note10-start] Ohne Passwort-Abfrage: SSH-Key nach Termux legen (authorized_keys).\n",
+        flush=True,
+    )
+
     if not AGENT.is_file():
         print(f"[note10-start] FEHL: {AGENT} fehlt.", flush=True)
         return 2
@@ -120,9 +141,29 @@ def main() -> int:
     if not args.no_sync:
         mk = ssh + ["bash", "-lc", f"mkdir -p {rdir}/scripts"]
         print("[note10-start] Remote-Verzeichnis ...", flush=True)
-        subprocess.run(mk, check=True)
+        try:
+            subprocess.run(mk, check=True, timeout=120)
+        except subprocess.TimeoutExpired:
+            print(
+                "[note10-start] FEHL: SSH timeout (120s). Passwort/Key? Tipp: interaktives PowerShell-Fenster.\n"
+                "  Test: ssh -p "
+                + str(port)
+                + " "
+                + user
+                + "@"
+                + host,
+                flush=True,
+            )
+            return 1
         agent_name = AGENT.name
-        scp_file(AGENT, f"{rdir}/{agent_name}", host, port, user)
+        try:
+            scp_file(AGENT, f"{rdir}/{agent_name}", host, port, user)
+        except subprocess.TimeoutExpired:
+            print("[note10-start] FEHL: SCP timeout.", flush=True)
+            return 1
+        except subprocess.CalledProcessError as e:
+            print(f"[note10-start] FEHL: SCP exit {e.returncode}", flush=True)
+            return 1
         if BOOT.is_file():
             try:
                 scp_file(BOOT, f"{rdir}/scripts/termux_note10_bootstrap.sh", host, port, user)

@@ -212,6 +212,13 @@ python ddgk_arbitrage.py
 
 ---
 
+## Windows PowerShell: **kein** `sshd` eingeben
+
+`sshd` ist der SSH-**Server** unter **Termux (Android)** — unter Windows gibt es diesen Befehl in der Regel **nicht**.  
+Auf dem Laptop brauchst du nur den **OpenSSH-Client** (`ssh`, `scp`) und startest **`python note10_start_from_laptop.py`** im Repo.
+
+---
+
 ## Wichtig: `note10_start_from_laptop.py` **nicht** in Termux starten
 
 Dieses Skript liegt nur auf dem **Laptop** (Repo-Clone) und nutzt **SSH/SCP zum Handy**.  
