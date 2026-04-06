@@ -1,0 +1,5 @@
+{
+  "_comment": "Optional in Cursor: Settings → Open User Settings (JSON). KEINE echten Tokens hier einfügen.",
+  "terminal.integrated.envFile": "${workspaceFolder}/.env",
+  "python.terminal.activateEnvironment": true
+}

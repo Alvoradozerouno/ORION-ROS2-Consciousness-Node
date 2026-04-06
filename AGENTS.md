@@ -8,3 +8,7 @@
 - Sicher automatisierbare Schritte **zu Ende führen**; offene Punkte **dokumentieren**.
 
 (Doppelung zu `.cursor/rules/orion-assistant-abschluss.mdc` — dort lokal für Cursor.)
+
+## Settings & APIs (ohne Secrets in Git)
+
+Vollständige Übersicht: **`docs/CURSOR_GITHUB_HF_SETTINGS.md`** · Vorlage: **`.env.example`** · Terminal lädt **`.env`** via **`.vscode/settings.json`**.

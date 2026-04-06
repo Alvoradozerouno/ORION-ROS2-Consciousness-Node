@@ -1,0 +1,15 @@
+{
+  "python.terminal.activateEnvironment": true,
+  "terminal.integrated.envFile": "${workspaceFolder}/.env",
+  "terminal.integrated.inheritEnv": true,
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    ".pytest_cache": true,
+    ".mypy_cache": true
+  },
+  "search.exclude": {
+    "**/external/ORION_SEED_COMPLETE": true,
+    "**/node_modules": true
+  }
+}
