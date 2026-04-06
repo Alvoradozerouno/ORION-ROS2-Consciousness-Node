@@ -20,6 +20,41 @@ pkg install python python-pip -y
 python3 -m pip install --user requests psutil
 ```
 
+### 2b. SSH-Server (Pflicht, wenn der Laptop per `ssh`/`scp` zugreifen soll)
+
+Ohne **`openssh`** läuft **kein `sshd`** → vom Laptop: **Connection timed out** auf Port **8022**.
+
+```bash
+pkg install openssh -y
+passwd                    # einmal Passwort für Termux-User setzen
+whoami                    # Namen merken → NOTE10_SSH_USER in .env
+sshd                      # Server starten (Standard-Port in Termux: 8022)
+```
+
+**Prüfen, ob sshd lauscht:**
+
+```bash
+ss -tlnp 2>/dev/null | grep 8022
+# oder:
+netstat -tlnp 2>/dev/null | grep 8022
+```
+
+Wenn **nichts** angezeigt wird: `sshd` erneut starten, Termux **nicht** von Android einfrieren lassen (Akku-Optimierung für Termux **aus**, ggf. `termux-wake-lock`).
+
+**Minimal-Checkliste Note10 (alles installiert?):**
+
+| Paket / Schritt | Zweck |
+|-----------------|--------|
+| `pkg install openssh` | **`sshd`**, Port **8022** |
+| `pkg install python` | **`python3`**, Agent |
+| `python3 -m pip install --user requests psutil` | Agent-Abhängigkeiten |
+| `passwd` + `sshd` | Login + Server |
+| optional `pkg install git` | `git clone` Repo |
+
+**Timeout trotzdem?** Dann meist **Netz** (falsche IP, Gäste-WLAN, VPN) — `python note10_lan_discover.py` und `python note10_ssh_check.py` **vom Laptop**.
+
+Einzeiler-Setup (optional, Skript aus Repo aufs Phone kopieren): **`scripts/termux_install_minimum.sh`**
+
 ### 3. Agent-Script kopieren
 ```bash
 # Option A: Via Git (wenn WLAN mit Laptop im selben Netz)
