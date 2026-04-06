@@ -42,6 +42,10 @@ CREDENTIAL_ENV_KEYS: tuple[str, ...] = (
     "OLLAMA_PI5",
     "OLLAMA_NOTE10",
     "NOTE10_DDGK_URL",
+    "NOTE10_SSH_HOST",
+    "NOTE10_SSH_PORT",
+    "NOTE10_SSH_USER",
+    "NOTE10_REMOTE_DIR",
     "ORION_USB_ROOT",
 )
 

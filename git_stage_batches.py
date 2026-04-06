@@ -32,6 +32,7 @@ BATCHES: list[tuple[str, list[str]]] = [
             "MULTI_AGENT_ASSET_ANALYSIS.py",
             "ollama_nodes_scan.py",
             "note10_lan_discover.py",
+            "note10_start_from_laptop.py",
             "scripts/termux_note10_bootstrap.sh",
             ".env.example",
             ".gitignore",

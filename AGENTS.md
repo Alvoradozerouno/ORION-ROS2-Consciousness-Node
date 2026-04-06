@@ -11,4 +11,4 @@
 
 ## Settings & APIs (ohne Secrets in Git)
 
-Globale Einrichtung inkl. Multi-Agent: **`docs/GLOBAL_DEV_SETUP.md`**. Kurz: **`docs/CURSOR_GITHUB_HF_SETTINGS.md`** · Vorlage: **`.env.example`** · Terminal + Python: **`.vscode/settings.json`** (`terminal.integrated.envFile`, `python.envFile`). Ein Befehl Struktur + Edge-Assembly: **`python ORION_GO.py`** (Flags: `--no-edge`, `--edge-dry-run`, `--multi-agent`).
+Globale Einrichtung inkl. Multi-Agent: **`docs/GLOBAL_DEV_SETUP.md`**. Kurz: **`docs/CURSOR_GITHUB_HF_SETTINGS.md`** · Vorlage: **`.env.example`** · Terminal + Python: **`.vscode/settings.json`** (`terminal.integrated.envFile`, `python.envFile`). Ein Befehl Struktur + Edge-Assembly: **`python ORION_GO.py`** (Flags: `--no-edge`, `--edge-dry-run`, `--multi-agent`, `--note10-ssh`). Note10 per SSH vom Laptop: **`python note10_start_from_laptop.py`** (`.env`: `NOTE10_SSH_*`).

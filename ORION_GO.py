@@ -28,6 +28,11 @@ def main() -> int:
         action="store_true",
         help="Edge-Assembly ohne Ollama/Note10-HTTP-Probes",
     )
+    ap.add_argument(
+        "--note10-ssh",
+        action="store_true",
+        help="Danach note10_start_from_laptop.py (braucht NOTE10_SSH_* in .env)",
+    )
     args = ap.parse_args()
 
     try:
@@ -65,7 +70,14 @@ def main() -> int:
             [sys.executable, str(ROOT / "MULTI_AGENT_ASSET_ANALYSIS.py"), "--skip-seed-sync"],
             cwd=str(ROOT),
         )
-        return r2.returncode
+        if r2.returncode != 0:
+            return r2.returncode
+
+    if args.note10_ssh:
+        print("[ORION_GO] note10_start_from_laptop ...", flush=True)
+        r3 = subprocess.run([sys.executable, str(ROOT / "note10_start_from_laptop.py")], cwd=str(ROOT))
+        if r3.returncode != 0:
+            return r3.returncode
 
     print("[ORION_GO] Fertig.", flush=True)
     return 0

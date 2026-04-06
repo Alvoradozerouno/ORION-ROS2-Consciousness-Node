@@ -202,6 +202,25 @@ python ddgk_arbitrage.py
 
 ---
 
+## Start vom Laptop (SCP + SSH)
+
+Auf dem Note10: **`pkg install openssh python`**, **`passwd`**, **`sshd`** (Port **8022**). `whoami` → `NOTE10_SSH_USER`.
+
+Im Laptop-Repo `.env` setzen: `NOTE10_SSH_HOST`, `NOTE10_SSH_PORT`, `NOTE10_SSH_USER` (siehe `.env.example`).
+
+```bash
+# Windows PowerShell / CMD (OpenSSH-Client):
+python note10_start_from_laptop.py
+# Vordergrund zum Debuggen:
+python note10_start_from_laptop.py --foreground
+# Agent stoppen:
+python note10_start_from_laptop.py --kill
+```
+
+Das Skript kopiert `ddgk_note10_agent.py` (und optional `scripts/termux_note10_bootstrap.sh`) per **SCP**, installiert auf dem Phone per **`python3 -m pip install --user requests psutil`**, startet den Server auf **Port 5001**. Anschließend: `NOTE10_DDGK_URL=http://<IP>:5001` in `.env`.
+
+---
+
 ## 🔍 Note10 / Ollama im LAN automatisch finden (WLAN + USB)
 
 Vom Repo-Root (nutzt `OLLAMA_PI5` aus `.env`, schlägt **anderes** Ollama als Note10 vor):
