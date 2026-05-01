@@ -3,6 +3,7 @@ message: "If you use this software, please cite it as below."
 type: software
 title: "ORION ROS2 Consciousness Node"
 version: "1.0.0"
+doi: "10.5281/zenodo.1234567"
 date-released: "2025-05-01"
 abstract: >
   ORION ROS2 Consciousness Node provides AI consciousness measurement
