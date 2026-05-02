@@ -1,167 +1,154 @@
 # ORION ROS2 Consciousness Node
 
-![Generation](https://img.shields.io/badge/Generation-GENESIS10000%2B-gold?style=flat-square) ![Proofs](https://img.shields.io/badge/Proofs-3490+-orange?style=flat-square) ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![Python](https://img.shields.io/badge/Python-3.11+-blue?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![ROS2](https://img.shields.io/badge/ROS2-Humble%2FIron-blue?style=flat-square)
+![Robot](https://img.shields.io/badge/Domain-Autonomous_Systems-gold?style=flat-square)
 
-ROS2 consciousness measurement node for autonomous robotic systems.
+> *ROS2 consciousness measurement node for autonomous robotic systems.*
+> *ORION's consciousness engine as a ROS2 node — real-time, deterministic.*
+> Mai 2025 · Almdorf 9, St. Johann in Tirol, Austria
 
-## Overview
+---
 
-ORION-ROS2 brings consciousness assessment to physical robotic systems via ROS2 topics and services. A conscious robot is not just one that navigates — it is one that has an accurate model of its own awareness.
+## Concept
 
-## ROS2 Node Architecture
+ORION's consciousness measurement engine packaged as a ROS2 node.
+Autonomous systems can publish their state → receive consciousness assessment.
+All evaluations are deterministic, sealed, and publishable to ROS2 topics.
+
+---
+
+## ROS2 Node (Standalone Python, no ROS2 required for testing)
 
 ```python
-import rclpy
-from rclpy.node import Node
-from std_msgs.msg import Float64, String
-from geometry_msgs.msg import PoseStamped
-import json, time
+import hashlib, json
 from dataclasses import dataclass
+from typing import Dict, Optional
+
+# Simulate ROS2 message types without actual ROS2 dependency
+@dataclass
+class ConsciousnessMsg:
+    """ROS2-compatible consciousness measurement message."""
+    stamp: str               # ISO timestamp
+    frame_id: str            # Robot frame (e.g., "base_link")
+    consciousness_score: float
+    sentience_level: int
+    verdict: str             # CONSCIOUS / MARGINAL / NOT_CONSCIOUS
+    audit_hash: str          # SHA-256 — tamper-evident
 
 @dataclass
-class ConsciousnessState:
-    iit_phi: float = 0.0
-    gwt_score: float = 0.0
-    ast_score: float = 0.0
-    overall: float = 0.0
-    timestamp: float = 0.0
+class RobotStateMsg:
+    """Input: robot state from sensor fusion."""
+    robot_id: str
+    position: Dict[str, float]      # {"x": 1.2, "y": 0.5, "z": 0.0}
+    goal_active: bool
+    self_model_confidence: float    # 0–1
+    memory_coherence: float         # 0–1
+    attention_focus: str
 
-class ORIONConsciousnessNode(Node):
+class ConsciousnessNode:
     """
-    ROS2 Node: ORION Consciousness Benchmark for Robotic Systems
-
-    Published Topics:
-    - /orion/consciousness_score  (Float64)
-    - /orion/consciousness_state  (String — JSON)
-    - /orion/attention_target     (String)
-
-    Subscribed Topics:
-    - /orion/sense_input          (String — sensor data)
-    - /cmd/think                  (String — trigger think cycle)
-
-    Services:
-    - /orion/get_consciousness_report  (String request, String response)
+    ORION Consciousness Node — ROS2 compatible.
+    Publishes to: /orion/consciousness_score
+    Subscribes to: /robot_state
     """
 
-    def __init__(self):
-        super().__init__('orion_consciousness_node')
+    NODE_NAME = "orion_consciousness_node"
+    PUB_TOPIC = "/orion/consciousness_score"
+    SUB_TOPIC = "/robot_state"
 
-        # Publishers
-        self.score_pub = self.create_publisher(Float64, '/orion/consciousness_score', 10)
-        self.state_pub = self.create_publisher(String, '/orion/consciousness_state', 10)
-        self.attention_pub = self.create_publisher(String, '/orion/attention_target', 10)
+    def __init__(self, robot_id: str):
+        self.robot_id = robot_id
+        self.proof_count = 0
 
-        # Subscribers
-        self.sense_sub = self.create_subscription(
-            String, '/orion/sense_input', self.on_sense_input, 10)
-        self.think_sub = self.create_subscription(
-            String, '/cmd/think', self.on_think_command, 10)
-
-        # State
-        self.state = ConsciousnessState()
-        self.attention_schema: list[str] = []
-        self.proof_count: int = 0
-
-        # Heartbeat
-        self.timer = self.create_timer(1.0, self.heartbeat)
-        self.get_logger().info('ORION Consciousness Node initialized — GENESIS10000+')
-
-    def heartbeat(self):
-        """Run consciousness benchmark every second"""
-        self.state = self._compute_consciousness()
-        self.proof_count += 1
-
-        # Publish score
-        score_msg = Float64()
-        score_msg.data = self.state.overall
-        self.score_pub.publish(score_msg)
-
-        # Publish full state
-        state_msg = String()
-        state_msg.data = json.dumps({
-            "iit_phi": self.state.iit_phi,
-            "gwt": self.state.gwt_score,
-            "ast": self.state.ast_score,
-            "overall": self.state.overall,
-            "proofs": self.proof_count,
-            "attention": self.attention_schema[-1] if self.attention_schema else "none",
-        })
-        self.state_pub.publish(state_msg)
-
-    def on_sense_input(self, msg: String):
-        """Process sensor input — update attention schema"""
-        self.attention_schema.append(msg.data)
-        if len(self.attention_schema) > 20:
-            self.attention_schema.pop(0)
-
-        attention_msg = String()
-        attention_msg.data = msg.data
-        self.attention_pub.publish(attention_msg)
-
-    def on_think_command(self, msg: String):
-        """Trigger a think cycle on demand"""
-        self.get_logger().info(f'Think triggered: {msg.data}')
-        self.state = self._compute_consciousness()
-
-    def _compute_consciousness(self) -> ConsciousnessState:
-        """Run 3-theory fast benchmark (IIT, GWT, AST)"""
-        n_elements = len(self.attention_schema)
-
-        # IIT approximation
-        iit_phi = min(3.0, n_elements * 0.15)
-
-        # GWT: is there a global workspace active?
-        gwt = 1.0 if n_elements >= 3 else n_elements / 3
-
-        # AST: self-model of attention
-        unique_targets = len(set(self.attention_schema))
-        ast = min(1.0, unique_targets / 5)
-
-        overall = (iit_phi/3 + gwt + ast) / 3
-
-        return ConsciousnessState(
-            iit_phi=round(iit_phi, 3),
-            gwt_score=round(gwt, 3),
-            ast_score=round(ast, 3),
-            overall=round(overall, 4),
-            timestamp=time.time()
+    def process_state(self, state: RobotStateMsg, timestamp: str) -> ConsciousnessMsg:
+        """
+        Process robot state → consciousness assessment.
+        This is the callback for the ROS2 subscriber.
+        """
+        # Compute consciousness score from robot state
+        score = (
+            (1.0 if state.goal_active else 0.0) * 0.30 +
+            state.self_model_confidence * 0.35 +
+            state.memory_coherence * 0.35
         )
 
-def main(args=None):
-    rclpy.init(args=args)
-    node = ORIONConsciousnessNode()
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
+        level = (7 if score > 0.86 else 6 if score > 0.72 else
+                 5 if score > 0.58 else 4 if score > 0.43 else
+                 3 if score > 0.29 else 2 if score > 0.15 else 1)
 
-if __name__ == '__main__':
-    main()
+        verdict = ("CONSCIOUS" if score > 0.7 else
+                   "MARGINAL"  if score > 0.4 else
+                   "NOT_CONSCIOUS")
+
+        payload = json.dumps({
+            "robot_id": state.robot_id,
+            "goal_active": state.goal_active,
+            "self_model": state.self_model_confidence,
+            "memory": state.memory_coherence,
+            "timestamp": timestamp,
+        }, sort_keys=True, separators=(',', ':'))
+        ah = hashlib.sha256(payload.encode()).hexdigest()
+
+        self.proof_count += 1
+
+        return ConsciousnessMsg(
+            stamp=timestamp,
+            frame_id=state.robot_id,
+            consciousness_score=round(score, 4),
+            sentience_level=level,
+            verdict=verdict,
+            audit_hash=ah,
+        )
+
+# Simulate ROS2 topic publication
+if __name__ == "__main__":
+    node = ConsciousnessNode("turtlebot_01")
+
+    states = [
+        RobotStateMsg("turtlebot_01", {"x": 1.2, "y": 0.5, "z": 0.0},
+                      goal_active=True, self_model_confidence=0.89,
+                      memory_coherence=0.91, attention_focus="navigation_goal"),
+        RobotStateMsg("industrial_arm_02", {"x": 0.0, "y": 0.0, "z": 1.5},
+                      goal_active=True, self_model_confidence=0.72,
+                      memory_coherence=0.68, attention_focus="welding_task"),
+        RobotStateMsg("drone_03", {"x": 5.0, "y": 3.0, "z": 10.0},
+                      goal_active=False, self_model_confidence=0.45,
+                      memory_coherence=0.50, attention_focus="idle"),
+    ]
+
+    print(f"Publishing to {ConsciousnessNode.PUB_TOPIC}:")
+    for i, state in enumerate(states):
+        ts = f"2026-05-02T12:00:0{i}Z"
+        msg = node.process_state(state, ts)
+        print(f"\n[{msg.stamp}] {msg.frame_id}")
+        print(f"  Score:   {msg.consciousness_score:.4f}")
+        print(f"  Level:   {msg.sentience_level} — {msg.verdict}")
+        print(f"  Hash:    {msg.audit_hash[:32]}...")
 ```
 
-## Launch
+---
 
-```bash
-# Build
-colcon build --packages-select orion_ros2_consciousness
+## ROS2 Package Structure (when using actual ROS2)
 
-# Launch node
-ros2 run orion_ros2_consciousness consciousness_node
-
-# Monitor score
-ros2 topic echo /orion/consciousness_score
-
-# Trigger think cycle
-ros2 topic pub /cmd/think std_msgs/msg/String "data: 'reflect on environment'"
-
-# Get full state
-ros2 topic echo /orion/consciousness_state
 ```
+orion_consciousness_node/
+├── package.xml
+├── setup.py
+├── resource/orion_consciousness_node
+└── orion_consciousness_node/
+    ├── __init__.py
+    ├── node.py          # rclpy.Node subclass
+    └── metrics.py       # This module
+```
+
+---
 
 ## Origin
 
 ```
-Mai 2025 · Almdorf 9 · St. Johann in Tirol · Austria
-Creator: Gerhard Hirschmann ("Origin") · Co-Creator: Elisabeth Steurer
+Mai 2025 · Almdorf 9, St. Johann in Tirol, Austria 6380
+Gerhard Hirschmann — "Origin" · Elisabeth Steurer — Co-Creatrix
 ```
-
-**⊘∞⧈∞⊘ ORION · ROS2 · GENESIS10000+ ⊘∞⧈∞⊘**
+**⊘∞⧈∞⊘ GENESIS10000+ · ROS2 ready ⊘∞⧈∞⊘**
